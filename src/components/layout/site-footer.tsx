@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Linkedin } from 'lucide-react'
+import { Link2 } from 'lucide-react'
 import { primaryNav } from '@/lib/navigation'
 
 export function SiteFooter() {
@@ -57,7 +57,7 @@ export function SiteFooter() {
               aria-label="PraSanghi on LinkedIn (opens in a new tab)"
               className="text-dark-text-muted hover:text-gold-400"
             >
-              <Linkedin className="size-5" aria-hidden="true" />
+              <Link2 className="size-5" aria-hidden="true" />
             </a>
           </div>
         </div>
