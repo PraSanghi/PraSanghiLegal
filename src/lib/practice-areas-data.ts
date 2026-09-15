@@ -108,6 +108,32 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
     teamSlugs: [],
     image: placeholderImage('contracts'),
   },
+  'legal-drafting-documentation': {
+    slug: 'legal-drafting-documentation',
+    title: 'Legal Drafting & Documentation',
+    summary:
+      'Precise drafting for the notices, agreements, affidavits, and land-related filings that need to be right the first time.',
+    overview: [
+      'From a legal notice before filing a civil case to a land-revenue filing before a Tahasildar, PraSanghi drafts the documents individuals and businesses actually need — named specifically, not bundled under a generic "documentation services" label.',
+    ],
+    specificServices: [
+      'Legal notice before filing a civil case',
+      'Prenuptial agreements',
+      'Caveat filing',
+      'MOU (Memorandum of Understanding) drafting',
+      'Affidavit drafting (all types)',
+      'Legal online search reports',
+      'Legal business valuation and mapping reports',
+      'Public (paper) notice drafting',
+      'Sale deed drafting and registration',
+      'Import and export contracts and agreements',
+      'Non-agricultural (NA) conversion of agricultural land',
+      'Land satellite mapping reports',
+      'Tahasildar and Prant office matters',
+    ],
+    teamSlugs: [],
+    image: placeholderImage('legal-drafting-documents'),
+  },
 }
 
 export const practiceAreaSlugs = Object.keys(practiceAreaDetails)
