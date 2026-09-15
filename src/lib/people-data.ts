@@ -30,7 +30,9 @@ export const people: PersonRecord[] = [
     isFounder: true,
     practiceTags: ['Litigation', 'Supreme Court & High Court Practice'],
     bioPending: true,
-    photo: placeholderPhoto('rajwardhan-gawde', 'men'),
+    // Hardcoded (not hashed) to a portrait in business attire — more
+    // fitting for the founder than whatever the deterministic hash lands on.
+    photo: 'https://randomuser.me/api/portraits/men/85.jpg',
   },
   {
     slug: 'bhavesh',
