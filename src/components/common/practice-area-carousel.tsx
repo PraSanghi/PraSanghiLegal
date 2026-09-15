@@ -101,6 +101,7 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
 
   return (
     <div
+      className="relative"
       onMouseEnter={pause}
       onMouseLeave={resume}
       onFocus={pause}
@@ -117,7 +118,7 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
           <div
             key={`${item.slug}-${i}`}
             data-carousel-card
-            className="relative h-72 w-[75%] shrink-0 snap-start sm:w-[40%] lg:w-[calc(25%-18px)]"
+            className="relative h-96 w-[80%] shrink-0 snap-start sm:w-[46%] lg:w-[calc(32%-16px)]"
           >
             <Link
               href={`/practice-areas/${item.slug}`}
@@ -129,37 +130,35 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
                 src={item.image}
                 alt=""
                 fill
-                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 40vw, 75vw"
+                sizes="(min-width: 1024px) 32vw, (min-width: 640px) 46vw, 80vw"
                 className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent" />
-              <div className="relative p-5">
-                <p className="text-body-lg font-bold text-white">{item.title}</p>
-                <p className="mt-2 line-clamp-3 text-body-sm text-white/85">{item.summary}</p>
+              <div className="relative p-6">
+                <p className="text-heading-sm font-bold text-white">{item.title}</p>
+                <p className="mt-2 line-clamp-3 text-body-md text-white/85">{item.summary}</p>
               </div>
             </Link>
           </div>
         ))}
       </div>
 
-      <div className="mt-6 flex items-center justify-center gap-3">
-        <button
-          type="button"
-          onClick={() => handleArrow(-1)}
-          aria-label="Previous practice area"
-          className="flex size-10 items-center justify-center rounded-full border border-border text-blue-900 transition-colors duration-150 ease-out hover:border-teal-500 hover:text-teal-600"
-        >
-          <ArrowLeft weight="light" className="size-4" aria-hidden="true" />
-        </button>
-        <button
-          type="button"
-          onClick={() => handleArrow(1)}
-          aria-label="Next practice area"
-          className="flex size-10 items-center justify-center rounded-full border border-border text-blue-900 transition-colors duration-150 ease-out hover:border-teal-500 hover:text-teal-600"
-        >
-          <ArrowRight weight="light" className="size-4" aria-hidden="true" />
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={() => handleArrow(-1)}
+        aria-label="Previous practice area"
+        className="absolute top-1/2 left-0 flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-blue-900 shadow-md transition-colors duration-150 ease-out hover:border-teal-500 hover:text-teal-600"
+      >
+        <ArrowLeft weight="light" className="size-4" aria-hidden="true" />
+      </button>
+      <button
+        type="button"
+        onClick={() => handleArrow(1)}
+        aria-label="Next practice area"
+        className="absolute top-1/2 right-0 flex size-11 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-blue-900 shadow-md transition-colors duration-150 ease-out hover:border-teal-500 hover:text-teal-600"
+      >
+        <ArrowRight weight="light" className="size-4" aria-hidden="true" />
+      </button>
     </div>
   )
 }
