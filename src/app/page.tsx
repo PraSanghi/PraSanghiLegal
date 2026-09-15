@@ -33,6 +33,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-6 py-16">
         <RevealOnScroll>
           <h2 className="text-heading-lg font-bold text-blue-900">Why PraSanghi</h2>
+          <span className="mt-3 block h-0.5 w-12 bg-teal-500" aria-hidden="true" />
         </RevealOnScroll>
         <div className="mt-8">
           <ValuesTriad
@@ -94,6 +95,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-3xl px-6 py-16">
         <RevealOnScroll>
           <h2 className="text-heading-lg font-bold text-blue-900">Common Questions</h2>
+          <span className="mt-3 block h-0.5 w-12 bg-teal-500" aria-hidden="true" />
           <FaqAccordion items={homeFaqs} />
         </RevealOnScroll>
       </section>

@@ -3,6 +3,7 @@ import { LinkSimple } from '@phosphor-icons/react/dist/ssr'
 import { LogoMark } from '@/components/common/logo-mark'
 import { primaryNav } from '@/lib/navigation'
 import { CookiePreferencesLink } from '@/components/compliance/cookie-preferences-link'
+import { NewsletterSignupForm } from '@/components/common/newsletter-signup-form'
 
 export function SiteFooter() {
   return (
@@ -65,6 +66,13 @@ export function SiteFooter() {
               <LinkSimple weight="light" className="size-5" aria-hidden="true" />
             </a>
           </div>
+          <p className="mt-6 text-label-eyebrow uppercase tracking-wide text-teal-400">
+            Stay Updated
+          </p>
+          <p className="mt-2 text-body-sm text-dark-text-muted">
+            Occasional notes on new Insights articles.
+          </p>
+          <NewsletterSignupForm />
         </div>
       </div>
 

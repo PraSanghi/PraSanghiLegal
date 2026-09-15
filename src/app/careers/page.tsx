@@ -77,6 +77,7 @@ export default function CareersPage() {
           <p className="mt-4 text-body-md text-muted-foreground">
             No posting matches your background exactly? Send this short form
             anyway — it goes directly to the team, not into a filtered queue.
+            We aim to respond within 7 working days.
           </p>
           <div className="mt-10">
             <QuickApplyForm />
@@ -86,6 +87,7 @@ export default function CareersPage() {
 
       <section className="mx-auto max-w-3xl px-6 py-16">
         <h2 className="text-heading-lg font-bold text-blue-900">Careers FAQ</h2>
+        <span className="mt-3 block h-0.5 w-12 bg-teal-500" aria-hidden="true" />
         <FaqAccordion items={careersFaqs} />
       </section>
     </>
