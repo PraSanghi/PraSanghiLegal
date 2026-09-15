@@ -4,11 +4,13 @@ import { MagnifyingGlass, Compass, Gavel, Handshake } from '@phosphor-icons/reac
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { TextLink } from '@/components/common/text-link'
 import { PageBanner } from '@/components/common/page-banner'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'About Us — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'About Us',
   description: 'The story behind PraSanghi, The Legal Ladder.',
-}
+  path: '/about',
+})
 
 export default function AboutPage() {
   return (

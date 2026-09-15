@@ -4,11 +4,13 @@ import { Breadcrumb } from '@/components/common/breadcrumb'
 import { ValuesTriad } from '@/components/common/values-triad'
 import { CtaBand } from '@/components/common/cta-band'
 import { PageBanner } from '@/components/common/page-banner'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Vision & Values — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Vision & Values',
   description: 'People, Justice, Progress — the values behind PraSanghi.',
-}
+  path: '/about/vision-values',
+})
 
 export default function VisionValuesPage() {
   return (

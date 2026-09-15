@@ -7,12 +7,14 @@ import { RevealOnScroll } from '@/components/common/reveal-on-scroll'
 import { PageBanner } from '@/components/common/page-banner'
 import { ValuesTriad } from '@/components/common/values-triad'
 import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Practice Areas — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Practice Areas',
   description:
     'Litigation, Supreme Court and High Court practice, arbitration, regulatory and advisory work, and contract drafting — one firm, equal depth across every practice.',
-}
+  path: '/practice-areas',
+})
 
 export default function PracticeAreasPage() {
   return (

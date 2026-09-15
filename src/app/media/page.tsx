@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { TextLink } from '@/components/common/text-link'
 import { PageBanner } from '@/components/common/page-banner'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Media Coverage — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Media Coverage',
   description: 'Press mentions and The Samvaad Podcast.',
-}
+  path: '/media',
+})
 
 export default function MediaPage() {
   return (

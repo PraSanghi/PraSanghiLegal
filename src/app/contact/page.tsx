@@ -3,11 +3,13 @@ import Image from 'next/image'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { ContactForm } from '@/components/common/contact-form'
 import { PageBanner } from '@/components/common/page-banner'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Contact Us — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Contact Us',
   description: 'Schedule a consultation with PraSanghi regarding your legal matter.',
-}
+  path: '/contact',
+})
 
 export default function ContactPage() {
   return (

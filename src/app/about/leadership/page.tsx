@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { AttorneyProfileHeader } from '@/components/people/attorney-profile-header'
 import { peopleBySlug } from '@/lib/people-data'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Leadership — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Leadership',
   description: 'Rajwardhan Gawde, Founder of PraSanghi.',
-}
+  path: '/about/leadership',
+})
 
 export default function LeadershipPage() {
   const founder = peopleBySlug['rajwardhan-gawde']

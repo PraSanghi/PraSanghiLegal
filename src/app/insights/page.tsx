@@ -4,11 +4,13 @@ import { InsightCard } from '@/components/cards/insight-card'
 import { RevealOnScroll } from '@/components/common/reveal-on-scroll'
 import { PageBanner } from '@/components/common/page-banner'
 import { insights } from '@/lib/insights-data'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Legal Insights — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Legal Insights',
   description: 'Legal updates, articles, and analysis from PraSanghi.',
-}
+  path: '/insights',
+})
 
 export default function InsightsPage() {
   return (

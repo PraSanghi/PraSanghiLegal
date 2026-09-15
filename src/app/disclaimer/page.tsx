@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { BCI_DISCLAIMER_TEXT } from '@/lib/legal-text'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Disclaimer — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Disclaimer',
   description: 'Bar Council of India disclaimer.',
-}
+  path: '/disclaimer',
+})
 
 export default function DisclaimerPage() {
   return (

@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { Breadcrumb } from '@/components/common/breadcrumb'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Terms of Use — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Terms of Use',
   description: 'Terms governing use of the PraSanghi website.',
-}
+  path: '/terms-of-use',
+})
 
 export default function TermsOfUsePage() {
   return (

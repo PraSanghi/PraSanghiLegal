@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button'
 import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
 import { practiceAreaCarouselImages } from '@/lib/practice-area-carousel-images'
 import { peopleBySlug } from '@/lib/people-data'
+import { pageMetadata } from '@/lib/site-config'
 
 export function generateStaticParams() {
   return practiceAreaSlugs.map((slug) => ({ slug }))
@@ -25,10 +26,11 @@ export async function generateMetadata({
   const { slug } = await params
   const area = practiceAreaDetails[slug]
   if (!area) return {}
-  return {
-    title: `${area.title} — PraSanghi`,
+  return pageMetadata({
+    title: area.title,
     description: area.summary,
-  }
+    path: `/practice-areas/${slug}`,
+  })
 }
 
 // Deliberately not the Insights article template (full-bleed 21:9 banner

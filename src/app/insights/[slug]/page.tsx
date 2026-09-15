@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { CtaBand } from '@/components/common/cta-band'
 import { insights, insightsBySlug } from '@/lib/insights-data'
+import { pageMetadata } from '@/lib/site-config'
 
 export function generateStaticParams() {
   return insights.map((i) => ({ slug: i.slug }))
@@ -17,7 +18,11 @@ export async function generateMetadata({
   const { slug } = await params
   const item = insightsBySlug[slug]
   if (!item) return {}
-  return { title: `${item.headline} — PraSanghi`, description: item.excerpt }
+  return pageMetadata({
+    title: item.headline,
+    description: item.excerpt,
+    path: `/insights/${slug}`,
+  })
 }
 
 export default async function InsightDetailPage({

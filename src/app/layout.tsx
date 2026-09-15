@@ -6,12 +6,37 @@ import { BciDisclaimerModal } from "@/components/compliance/bci-disclaimer-modal
 import { CookieConsentBanner } from "@/components/compliance/cookie-consent-banner";
 import { ConsentedAnalytics } from "@/components/compliance/consented-analytics";
 import { Toaster } from "@/components/ui/sonner";
+import { siteDescription, siteName, siteTagline, siteUrl } from "@/lib/site-config";
+import { organizationJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "PraSanghi — The Legal Ladder",
-  description:
-    "PraSanghi is a Pan-India, full-service legal LLP combining Supreme Court and High Court litigation with regulatory, compliance, and advisory practice.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${siteName} — ${siteTagline}`,
+    template: `%s — ${siteName}`,
+  },
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: `${siteName} — ${siteTagline}`,
+    title: `${siteName} — ${siteTagline}`,
+    description: siteDescription,
+    url: siteUrl,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteName} — ${siteTagline}`,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -21,6 +46,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${ibmPlexSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        />
         <BciDisclaimerModal />
         <SiteHeader />
         <main className="flex-1">{children}</main>

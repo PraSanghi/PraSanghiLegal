@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { AttorneyProfileHeader } from '@/components/people/attorney-profile-header'
 import { people, peopleBySlug } from '@/lib/people-data'
+import { pageMetadata } from '@/lib/site-config'
 
 export function generateStaticParams() {
   return people.map((p) => ({ slug: p.slug }))
@@ -16,7 +17,11 @@ export async function generateMetadata({
   const { slug } = await params
   const person = peopleBySlug[slug]
   if (!person) return {}
-  return { title: `${person.name} — PraSanghi`, description: `${person.name}, ${person.role} at PraSanghi.` }
+  return pageMetadata({
+    title: person.name,
+    description: `${person.name}, ${person.role} at PraSanghi.`,
+    path: `/people/${slug}`,
+  })
 }
 
 export default async function PersonProfilePage({

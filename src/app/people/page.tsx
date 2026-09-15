@@ -5,11 +5,13 @@ import { CtaBand } from '@/components/common/cta-band'
 import { RevealOnScroll } from '@/components/common/reveal-on-scroll'
 import { PageBanner } from '@/components/common/page-banner'
 import { people } from '@/lib/people-data'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Our Advocates — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Our Advocates',
   description: 'The advocates and associates of PraSanghi.',
-}
+  path: '/people',
+})
 
 export default function PeoplePage() {
   const founder = people.filter((p) => p.isFounder)

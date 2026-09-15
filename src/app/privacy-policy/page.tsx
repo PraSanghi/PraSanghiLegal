@@ -1,17 +1,19 @@
 import type { Metadata } from 'next'
 import { Breadcrumb } from '@/components/common/breadcrumb'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Privacy Policy',
   description: 'How PraSanghi handles personal information submitted through this website.',
-}
+  path: '/privacy-policy',
+})
 
 export default function PrivacyPolicyPage() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-12">
       <Breadcrumb segments={[{ label: 'Privacy Policy' }]} />
       <h1 className="mt-4 text-display-lg font-bold text-blue-900">Privacy Policy</h1>
-      <p className="mt-3 text-body-sm text-muted-foreground">Last updated: 15 September 2026</p>
+      <p className="mt-3 text-body-sm text-muted-foreground">Last updated: 16 September 2026</p>
 
       <div className="mt-10 flex flex-col gap-8 text-body-md text-muted-foreground">
         <div>
@@ -39,6 +41,7 @@ export default function PrivacyPolicyPage() {
               Your name, email, resume/CV link, and cover message if you
               apply through the Careers page.
             </li>
+            <li>Your email address if you subscribe to our newsletter in the site footer.</li>
           </ul>
           <p className="mt-3">
             We do not currently collect payment information, government IDs,
@@ -77,9 +80,12 @@ export default function PrivacyPolicyPage() {
           </h2>
           <p className="mt-3">
             Information submitted through the Contact or Careers forms is
-            used only to respond to your enquiry or application. We do not
-            sell or rent personal information to third parties, and do not
-            use it for unrelated marketing without your consent.
+            used only to respond to your enquiry or application. An email
+            address submitted through the newsletter form is used only to
+            send the updates you signed up for, and you may unsubscribe at
+            any time. We do not sell or rent personal information to third
+            parties, and do not use it for unrelated marketing without your
+            consent.
           </p>
         </div>
 
@@ -90,7 +96,8 @@ export default function PrivacyPolicyPage() {
           <p className="mt-3">
             We retain Contact and Careers submissions only for as long as
             reasonably necessary to address the enquiry or application, or as
-            required by applicable law.
+            required by applicable law. Newsletter email addresses are
+            retained until you unsubscribe.
           </p>
         </div>
 
@@ -101,7 +108,7 @@ export default function PrivacyPolicyPage() {
             information you have submitted through this website by
             contacting us via the{' '}
             <a href="/contact" className="underline hover:text-blue-900">
-              Contact
+              Contact Us
             </a>{' '}
             page.
           </p>

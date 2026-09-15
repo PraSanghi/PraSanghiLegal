@@ -7,11 +7,13 @@ import { PageBanner } from '@/components/common/page-banner'
 import { QuickApplyForm } from '@/components/common/quick-apply-form'
 import { FaqAccordion } from '@/components/common/faq-accordion'
 import { careersFaqs } from '@/lib/careers-faq-data'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Careers — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Careers',
   description: 'Careers and internship opportunities at PraSanghi.',
-}
+  path: '/careers',
+})
 
 export default function CareersPage() {
   return (

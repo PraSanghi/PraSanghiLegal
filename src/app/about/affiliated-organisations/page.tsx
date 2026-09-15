@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { Breadcrumb } from '@/components/common/breadcrumb'
+import { pageMetadata } from '@/lib/site-config'
 
-export const metadata: Metadata = {
-  title: 'Affiliated Organisations — PraSanghi',
+export const metadata: Metadata = pageMetadata({
+  title: 'Affiliated Organisations',
   description: 'Organisations affiliated with PraSanghi.',
-}
+  path: '/about/affiliated-organisations',
+})
 
 // Names sourced directly from the founder's own notes (Prasanghi LLP_LT
 // 2.pdf, item 4, "Associated Organisations") — not guessed. The
