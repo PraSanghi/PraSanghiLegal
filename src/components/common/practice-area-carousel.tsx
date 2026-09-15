@@ -1,12 +1,14 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { ArrowLeft, ArrowRight } from '@phosphor-icons/react/dist/ssr'
-import { PracticeAreaTeaser } from '@/components/common/practice-area-teaser'
 
 export interface PracticeAreaCarouselItem {
   slug: string
   title: string
+  summary: string
   image: string
 }
 
@@ -14,36 +16,128 @@ export interface PracticeAreaCarouselProps {
   items: PracticeAreaCarouselItem[]
 }
 
-// Native horizontal scroll-snap, not a JS carousel library — swipes on
-// touch devices for free, and the arrow buttons just nudge that same
-// scroll position by one card width.
+const AUTO_ADVANCE_MS = 4000
+
+// Discrete, one-card-at-a-time auto-advance — not a continuous marquee —
+// that loops forever: the item list is rendered twice back-to-back, and
+// once a smooth scroll lands past the first copy's width the track snaps
+// back by exactly that width with no animation, so the wrap is invisible.
+// Pauses on hover/focus/touch and off-screen, and skips autoplay entirely
+// under prefers-reduced-motion (manual arrows and native swipe still work
+// either way).
 export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null)
+  const hoveredRef = useRef(false)
+  const offScreenRef = useRef(false)
+  const intervalRef = useRef<number | undefined>(undefined)
 
-  function scrollByCard(direction: 1 | -1) {
-    const track = trackRef.current
-    const card = track?.querySelector<HTMLElement>('[data-carousel-card]')
-    if (!track || !card) return
-    track.scrollBy({ left: direction * (card.offsetWidth + 24), behavior: 'smooth' })
+  function stepWidth() {
+    const card = trackRef.current?.querySelector<HTMLElement>('[data-carousel-card]')
+    return card ? card.offsetWidth + 24 : 0
   }
 
+  function normalizeLoop() {
+    const track = trackRef.current
+    if (!track) return
+    const setWidth = track.scrollWidth / 2
+    if (track.scrollLeft >= setWidth) track.scrollLeft -= setWidth
+    else if (track.scrollLeft < 0) track.scrollLeft += setWidth
+  }
+
+  function advance(direction: 1 | -1) {
+    const track = trackRef.current
+    if (!track) return
+    track.scrollBy({ left: direction * stepWidth(), behavior: 'smooth' })
+    window.setTimeout(normalizeLoop, 500)
+  }
+
+  function restartInterval() {
+    window.clearInterval(intervalRef.current)
+    intervalRef.current = window.setInterval(() => {
+      if (!hoveredRef.current && !offScreenRef.current) advance(1)
+    }, AUTO_ADVANCE_MS)
+  }
+
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+
+    track.addEventListener('scrollend', normalizeLoop)
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        offScreenRef.current = !entry.isIntersecting
+      },
+      { threshold: 0 }
+    )
+    observer.observe(track)
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      restartInterval()
+    }
+
+    return () => {
+      track.removeEventListener('scrollend', normalizeLoop)
+      observer.disconnect()
+      window.clearInterval(intervalRef.current)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  function pause() {
+    hoveredRef.current = true
+  }
+
+  function resume() {
+    hoveredRef.current = false
+  }
+
+  function handleArrow(direction: 1 | -1) {
+    advance(direction)
+    restartInterval()
+  }
+
+  const loopItems = [...items, ...items]
+
   return (
-    <div>
+    <div
+      onMouseEnter={pause}
+      onMouseLeave={resume}
+      onFocus={pause}
+      onBlur={resume}
+      onPointerDown={pause}
+      onPointerUp={resume}
+      onPointerCancel={resume}
+    >
       <div
         ref={trackRef}
         className="scrollbar-hide flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2"
       >
-        {items.map((item) => (
+        {loopItems.map((item, i) => (
           <div
-            key={item.slug}
+            key={`${item.slug}-${i}`}
             data-carousel-card
-            className="w-[75%] shrink-0 snap-start sm:w-[40%] lg:w-[calc(25%-18px)]"
+            className="relative h-72 w-[75%] shrink-0 snap-start sm:w-[40%] lg:w-[calc(25%-18px)]"
           >
-            <PracticeAreaTeaser
-              title={item.title}
+            <Link
               href={`/practice-areas/${item.slug}`}
-              image={item.image}
-            />
+              tabIndex={i < items.length ? 0 : -1}
+              aria-hidden={i >= items.length}
+              className="group relative flex h-full w-full flex-col justify-end overflow-hidden bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            >
+              <Image
+                src={item.image}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 40vw, 75vw"
+                className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent" />
+              <div className="relative p-5">
+                <p className="text-body-lg font-bold text-white">{item.title}</p>
+                <p className="mt-2 line-clamp-3 text-body-sm text-white/85">{item.summary}</p>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
@@ -51,7 +145,7 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
       <div className="mt-6 flex items-center justify-center gap-3">
         <button
           type="button"
-          onClick={() => scrollByCard(-1)}
+          onClick={() => handleArrow(-1)}
           aria-label="Previous practice area"
           className="flex size-10 items-center justify-center rounded-full border border-border text-blue-900 transition-colors duration-150 ease-out hover:border-teal-500 hover:text-teal-600"
         >
@@ -59,7 +153,7 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
         </button>
         <button
           type="button"
-          onClick={() => scrollByCard(1)}
+          onClick={() => handleArrow(1)}
           aria-label="Next practice area"
           className="flex size-10 items-center justify-center rounded-full border border-border text-blue-900 transition-colors duration-150 ease-out hover:border-teal-500 hover:text-teal-600"
         >

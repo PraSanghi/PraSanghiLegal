@@ -12,22 +12,11 @@ import { ValuesTriad } from "@/components/common/values-triad";
 import { RevealOnScroll } from "@/components/common/reveal-on-scroll";
 import { TextLink } from "@/components/common/text-link";
 import { Button } from "@/components/ui/button";
-import { practiceAreaDetails } from "@/lib/practice-areas-data";
+import { practiceAreaDetails, practiceAreaSlugs } from "@/lib/practice-areas-data";
+import { practiceAreaCarouselImages } from "@/lib/practice-area-carousel-images";
 import { peopleBySlug } from "@/lib/people-data";
 import { insights } from "@/lib/insights-data";
 import { homeFaqs } from "@/lib/faq-data";
-
-// The firm's full service line-up, in the order it should appear in the
-// homepage carousel — not just the three previously "featured" areas.
-const CAROUSEL_PRACTICE_SLUGS = [
-  "start-up-support",
-  "contract-drafting-commercial-advisory",
-  "corporate-law",
-  "debt-recovery-management",
-  "intellectual-property-rights",
-  "litigation",
-  "employment-law",
-] as const;
 
 export default function HomePage() {
   const founder = peopleBySlug["rajwardhan-gawde"];
@@ -83,10 +72,11 @@ export default function HomePage() {
         </RevealOnScroll>
         <RevealOnScroll className="mt-8">
           <PracticeAreaCarousel
-            items={CAROUSEL_PRACTICE_SLUGS.map((slug) => ({
+            items={practiceAreaSlugs.map((slug) => ({
               slug,
               title: practiceAreaDetails[slug].title,
-              image: practiceAreaDetails[slug].image,
+              summary: practiceAreaDetails[slug].summary,
+              image: practiceAreaCarouselImages[slug],
             }))}
           />
         </RevealOnScroll>
