@@ -45,7 +45,7 @@ export function RevealOnScroll({ children, className, delayMs = 0 }: RevealOnScr
       ref={ref}
       style={{ transitionDelay: `${delayMs}ms` }}
       className={cn(
-        'transition-all duration-700 ease-out',
+        'h-full transition-all duration-700 ease-out',
         visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0',
         className
       )}

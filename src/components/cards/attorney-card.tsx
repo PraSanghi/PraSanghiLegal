@@ -23,7 +23,7 @@ export function AttorneyCard({
     <Link
       href={href}
       className={cn(
-        'group flex flex-col border border-border bg-card transition-shadow duration-150 ease-out hover:shadow-[0_2px_8px_rgba(14,27,51,0.08)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
+        'group flex h-full flex-col border border-border bg-card transition-shadow duration-150 ease-out hover:shadow-[0_2px_8px_rgba(14,27,51,0.08)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
         className
       )}
     >
