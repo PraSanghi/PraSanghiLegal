@@ -1,10 +1,16 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { CheckCircle } from '@phosphor-icons/react/dist/ssr'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { AttorneyCard } from '@/components/cards/attorney-card'
+import { PracticeAreaCard } from '@/components/cards/practice-area-card'
 import { CtaBand } from '@/components/common/cta-band'
+import { RevealOnScroll } from '@/components/common/reveal-on-scroll'
+import { Button } from '@/components/ui/button'
 import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
+import { practiceAreaCarouselImages } from '@/lib/practice-area-carousel-images'
 import { peopleBySlug } from '@/lib/people-data'
 
 export function generateStaticParams() {
@@ -25,6 +31,11 @@ export async function generateMetadata({
   }
 }
 
+// Deliberately not the Insights article template (full-bleed 21:9 banner
+// then flowing prose) — a service page's job is to convert a prospective
+// client, not to be read start to finish, so it leads with a two-column
+// intro (contained image, not full-bleed) and a scannable checklist rather
+// than a wall of text, and closes with cross-links into other services.
 export default async function PracticeAreaDetailPage({
   params,
 }: {
@@ -35,6 +46,8 @@ export default async function PracticeAreaDetailPage({
   if (!area) notFound()
 
   const team = area.teamSlugs.map((s) => peopleBySlug[s]).filter(Boolean)
+  const image = practiceAreaCarouselImages[slug] ?? area.image
+  const related = practiceAreaSlugs.filter((s) => s !== slug).slice(0, 3)
 
   return (
     <>
@@ -45,60 +58,94 @@ export default async function PracticeAreaDetailPage({
         ]}
       />
 
-      <div className="relative mt-4 aspect-[21/9] w-full overflow-hidden bg-muted">
-        <Image src={area.image} alt="" fill priority className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 via-blue-900/10 to-transparent" />
-        <div className="absolute bottom-0 left-0 px-6 pb-8 sm:px-12">
-          <p className="text-label-eyebrow uppercase tracking-wide text-teal-400">
-            Practice Area
-          </p>
-          <h1 className="mt-2 max-w-2xl text-display-lg font-bold text-white">{area.title}</h1>
-        </div>
-      </div>
-
-      <section className="mx-auto max-w-4xl px-6 py-12">
-        <p className="text-body-lg text-muted-foreground">{area.summary}</p>
-
-        <div className="mt-10 flex flex-col gap-4">
-          {area.overview.map((paragraph, i) => (
-            <p key={i} className="text-body-md text-blue-900">
-              {paragraph}
+      <section className="mx-auto max-w-7xl px-6 py-12">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_minmax(0,420px)]">
+          <RevealOnScroll>
+            <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+              Practice Area
             </p>
-          ))}
-        </div>
-
-        <h2 className="mt-12 text-heading-md font-bold text-blue-900">
-          Specific Services
-        </h2>
-        <ul className="mt-4 flex flex-col gap-2">
-          {area.specificServices.map((service) => (
-            <li key={service} className="flex items-start gap-2 text-body-md text-blue-900">
-              <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-teal-600" />
-              {service}
-            </li>
-          ))}
-        </ul>
-
-        {team.length > 0 ? (
-          <>
-            <h2 className="mt-12 text-heading-md font-bold text-blue-900">
-              Team
-            </h2>
-            <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {team.map((person) => (
-                <AttorneyCard
-                  key={person.slug}
-                  name={person.name}
-                  role={person.role}
-                  photo={person.photo}
-                  href={`/people/${person.slug}`}
-                  practiceTags={person.practiceTags}
-                />
-              ))}
+            <h1 className="mt-2 text-display-lg font-bold text-blue-900">{area.title}</h1>
+            <p className="mt-4 text-body-lg text-muted-foreground">{area.summary}</p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <Button asChild>
+                <Link href="/contact">Discuss Your Matter</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/practice-areas">View All Practice Areas</Link>
+              </Button>
             </div>
-          </>
-        ) : null}
+          </RevealOnScroll>
+          <RevealOnScroll delayMs={75} className="relative aspect-4/5 w-full overflow-hidden bg-muted">
+            <Image src={image} alt="" fill priority className="object-cover" />
+          </RevealOnScroll>
+        </div>
       </section>
+
+      <section className="border-t border-border bg-off-white px-6 py-12">
+        <div className="mx-auto max-w-4xl">
+          <RevealOnScroll className="flex flex-col gap-4">
+            {area.overview.map((paragraph, i) => (
+              <p key={i} className="text-body-md text-blue-900">
+                {paragraph}
+              </p>
+            ))}
+          </RevealOnScroll>
+
+          <RevealOnScroll>
+            <h2 className="mt-12 text-heading-md font-bold text-blue-900">What&rsquo;s Included</h2>
+            <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
+              {area.specificServices.map((service) => (
+                <li key={service} className="flex items-start gap-3 text-body-md text-blue-900">
+                  <CheckCircle
+                    weight="fill"
+                    className="mt-0.5 size-5 shrink-0 text-teal-600"
+                    aria-hidden="true"
+                  />
+                  {service}
+                </li>
+              ))}
+            </ul>
+          </RevealOnScroll>
+
+          {team.length > 0 ? (
+            <RevealOnScroll>
+              <h2 className="mt-12 text-heading-md font-bold text-blue-900">Team</h2>
+              <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                {team.map((person) => (
+                  <AttorneyCard
+                    key={person.slug}
+                    name={person.name}
+                    role={person.role}
+                    photo={person.photo}
+                    href={`/people/${person.slug}`}
+                    practiceTags={person.practiceTags}
+                  />
+                ))}
+              </div>
+            </RevealOnScroll>
+          ) : null}
+        </div>
+      </section>
+
+      {related.length > 0 ? (
+        <section className="mx-auto max-w-7xl px-6 py-16">
+          <RevealOnScroll>
+            <h2 className="text-heading-lg font-bold text-blue-900">Related Practice Areas</h2>
+          </RevealOnScroll>
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {related.map((s, i) => (
+              <RevealOnScroll key={s} delayMs={i * 75}>
+                <PracticeAreaCard
+                  title={practiceAreaDetails[s].title}
+                  description={practiceAreaDetails[s].summary}
+                  href={`/practice-areas/${s}`}
+                  image={practiceAreaCarouselImages[s] ?? practiceAreaDetails[s].image}
+                />
+              </RevealOnScroll>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <CtaBand
         headline={`Speak to Our ${area.title} Team`}
