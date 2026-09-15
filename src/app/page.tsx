@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { Buildings, UserFocus, Scales, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { PositioningHero } from "@/components/common/positioning-hero";
-import { PracticeAreaTeaser } from "@/components/common/practice-area-teaser";
 import { FounderSpotlight } from "@/components/common/founder-spotlight";
 import { FaqAccordion } from "@/components/common/faq-accordion";
 import { InsightCard } from "@/components/cards/insight-card";
 import { CtaBand } from "@/components/common/cta-band";
 import { TrustedByStrip } from "@/components/common/trusted-by-strip";
 import { DocumentationTree } from "@/components/common/documentation-tree";
+import { PracticeAreaCarousel } from "@/components/common/practice-area-carousel";
 import { ValuesTriad } from "@/components/common/values-triad";
 import { RevealOnScroll } from "@/components/common/reveal-on-scroll";
 import { TextLink } from "@/components/common/text-link";
@@ -17,10 +17,16 @@ import { peopleBySlug } from "@/lib/people-data";
 import { insights } from "@/lib/insights-data";
 import { homeFaqs } from "@/lib/faq-data";
 
-const FEATURED_PRACTICE_SLUGS = [
-  "supreme-court-high-court-practice",
-  "regulatory-advisory",
+// The firm's full service line-up, in the order it should appear in the
+// homepage carousel — not just the three previously "featured" areas.
+const CAROUSEL_PRACTICE_SLUGS = [
+  "start-up-support",
   "contract-drafting-commercial-advisory",
+  "corporate-law",
+  "debt-recovery-management",
+  "intellectual-property-rights",
+  "litigation",
+  "employment-law",
 ] as const;
 
 export default function HomePage() {
@@ -75,20 +81,15 @@ export default function HomePage() {
             View All Practice Areas
           </TextLink>
         </RevealOnScroll>
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {FEATURED_PRACTICE_SLUGS.map((slug, i) => {
-            const area = practiceAreaDetails[slug];
-            return (
-              <RevealOnScroll key={slug} delayMs={i * 75}>
-                <PracticeAreaTeaser
-                  title={area.title}
-                  href={`/practice-areas/${slug}`}
-                  image={area.image}
-                />
-              </RevealOnScroll>
-            );
-          })}
-        </div>
+        <RevealOnScroll className="mt-8">
+          <PracticeAreaCarousel
+            items={CAROUSEL_PRACTICE_SLUGS.map((slug) => ({
+              slug,
+              title: practiceAreaDetails[slug].title,
+              image: practiceAreaDetails[slug].image,
+            }))}
+          />
+        </RevealOnScroll>
         <TextLink href="/practice-areas" className="mt-8 inline-flex sm:hidden">
           View All Practice Areas
         </TextLink>

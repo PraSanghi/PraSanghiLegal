@@ -141,3 +141,13 @@
     @apply font-sans;
   }
 }
+
+/* Keeps the drag/swipe affordance of a horizontal scroll-snap carousel
+   without the browser's scrollbar track competing with the arrow controls. */
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -134,6 +134,91 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
     teamSlugs: [],
     image: placeholderImage('legal-drafting-documents'),
   },
+  'start-up-support': {
+    slug: 'start-up-support',
+    title: 'Start-Up Support',
+    summary:
+      'Legal groundwork for founders — entity selection, incorporation, and the agreements an early-stage business needs first.',
+    overview: [
+      'PraSanghi advises founders on the legal decisions that come before a start-up can operate: how to structure the entity, what to put in writing with co-founders, and which registrations are required from day one.',
+    ],
+    specificServices: [
+      'Entity selection and incorporation (company or LLP)',
+      'Founders’ and co-founder agreements',
+      'Early-stage regulatory and licensing compliance',
+      'Term sheet and early-investment documentation',
+    ],
+    teamSlugs: [],
+    image: placeholderImage('start-up-support'),
+  },
+  'corporate-law': {
+    slug: 'corporate-law',
+    title: 'Corporate Law',
+    summary:
+      'Governance, structuring, and statutory compliance counsel for companies at every stage.',
+    overview: [
+      'PraSanghi advises companies and their boards on governance and structuring matters, and on the statutory compliance obligations that come with running a registered company.',
+    ],
+    specificServices: [
+      'Corporate governance advisory',
+      'Company structuring and restructuring',
+      'Board and shareholder resolution drafting',
+      'Statutory compliance under the Companies Act',
+    ],
+    teamSlugs: [],
+    image: placeholderImage('corporate-law'),
+  },
+  'debt-recovery-management': {
+    slug: 'debt-recovery-management',
+    title: 'Debt Recovery & Management',
+    summary:
+      'Demand notices, negotiated settlements, and recovery proceedings for unpaid dues.',
+    overview: [
+      'PraSanghi assists individuals and businesses in recovering money owed to them — from an initial demand notice through negotiated settlement or, where necessary, a recovery suit.',
+    ],
+    specificServices: [
+      'Recovery notices and demand letters',
+      'Negotiated settlement of outstanding dues',
+      'Money recovery suits',
+      'Security and loan documentation review',
+    ],
+    teamSlugs: [],
+    image: placeholderImage('debt-recovery'),
+  },
+  'intellectual-property-rights': {
+    slug: 'intellectual-property-rights',
+    title: 'Intellectual Property Rights',
+    summary:
+      'Registration and protection for the trademarks, copyrights, and inventions a business relies on.',
+    overview: [
+      'PraSanghi assists with identifying and registering protectable intellectual property, and represents clients in disputes where that property has been infringed.',
+    ],
+    specificServices: [
+      'Trademark registration and brand protection',
+      'Copyright registration',
+      'Patent and design registration assistance',
+      'IP infringement disputes',
+    ],
+    teamSlugs: [],
+    image: placeholderImage('intellectual-property'),
+  },
+  'employment-law': {
+    slug: 'employment-law',
+    title: 'Employment Law',
+    summary:
+      'Employment contracts, workplace compliance, and representation in labour disputes.',
+    overview: [
+      'PraSanghi advises employers and employees on employment documentation, workplace compliance with labour law, and disputes arising from termination or separation.',
+    ],
+    specificServices: [
+      'Employment contracts and workplace policies',
+      'Labour law compliance advisory',
+      'Termination and severance matters',
+      'Representation in labour disputes',
+    ],
+    teamSlugs: [],
+    image: placeholderImage('employment-law'),
+  },
 }
 
 export const practiceAreaSlugs = Object.keys(practiceAreaDetails)
