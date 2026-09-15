@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fraunces, ibmPlexSans } from "@/lib/fonts";
+import { ibmPlexSans } from "@/lib/fonts";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { BciDisclaimerModal } from "@/components/compliance/bci-disclaimer-modal";
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-IN"
-      className={`${fraunces.variable} ${ibmPlexSans.variable} h-full antialiased`}
+      className={`${ibmPlexSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <BciDisclaimerModal />

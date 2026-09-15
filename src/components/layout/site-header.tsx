@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { Menu, ChevronDown } from 'lucide-react'
+import { List, CaretDown } from '@phosphor-icons/react/dist/ssr'
 import {
   Sheet,
   SheetContent,
@@ -18,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
+import { LogoMark } from '@/components/common/logo-mark'
 import { practiceAreas, primaryNav } from '@/lib/navigation'
 
 export function SiteHeader() {
@@ -26,7 +27,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="font-serif text-xl font-medium text-navy-900">
+        <Link href="/" className="flex items-center gap-2.5 text-xl font-bold text-blue-900">
+          <LogoMark className="size-8" />
           PraSanghi
         </Link>
 
@@ -35,10 +37,10 @@ export function SiteHeader() {
             <DropdownMenuTrigger asChild>
               <button
                 type="button"
-                className="flex items-center gap-1 text-sm font-semibold text-navy-900 hover:text-gold-600"
+                className="flex items-center gap-1 text-sm font-semibold text-blue-900 hover:text-teal-600"
               >
                 Practice Areas
-                <ChevronDown className="size-4" aria-hidden="true" />
+                <CaretDown weight="light" className="size-4" aria-hidden="true" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-72">
@@ -50,7 +52,7 @@ export function SiteHeader() {
                 ))}
               </DropdownMenuGroup>
               <DropdownMenuItem asChild>
-                <Link href="/practice-areas" className="font-semibold text-gold-600">
+                <Link href="/practice-areas" className="font-semibold text-teal-600">
                   View All Practice Areas
                 </Link>
               </DropdownMenuItem>
@@ -61,7 +63,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-semibold text-navy-900 hover:text-gold-600"
+              className="text-sm font-semibold text-blue-900 hover:text-teal-600"
             >
               {item.title}
             </Link>
@@ -71,15 +73,15 @@ export function SiteHeader() {
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu">
-              <Menu className="size-6" aria-hidden="true" />
+              <List weight="light" className="size-6" aria-hidden="true" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-full sm:max-w-sm">
             <SheetHeader>
-              <SheetTitle className="font-serif">PraSanghi</SheetTitle>
+              <SheetTitle>PraSanghi</SheetTitle>
             </SheetHeader>
             <nav aria-label="Mobile" className="flex flex-col gap-1 px-4">
-              <p className="mt-2 text-label-eyebrow uppercase tracking-wide text-gold-600">
+              <p className="mt-2 text-label-eyebrow uppercase tracking-wide text-teal-600">
                 Practice Areas
               </p>
               {practiceAreas.map((area) => (
@@ -87,7 +89,7 @@ export function SiteHeader() {
                   key={area.href}
                   href={area.href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-sm px-2 py-2 text-sm font-medium text-navy-900 hover:bg-cream-100"
+                  className="rounded-sm px-2 py-2 text-sm font-medium text-blue-900 hover:bg-off-white"
                 >
                   {area.title}
                 </Link>
@@ -98,7 +100,7 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-sm px-2 py-2 text-sm font-medium text-navy-900 hover:bg-cream-100"
+                  className="rounded-sm px-2 py-2 text-sm font-medium text-blue-900 hover:bg-off-white"
                 >
                   {item.title}
                 </Link>

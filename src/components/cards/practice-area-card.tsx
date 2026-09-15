@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import type { LucideIcon } from 'lucide-react'
+import type { Icon } from '@phosphor-icons/react'
 import { cn } from '@/lib/utils'
 
 export interface PracticeAreaCardProps {
   title: string
   description: string
   href: string
-  icon?: LucideIcon
+  icon?: Icon
   className?: string
 }
 
@@ -25,8 +25,8 @@ export function PracticeAreaCard({
         className
       )}
     >
-      {Icon ? <Icon className="size-6 text-gold-600" aria-hidden="true" /> : null}
-      <h3 className="font-serif text-heading-sm font-semibold text-navy-900">
+      {Icon ? <Icon weight="light" className="size-6 text-teal-600" aria-hidden="true" /> : null}
+      <h3 className="text-heading-sm font-semibold text-blue-900">
         {title}
       </h3>
       <p className="text-body-sm text-muted-foreground">{description}</p>

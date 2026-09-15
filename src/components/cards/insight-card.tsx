@@ -37,16 +37,16 @@ export function InsightCard({
         className
       )}
     >
-      <div className="flex items-center justify-between text-label-eyebrow tracking-wide text-gold-600">
+      <div className="flex items-center justify-between text-label-eyebrow tracking-wide text-teal-600">
         <span className="uppercase">{contentType}</span>
         <time dateTime={date} className="text-muted-foreground">
           {formattedDate}
         </time>
       </div>
-      <h3 className="font-serif text-heading-sm font-semibold text-navy-900">{headline}</h3>
+      <h3 className="text-heading-sm font-semibold text-blue-900">{headline}</h3>
       {excerpt ? <p className="text-body-sm text-muted-foreground">{excerpt}</p> : null}
       {practiceAreaTag ? (
-        <span className="text-body-sm font-medium text-navy-500">{practiceAreaTag}</span>
+        <span className="text-body-sm font-medium text-blue-500">{practiceAreaTag}</span>
       ) : null}
     </Link>
   )

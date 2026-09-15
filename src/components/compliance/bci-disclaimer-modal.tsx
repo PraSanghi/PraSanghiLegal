@@ -42,7 +42,7 @@ export function BciDisclaimerModal() {
         className="sm:max-w-lg"
       >
         <DialogHeader>
-          <DialogTitle className="font-serif">Disclaimer</DialogTitle>
+          <DialogTitle>Disclaimer</DialogTitle>
           <DialogDescription className="text-left text-body-md text-muted-foreground">
             {DISCLAIMER_TEXT}
           </DialogDescription>

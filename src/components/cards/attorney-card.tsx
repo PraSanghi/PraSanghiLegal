@@ -31,8 +31,8 @@ export function AttorneyCard({
         <Image src={photo} alt={`${name}, ${role}`} fill className="object-cover" />
       </div>
       <div className="flex flex-col gap-1 p-4">
-        <p className="font-serif text-heading-sm font-semibold text-navy-900">{name}</p>
-        <p className="text-body-sm text-gold-600">{role}</p>
+        <p className="text-heading-sm font-semibold text-blue-900">{name}</p>
+        <p className="text-body-sm text-teal-600">{role}</p>
         {practiceTags && practiceTags.length > 0 ? (
           <p className="text-body-sm text-muted-foreground">{practiceTags.join(' · ')}</p>
         ) : null}

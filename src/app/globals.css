@@ -7,44 +7,44 @@
 :root {
   --radius: 0.25rem;
 
-  /* PraSanghi palette — see design/color-system.md §2–4, §8 */
-  --navy-900: oklch(0.225 0.05 261.693);
-  --navy-700: oklch(0.303 0.065 260.773);
-  --navy-500: oklch(0.396 0.077 261.695);
-  --gold-600: oklch(0.609 0.107 73.768);
-  --gold-400: oklch(0.713 0.111 79.446);
-  --cream-50: oklch(0.977 0.01 87.47);
-  --cream-100: oklch(0.944 0.017 88.001);
-  --neutral-700: oklch(0.426 0.016 262.312);
-  --neutral-300: oklch(0.87 0.016 90.249);
-  --neutral-100: oklch(0.941 0.013 86.831);
-  --success: oklch(0.486 0.072 150.961);
-  --error: oklch(0.46 0.112 28.584);
-  --warning: oklch(0.544 0.087 80.436);
-  --dark-text-primary: oklch(0.959 0.013 86.83);
-  --dark-text-muted: oklch(0.795 0.016 269.945);
-  --dark-border: oklch(0.352 0.063 264.242);
+  /* PraSanghi palette — see design/color-system.md */
+  --blue-900: oklch(0.248 0.076 265.364);
+  --blue-700: oklch(0.363 0.112 262.32);
+  --blue-500: oklch(0.473 0.124 258.674);
+  --teal-600: oklch(0.536 0.089 205.032);
+  --teal-400: oklch(0.744 0.101 201.757);
+  --white: oklch(1 0 89.876);
+  --off-white: oklch(0.978 0.005 258.324);
+  --neutral-700: oklch(0.429 0.022 258.372);
+  --neutral-300: oklch(0.893 0.011 256.699);
+  --neutral-100: oklch(0.957 0.006 255.475);
+  --success: oklch(0.521 0.101 155.227);
+  --error: oklch(0.519 0.162 28.918);
+  --warning: oklch(0.563 0.112 76.697);
+  --dark-text-primary: oklch(0.972 0.006 255.475);
+  --dark-text-muted: oklch(0.782 0.026 257.656);
+  --dark-border: oklch(0.336 0.063 269.602);
 
   /* shadcn semantic roles mapped onto the palette above */
-  --background: var(--cream-50);
-  --foreground: var(--navy-900);
-  --card: var(--cream-50);
-  --card-foreground: var(--navy-900);
-  --popover: var(--cream-50);
-  --popover-foreground: var(--navy-900);
-  --primary: var(--navy-900);
-  --primary-foreground: var(--cream-50);
-  --secondary: var(--cream-100);
-  --secondary-foreground: var(--navy-900);
+  --background: var(--white);
+  --foreground: var(--blue-900);
+  --card: var(--white);
+  --card-foreground: var(--blue-900);
+  --popover: var(--white);
+  --popover-foreground: var(--blue-900);
+  --primary: var(--blue-700);
+  --primary-foreground: var(--white);
+  --secondary: var(--off-white);
+  --secondary-foreground: var(--blue-900);
   --muted: var(--neutral-100);
   --muted-foreground: var(--neutral-700);
-  --accent: var(--gold-600);
-  --accent-foreground: var(--navy-900);
+  --accent: var(--teal-600);
+  --accent-foreground: var(--white);
   --destructive: var(--error);
-  --destructive-foreground: var(--cream-50);
+  --destructive-foreground: var(--white);
   --border: var(--neutral-300);
   --input: var(--neutral-300);
-  --ring: var(--navy-500);
+  --ring: var(--blue-500);
 }
 
 @theme inline {
@@ -69,13 +69,13 @@
   --color-ring: var(--ring);
 
   /* Direct palette access — dark sections and bespoke usage (design-system.md §4) */
-  --color-navy-900: var(--navy-900);
-  --color-navy-700: var(--navy-700);
-  --color-navy-500: var(--navy-500);
-  --color-gold-600: var(--gold-600);
-  --color-gold-400: var(--gold-400);
-  --color-cream-50: var(--cream-50);
-  --color-cream-100: var(--cream-100);
+  --color-blue-900: var(--blue-900);
+  --color-blue-700: var(--blue-700);
+  --color-blue-500: var(--blue-500);
+  --color-teal-600: var(--teal-600);
+  --color-teal-400: var(--teal-400);
+  --color-white: var(--white);
+  --color-off-white: var(--off-white);
   --color-neutral-700: var(--neutral-700);
   --color-neutral-300: var(--neutral-300);
   --color-neutral-100: var(--neutral-100);
@@ -87,8 +87,7 @@
   --color-dark-border: var(--dark-border);
 
   --font-sans: var(--font-plex-sans);
-  --font-serif: var(--font-fraunces);
-  --font-heading: var(--font-fraunces);
+  --font-heading: var(--font-plex-sans);
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -130,10 +129,5 @@
   }
   html {
     @apply font-sans;
-  }
-  h1,
-  h2,
-  h3 {
-    font-family: var(--font-serif);
   }
 }
