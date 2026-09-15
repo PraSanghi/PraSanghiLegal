@@ -11,11 +11,11 @@ import { documentationTree } from '@/lib/documentation-tree-data'
 export function DocumentationTree() {
   return (
     <div className="flex flex-col items-center">
-      <RevealOnScroll className="group flex items-center gap-3 border-2 border-blue-900 bg-blue-900 px-8 py-4">
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
-          <Scales weight="light" className="size-5" aria-hidden="true" />
+      <RevealOnScroll className="group flex items-center gap-4 border-2 border-blue-900 bg-blue-900 px-10 py-5">
+        <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+          <Scales weight="light" className="size-6" aria-hidden="true" />
         </span>
-        <p className="text-body-lg font-bold text-white">Legal Drafting &amp; Documentation</p>
+        <p className="text-heading-sm font-bold text-white">Legal Drafting &amp; Documentation</p>
       </RevealOnScroll>
 
       <div className="h-10 w-px bg-border" aria-hidden="true" />
@@ -31,28 +31,24 @@ export function DocumentationTree() {
 
             <RevealOnScroll
               delayMs={ci * 75}
-              className="group flex h-14 w-full items-center justify-center gap-2.5 border border-border bg-card px-4 outline outline-2 outline-offset-2 outline-transparent transition-colors duration-150 ease-out hover:outline-teal-500"
+              className="group flex h-16 w-full items-center justify-center gap-3 border border-border bg-card px-5 outline outline-2 outline-offset-2 outline-transparent transition-colors duration-150 ease-out hover:outline-teal-500"
             >
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600 transition-colors duration-150 ease-out group-hover:bg-teal-600 group-hover:text-white">
-                <category.icon weight="light" className="size-4" aria-hidden="true" />
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600 transition-colors duration-150 ease-out group-hover:bg-teal-600 group-hover:text-white">
+                <category.icon weight="light" className="size-5" aria-hidden="true" />
               </span>
-              <p className="text-body-sm font-bold text-blue-900">{category.label}</p>
+              <p className="text-body-md font-bold text-blue-900">{category.label}</p>
             </RevealOnScroll>
 
             <div className="h-6 w-px bg-border" aria-hidden="true" />
 
-            <div className="flex w-full flex-col gap-3 border-l border-border pl-5">
+            <div className="flex w-full flex-col gap-3">
               {category.items.map((item, i) => (
-                <RevealOnScroll key={item.title} delayMs={ci * 75 + i * 30} className="relative">
-                  <span
-                    className="absolute top-1/2 -left-5 h-px w-5 bg-border"
-                    aria-hidden="true"
-                  />
-                  <div className="group flex h-16 items-center gap-2.5 border border-border bg-card px-3 outline outline-2 outline-offset-2 outline-transparent transition-colors duration-150 ease-out hover:outline-teal-500">
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600 transition-colors duration-150 ease-out group-hover:bg-teal-600 group-hover:text-white">
-                      <item.icon weight="light" className="size-4" aria-hidden="true" />
+                <RevealOnScroll key={item.title} delayMs={ci * 75 + i * 30}>
+                  <div className="group flex h-20 items-center gap-3 border border-border bg-card px-4 outline outline-2 outline-offset-2 outline-transparent transition-colors duration-150 ease-out hover:outline-teal-500">
+                    <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600 transition-colors duration-150 ease-out group-hover:bg-teal-600 group-hover:text-white">
+                      <item.icon weight="light" className="size-5" aria-hidden="true" />
                     </span>
-                    <p className="line-clamp-2 text-body-sm font-medium text-blue-900">
+                    <p className="line-clamp-2 text-body-md font-medium text-blue-900">
                       {item.title}
                     </p>
                   </div>
