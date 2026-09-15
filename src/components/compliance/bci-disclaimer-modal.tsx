@@ -11,9 +11,7 @@ import {
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { useDisclaimerStore } from '@/store/disclaimer-store'
-
-const DISCLAIMER_TEXT =
-  'The Bar Council of India does not permit advocates to solicit work or advertise. By proceeding, you confirm that you are seeking information about PraSanghi of your own accord, that there has been no solicitation or invitation of any kind from PraSanghi or its members, and that the contents of this website are for informational purposes only and do not constitute legal advice. No lawyer-client relationship is created by accessing this website.'
+import { BCI_DISCLAIMER_TEXT } from '@/lib/legal-text'
 
 export function BciDisclaimerModal() {
   const acknowledged = useDisclaimerStore((state) => state.acknowledged)
@@ -44,7 +42,7 @@ export function BciDisclaimerModal() {
         <DialogHeader>
           <DialogTitle>Disclaimer</DialogTitle>
           <DialogDescription className="text-left text-body-md text-muted-foreground">
-            {DISCLAIMER_TEXT}
+            {BCI_DISCLAIMER_TEXT}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="flex-row justify-end gap-3">

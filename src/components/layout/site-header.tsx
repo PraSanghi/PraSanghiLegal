@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { List, CaretDown } from '@phosphor-icons/react/dist/ssr'
+import { List, ArrowRight } from '@phosphor-icons/react/dist/ssr'
 import {
   Sheet,
   SheetContent,
@@ -11,15 +11,18 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu'
 import { Button } from '@/components/ui/button'
 import { LogoMark } from '@/components/common/logo-mark'
-import { practiceAreas, primaryNav } from '@/lib/navigation'
+import { primaryNav } from '@/lib/navigation'
+import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -32,43 +35,63 @@ export function SiteHeader() {
           PraSanghi
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button
-                type="button"
-                className="flex items-center gap-1 text-sm font-semibold text-blue-900 hover:text-teal-600"
-              >
+        <NavigationMenu className="hidden max-w-none flex-1 justify-center lg:flex" viewport={false}>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="bg-transparent text-sm font-semibold text-blue-900">
                 Practice Areas
-                <CaretDown weight="light" className="size-4" aria-hidden="true" />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-72">
-              <DropdownMenuGroup>
-                {practiceAreas.map((area) => (
-                  <DropdownMenuItem key={area.href} asChild>
-                    <Link href={area.href}>{area.title}</Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuGroup>
-              <DropdownMenuItem asChild>
-                <Link href="/practice-areas" className="font-semibold text-teal-600">
-                  View All Practice Areas
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[560px] grid-cols-2 gap-1 p-2">
+                  {practiceAreaSlugs.map((slug) => {
+                    const area = practiceAreaDetails[slug]
+                    return (
+                      <li key={slug}>
+                        <NavigationMenuLink asChild>
+                          <Link href={`/practice-areas/${slug}`} className="flex-col items-start gap-1">
+                            <span className="font-semibold text-blue-900">{area.title}</span>
+                            <span className="line-clamp-2 text-body-sm text-muted-foreground">
+                              {area.summary}
+                            </span>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    )
+                  })}
+                  <li className="col-span-2 mt-1 border-t border-border pt-2">
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/practice-areas"
+                        className="flex items-center justify-between font-semibold text-teal-600"
+                      >
+                        View All Practice Areas
+                        <ArrowRight weight="light" className="size-4" />
+                      </Link>
+                    </NavigationMenuLink>
+                  </li>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
 
-          {primaryNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-semibold text-blue-900 hover:text-teal-600"
-            >
-              {item.title}
-            </Link>
-          ))}
-        </nav>
+            {primaryNav
+              .filter((item) => item.href !== '/contact')
+              .map((item) => (
+                <NavigationMenuItem key={item.href}>
+                  <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                    <Link href={item.href} className="text-sm font-semibold text-blue-900">
+                      {item.title}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+          </NavigationMenuList>
+        </NavigationMenu>
+
+        <div className="hidden lg:block">
+          <Button asChild>
+            <Link href="/contact">Get in Touch</Link>
+          </Button>
+        </div>
 
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild>
@@ -84,27 +107,32 @@ export function SiteHeader() {
               <p className="mt-2 text-label-eyebrow uppercase tracking-wide text-teal-600">
                 Practice Areas
               </p>
-              {practiceAreas.map((area) => (
+              {practiceAreaSlugs.map((slug) => (
                 <Link
-                  key={area.href}
-                  href={area.href}
+                  key={slug}
+                  href={`/practice-areas/${slug}`}
                   onClick={() => setMobileOpen(false)}
                   className="rounded-sm px-2 py-2 text-sm font-medium text-blue-900 hover:bg-off-white"
                 >
-                  {area.title}
+                  {practiceAreaDetails[slug].title}
                 </Link>
               ))}
               <div className="my-3 h-px bg-border" />
-              {primaryNav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-sm px-2 py-2 text-sm font-medium text-blue-900 hover:bg-off-white"
-                >
-                  {item.title}
-                </Link>
-              ))}
+              {primaryNav
+                .filter((item) => item.href !== '/contact')
+                .map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-sm px-2 py-2 text-sm font-medium text-blue-900 hover:bg-off-white"
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              <Button asChild className="mt-4" onClick={() => setMobileOpen(false)}>
+                <Link href="/contact">Get in Touch</Link>
+              </Button>
             </nav>
           </SheetContent>
         </Sheet>

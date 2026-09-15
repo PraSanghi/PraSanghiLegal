@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CaretDown } from '@phosphor-icons/react/dist/ssr'
@@ -69,108 +69,193 @@ const HERO_STATES: HeroState[] = [
 ]
 
 export function PositioningHero() {
-  const [index, setIndex] = useState(0)
-  const state = HERO_STATES[index]
-  const isDark = state.theme === 'dark'
+  const containerRef = useRef<HTMLDivElement>(null)
+  const sectionRefs = useRef<(HTMLElement | null)[]>([])
+  const [activeIndex, setActiveIndex] = useState(0)
 
-  const advance = () => setIndex((i) => (i + 1) % HERO_STATES.length)
+  // Native CSS scroll-snap drives the "scroll down cycles through all 4
+  // states, then the page continues" behavior the client asked for —
+  // deliberately not JS wheel-event interception (unreliable across
+  // trackpads/devices and easy to break with preventDefault edge cases).
+  // The nested scroll container (h-screen, overflow-y-auto, snap-y) is
+  // exhausted by native browser scroll physics before the browser chains
+  // remaining scroll delta to the page itself, which is the standard,
+  // robust way this pattern is implemented.
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
+            const idx = Number((entry.target as HTMLElement).dataset.index)
+            setActiveIndex(idx)
+          }
+        }
+      },
+      { root: container, threshold: [0.6] }
+    )
+
+    sectionRefs.current.forEach((el) => el && observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
+  // Explicit scroll hand-off: CSS scroll-snap chaining to the parent
+  // document at the container's scroll boundary is not reliably triggered
+  // by every input method/browser combination, so this takes over
+  // deterministically instead of depending on it. While the container has
+  // room to move in the requested direction, its own native scroll-snap
+  // handles the wheel event untouched. Once it's already at the relevant
+  // edge (bottom when scrolling down, top when scrolling up) and the page
+  // itself still has room to move, this forwards the delta to the window
+  // and suppresses the container's own (now no-op) scroll — which is what
+  // produces "all 4 states first, then the rest of the page" continuously
+  // in one gesture, matching the mechanism on khaitanco.com.
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    function handleWheel(event: WheelEvent) {
+      if (!container) return
+      const atBottom = container.scrollTop + container.clientHeight >= container.scrollHeight - 1
+      const atTop = container.scrollTop <= 0
+      const pageCanScrollDown =
+        window.scrollY + window.innerHeight < document.documentElement.scrollHeight - 1
+      const pageAtTop = window.scrollY <= 0
+
+      if (event.deltaY > 0 && atBottom && pageCanScrollDown) {
+        event.preventDefault()
+        window.scrollBy(0, event.deltaY)
+      } else if (event.deltaY < 0 && atTop && !pageAtTop) {
+        event.preventDefault()
+        window.scrollBy(0, event.deltaY)
+      }
+    }
+
+    container.addEventListener('wheel', handleWheel, { passive: false })
+    return () => container.removeEventListener('wheel', handleWheel)
+  }, [])
+
+  function goTo(index: number) {
+    const clamped = Math.max(0, Math.min(index, HERO_STATES.length - 1))
+    sectionRefs.current[clamped]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   return (
-    <section
-      className={`relative grid min-h-[640px] grid-cols-1 overflow-hidden transition-colors duration-300 motion-reduce:transition-none lg:grid-cols-2 ${
-        isDark ? 'bg-blue-900 text-dark-text-primary' : 'bg-white text-blue-900'
-      }`}
-    >
-      <div className="flex flex-col justify-center gap-6 px-6 py-16 sm:px-12 lg:px-16 lg:py-0">
-        <p
-          className={`text-label-eyebrow uppercase tracking-wide ${
-            isDark ? 'text-teal-400' : 'text-teal-600'
-          }`}
-        >
-          {state.eyebrow}
-        </p>
-        <h1 className="max-w-xl text-balance text-display-lg font-bold">{state.headline}</h1>
-        <p
-          className={`max-w-lg text-pretty text-body-lg ${
-            isDark ? 'text-dark-text-muted' : 'text-muted-foreground'
-          }`}
-        >
-          {state.body}
-        </p>
-        <div className="flex flex-wrap gap-4">
-          {state.ctas.map((cta) => (
-            <Button
-              key={cta.href}
-              asChild
-              size="lg"
-              variant={cta.variant === 'outline' ? 'outline' : 'default'}
-              className={
-                isDark && cta.variant !== 'outline'
-                  ? 'bg-white text-blue-900 hover:bg-off-white'
-                  : isDark && cta.variant === 'outline'
-                    ? 'border-white text-white hover:bg-white/10'
-                    : undefined
-              }
-            >
-              <Link href={cta.href}>{cta.label}</Link>
-            </Button>
-          ))}
-        </div>
-      </div>
-
-      <div className="relative min-h-[320px] lg:min-h-full">
-        <Image src={state.image} alt="" fill priority={index === 0} className="object-cover" />
-      </div>
-
-      <div className="absolute top-1/2 right-6 z-10 hidden -translate-y-1/2 flex-col items-end lg:flex">
-        {HERO_STATES.map((s, i) => (
-          <div key={s.key} className="flex flex-col items-end">
-            <button
-              type="button"
-              onClick={() => setIndex(i)}
-              aria-current={i === index}
-              className={`flex items-center gap-3 text-body-sm font-semibold transition-colors ${
-                i === index
-                  ? isDark
-                    ? 'text-white'
-                    : 'text-blue-900'
-                  : isDark
-                    ? 'text-dark-text-muted hover:text-white'
-                    : 'text-muted-foreground hover:text-blue-900'
+    <div className="relative">
+      <div
+        ref={containerRef}
+        className="h-dvh snap-y snap-mandatory overflow-y-auto scroll-smooth"
+      >
+        {HERO_STATES.map((state, i) => {
+          const isDark = state.theme === 'dark'
+          return (
+            <section
+              key={state.key}
+              ref={(el) => {
+                sectionRefs.current[i] = el
+              }}
+              data-index={i}
+              className={`grid h-dvh snap-start snap-always grid-cols-1 overflow-hidden lg:grid-cols-2 ${
+                isDark ? 'bg-blue-900 text-dark-text-primary' : 'bg-white text-blue-900'
               }`}
             >
-              {s.eyebrow}
-              <span
-                className={`inline-block size-2.5 shrink-0 rounded-full border-2 ${
-                  i === index
-                    ? isDark
-                      ? 'border-white bg-white'
-                      : 'border-blue-900 bg-blue-900'
-                    : isDark
-                      ? 'border-dark-text-muted bg-transparent'
-                      : 'border-neutral-300 bg-transparent'
-                }`}
-              />
-            </button>
-            {i < HERO_STATES.length - 1 ? (
-              <div className={`my-1 h-6 w-px ${isDark ? 'bg-dark-border' : 'bg-neutral-300'}`} />
-            ) : null}
-          </div>
-        ))}
+              <div className="flex flex-col justify-center gap-6 px-6 py-16 sm:px-12 lg:px-16 lg:py-0">
+                <p
+                  className={`text-label-eyebrow uppercase tracking-wide ${
+                    isDark ? 'text-teal-400' : 'text-teal-600'
+                  }`}
+                >
+                  {state.eyebrow}
+                </p>
+                <h1 className="max-w-xl text-balance text-display-lg font-bold">
+                  {state.headline}
+                </h1>
+                <p
+                  className={`max-w-lg text-pretty text-body-lg ${
+                    isDark ? 'text-dark-text-muted' : 'text-muted-foreground'
+                  }`}
+                >
+                  {state.body}
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  {state.ctas.map((cta) => (
+                    <Button
+                      key={cta.href}
+                      asChild
+                      size="lg"
+                      variant={cta.variant === 'outline' ? 'outline' : 'default'}
+                      className={
+                        isDark && cta.variant !== 'outline'
+                          ? 'bg-white text-blue-900 hover:bg-off-white'
+                          : isDark && cta.variant === 'outline'
+                            ? 'border-white text-white hover:bg-white/10'
+                            : undefined
+                      }
+                    >
+                      <Link href={cta.href}>{cta.label}</Link>
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative min-h-[320px] lg:min-h-full">
+                <Image
+                  src={state.image}
+                  alt=""
+                  fill
+                  priority={i === 0}
+                  className="object-cover"
+                />
+              </div>
+            </section>
+          )
+        })}
       </div>
 
-      <button
-        type="button"
-        onClick={advance}
-        aria-label="Show next hero section"
-        className={`absolute right-6 bottom-6 z-10 flex size-11 items-center justify-center rounded-full border transition-colors ${
-          isDark
-            ? 'border-white/40 text-white hover:bg-white/10'
-            : 'border-blue-900/30 text-blue-900 hover:bg-blue-900/5'
-        }`}
-      >
-        <CaretDown weight="light" className="size-5" />
-      </button>
-    </section>
+      {/*
+        The stepper and advance button are always positioned over the
+        photograph column, never the text panel — so their contrast must
+        never depend on the section's light/dark theme (that was the bug:
+        conditioning color on `theme` made them invisible whenever a bright
+        or light-toned photo sat underneath a "light" state). Instead they
+        sit on a permanent translucent dark scrim, always white, so they
+        read correctly against any photograph.
+      */}
+      <div className="pointer-events-none absolute inset-0 z-10">
+        <div className="pointer-events-auto absolute top-1/2 right-6 hidden -translate-y-1/2 flex-col items-end gap-0 rounded-full bg-black/35 px-5 py-4 backdrop-blur-sm lg:flex">
+          {HERO_STATES.map((s, i) => (
+            <div key={s.key} className="flex flex-col items-end">
+              <button
+                type="button"
+                onClick={() => goTo(i)}
+                aria-current={i === activeIndex}
+                className={`flex items-center gap-3 text-body-sm font-semibold transition-colors ${
+                  i === activeIndex ? 'text-white' : 'text-white/50 hover:text-white'
+                }`}
+              >
+                {s.eyebrow}
+                <span
+                  className={`inline-block size-2.5 shrink-0 rounded-full border-2 ${
+                    i === activeIndex ? 'border-white bg-white' : 'border-white/50 bg-transparent'
+                  }`}
+                />
+              </button>
+              {i < HERO_STATES.length - 1 ? <div className="my-2 h-6 w-px bg-white/25" /> : null}
+            </div>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          onClick={() => goTo(activeIndex + 1)}
+          aria-label="Show next hero section"
+          className="pointer-events-auto absolute right-6 bottom-6 flex size-11 items-center justify-center rounded-full border border-white/40 bg-black/35 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
+        >
+          <CaretDown weight="light" className="size-5" />
+        </button>
+      </div>
+    </div>
   )
 }
