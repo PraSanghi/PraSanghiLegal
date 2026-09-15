@@ -52,10 +52,10 @@ export default function AffiliatedOrganisationsPage() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-12">
       <Breadcrumb
-        segments={[{ label: 'About', href: '/about' }, { label: 'Affiliated Organisations' }]}
+        segments={[{ label: 'About Us', href: '/about' }, { label: 'Affiliated Organisations' }]}
       />
       <div className="mt-4">
-        <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">About</p>
+        <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">About Us</p>
         <h1 className="mt-3 text-display-lg font-bold text-blue-900">
           Affiliated Organisations
         </h1>

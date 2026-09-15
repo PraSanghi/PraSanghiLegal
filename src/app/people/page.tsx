@@ -7,7 +7,7 @@ import { PageBanner } from '@/components/common/page-banner'
 import { people } from '@/lib/people-data'
 
 export const metadata: Metadata = {
-  title: 'People — PraSanghi',
+  title: 'Our Advocates — PraSanghi',
   description: 'The advocates and associates of PraSanghi.',
 }
 
@@ -17,10 +17,10 @@ export default function PeoplePage() {
 
   return (
     <>
-      <Breadcrumb segments={[{ label: 'People' }]} />
+      <Breadcrumb segments={[{ label: 'Our Advocates' }]} />
       <PageBanner
         eyebrow="Our Team"
-        title="People"
+        title="Our Advocates"
         image="https://picsum.photos/seed/prasanghi-people-banner/1600/700"
       />
       <section className="mx-auto max-w-7xl px-6 py-12">
@@ -61,7 +61,7 @@ export default function PeoplePage() {
           ))}
         </div>
       </section>
-      <CtaBand headline="Speak to Our Team" ctaLabel="Get in Touch" ctaHref="/contact" />
+      <CtaBand headline="Consult Our Legal Team" ctaLabel="Schedule a Consultation" ctaHref="/contact" />
     </>
   )
 }

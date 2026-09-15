@@ -13,7 +13,7 @@ export default function LeadershipPage() {
 
   return (
     <section>
-      <Breadcrumb segments={[{ label: 'About', href: '/about' }, { label: 'Leadership' }]} />
+      <Breadcrumb segments={[{ label: 'About Us', href: '/about' }, { label: 'Leadership' }]} />
       <div className="mt-4">
         <AttorneyProfileHeader
           name={founder.name}

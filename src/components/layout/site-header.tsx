@@ -89,7 +89,7 @@ export function SiteHeader() {
 
         <div className="hidden lg:block">
           <Button asChild>
-            <Link href="/contact">Get in Touch</Link>
+            <Link href="/contact">Schedule a Consultation</Link>
           </Button>
         </div>
 
@@ -131,7 +131,7 @@ export function SiteHeader() {
                   </Link>
                 ))}
               <Button asChild className="mt-4" onClick={() => setMobileOpen(false)}>
-                <Link href="/contact">Get in Touch</Link>
+                <Link href="/contact">Schedule a Consultation</Link>
               </Button>
             </nav>
           </SheetContent>

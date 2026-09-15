@@ -30,7 +30,7 @@ export function NewsletterSignupForm() {
 
   function onSubmit(values: NewsletterValues) {
     console.log('Newsletter signup (not yet wired to a mailing list):', values)
-    toast.success("You're on the list. We'll be in touch.")
+    toast.success('Thank you for subscribing. You will receive our updates going forward.')
     reset()
   }
 
@@ -49,7 +49,7 @@ export function NewsletterSignupForm() {
           {...register('email')}
         />
         <Button type="submit" variant="secondary" disabled={isSubmitting}>
-          Join
+          Subscribe
         </Button>
       </div>
       {errors.email ? (

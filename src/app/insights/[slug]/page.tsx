@@ -38,7 +38,7 @@ export default async function InsightDetailPage({
 
   return (
     <>
-      <Breadcrumb segments={[{ label: 'Insights', href: '/insights' }, { label: item.headline }]} />
+      <Breadcrumb segments={[{ label: 'Legal Insights', href: '/insights' }, { label: item.headline }]} />
       <div className="relative mx-auto mt-4 aspect-[21/9] w-full max-w-5xl overflow-hidden bg-muted px-0">
         <Image src={item.image} alt="" fill priority className="object-cover" />
       </div>
@@ -61,7 +61,7 @@ export default async function InsightDetailPage({
           ))}
         </div>
       </article>
-      <CtaBand headline="Speak to Our Team" ctaLabel="Get in Touch" ctaHref="/contact" />
+      <CtaBand headline="Consult Our Legal Team" ctaLabel="Schedule a Consultation" ctaHref="/contact" />
     </>
   )
 }

@@ -30,7 +30,7 @@ export default async function PersonProfilePage({
 
   return (
     <>
-      <Breadcrumb segments={[{ label: 'People', href: '/people' }, { label: person.name }]} />
+      <Breadcrumb segments={[{ label: 'Our Advocates', href: '/people' }, { label: person.name }]} />
       <AttorneyProfileHeader
         name={person.name}
         role={person.role}

@@ -6,17 +6,17 @@ import { PageBanner } from '@/components/common/page-banner'
 import { insights } from '@/lib/insights-data'
 
 export const metadata: Metadata = {
-  title: 'Insights — PraSanghi',
+  title: 'Legal Insights — PraSanghi',
   description: 'Legal updates, articles, and analysis from PraSanghi.',
 }
 
 export default function InsightsPage() {
   return (
     <>
-      <Breadcrumb segments={[{ label: 'Insights' }]} />
+      <Breadcrumb segments={[{ label: 'Legal Insights' }]} />
       <PageBanner
-        eyebrow="Insights"
-        title="Insights"
+        eyebrow="Legal Insights"
+        title="Legal Insights"
         image="https://picsum.photos/seed/prasanghi-insights-banner/1600/700"
       />
       <section className="mx-auto max-w-7xl px-6 py-12">

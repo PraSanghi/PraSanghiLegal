@@ -5,22 +5,23 @@ import { ContactForm } from '@/components/common/contact-form'
 import { PageBanner } from '@/components/common/page-banner'
 
 export const metadata: Metadata = {
-  title: 'Contact — PraSanghi',
-  description: 'Get in touch with PraSanghi.',
+  title: 'Contact Us — PraSanghi',
+  description: 'Schedule a consultation with PraSanghi regarding your legal matter.',
 }
 
 export default function ContactPage() {
   return (
     <>
-      <Breadcrumb segments={[{ label: 'Contact' }]} />
+      <Breadcrumb segments={[{ label: 'Contact Us' }]} />
       <PageBanner
-        eyebrow="Contact"
-        title="Get in Touch"
+        eyebrow="Contact Us"
+        title="Schedule a Consultation"
         image="https://picsum.photos/seed/prasanghi-contact/1600/700"
       />
       <section className="mx-auto max-w-5xl px-6 py-12">
         <p className="max-w-2xl text-body-lg text-muted-foreground">
-          Tell us a little about your matter and we will get back to you.
+          Share the details of your matter, and a member of our team will
+          respond promptly.
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2">

@@ -67,10 +67,10 @@ export function SiteFooter() {
             </a>
           </div>
           <p className="mt-6 text-label-eyebrow uppercase tracking-wide text-teal-400">
-            Stay Updated
+            Newsletter
           </p>
           <p className="mt-2 text-body-sm text-dark-text-muted">
-            Occasional notes on new Insights articles.
+            Periodic updates on new legal insights and firm announcements.
           </p>
           <NewsletterSignupForm />
         </div>

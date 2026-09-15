@@ -4,10 +4,10 @@ export interface PrimaryNavItem {
 }
 
 export const primaryNav: PrimaryNavItem[] = [
-  { title: 'About', href: '/about' },
-  { title: 'People', href: '/people' },
-  { title: 'Insights', href: '/insights' },
+  { title: 'About Us', href: '/about' },
+  { title: 'Our Advocates', href: '/people' },
+  { title: 'Legal Insights', href: '/insights' },
   { title: 'Careers', href: '/careers' },
-  { title: 'Media', href: '/media' },
-  { title: 'Contact', href: '/contact' },
+  { title: 'Media Coverage', href: '/media' },
+  { title: 'Contact Us', href: '/contact' },
 ]

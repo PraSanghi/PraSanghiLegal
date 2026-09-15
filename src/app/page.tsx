@@ -67,7 +67,7 @@ export default function HomePage() {
           /about/vision-values from reading as a duplicate. */}
       <section className="mx-auto max-w-7xl px-6 py-16">
         <RevealOnScroll>
-          <h2 className="text-heading-lg font-bold text-blue-900">Why PraSanghi</h2>
+          <h2 className="text-heading-lg font-bold text-blue-900">Why Choose PraSanghi</h2>
           <span className="mt-3 block h-0.5 w-12 bg-teal-500" aria-hidden="true" />
         </RevealOnScroll>
         <div className="mt-8">
@@ -95,9 +95,9 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-6 py-16">
         <RevealOnScroll className="flex items-end justify-between gap-4">
-          <h2 className="text-heading-lg font-bold text-blue-900">Insights</h2>
+          <h2 className="text-heading-lg font-bold text-blue-900">Legal Insights</h2>
           <TextLink href="/insights" className="hidden sm:inline-flex">
-            View All
+            View All Insights
           </TextLink>
         </RevealOnScroll>
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -147,15 +147,15 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-6 py-16">
         <RevealOnScroll>
-          <h2 className="text-heading-lg font-bold text-blue-900">Common Questions</h2>
+          <h2 className="text-heading-lg font-bold text-blue-900">Frequently Asked Questions</h2>
           <span className="mt-3 block h-0.5 w-12 bg-teal-500" aria-hidden="true" />
           <FaqAccordion items={homeFaqs} />
         </RevealOnScroll>
       </section>
 
       <CtaBand
-        headline="Speak to Our Team"
-        ctaLabel="Get in Touch"
+        headline="Consult Our Legal Team"
+        ctaLabel="Schedule a Consultation"
         ctaHref="/contact"
       />
     </>

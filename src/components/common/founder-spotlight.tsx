@@ -28,10 +28,10 @@ export function FounderSpotlight({ founder }: FounderSpotlightProps) {
         </p>
         <div className="mt-6 flex flex-wrap gap-4">
           <Button asChild>
-            <Link href={`/people/${founder.slug}`}>Read Founder Profile</Link>
+            <Link href={`/people/${founder.slug}`}>View Founder&rsquo;s Profile</Link>
           </Button>
           <Button asChild variant="outline">
-            <Link href="/people">Meet the Full Team</Link>
+            <Link href="/people">Meet Our Advocates</Link>
           </Button>
         </div>
       </div>

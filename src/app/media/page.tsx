@@ -4,17 +4,17 @@ import { TextLink } from '@/components/common/text-link'
 import { PageBanner } from '@/components/common/page-banner'
 
 export const metadata: Metadata = {
-  title: 'Media — PraSanghi',
+  title: 'Media Coverage — PraSanghi',
   description: 'Press mentions and The Samvaad Podcast.',
 }
 
 export default function MediaPage() {
   return (
     <>
-      <Breadcrumb segments={[{ label: 'Media' }]} />
+      <Breadcrumb segments={[{ label: 'Media Coverage' }]} />
       <PageBanner
-        eyebrow="Media"
-        title="Media"
+        eyebrow="Media Coverage"
+        title="Media Coverage"
         image="https://picsum.photos/seed/prasanghi-media/1600/700"
       />
       <section className="mx-auto max-w-3xl px-6 py-12">
@@ -36,7 +36,7 @@ export default function MediaPage() {
             pending — see project_requirements.md §6.
           </p>
           <div className="mt-4">
-            <TextLink href="/insights">Explore Insights</TextLink>
+            <TextLink href="/insights">Explore Legal Insights</TextLink>
           </div>
         </div>
       </section>

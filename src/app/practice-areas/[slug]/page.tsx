@@ -148,8 +148,8 @@ export default async function PracticeAreaDetailPage({
       ) : null}
 
       <CtaBand
-        headline={`Speak to Our ${area.title} Team`}
-        ctaLabel="Get in Touch"
+        headline={`Consult Our ${area.title} Team`}
+        ctaLabel="Schedule a Consultation"
         ctaHref="/contact"
       />
     </>

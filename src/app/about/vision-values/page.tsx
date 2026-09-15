@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function VisionValuesPage() {
   return (
     <>
-      <Breadcrumb segments={[{ label: 'About', href: '/about' }, { label: 'Vision & Values' }]} />
+      <Breadcrumb segments={[{ label: 'About Us', href: '/about' }, { label: 'Vision & Values' }]} />
       <PageBanner
         eyebrow="Vision & Values"
         title="People, Justice, Progress"

@@ -40,7 +40,7 @@ export function ContactForm() {
   // build/implementation-roadmap.md Phase 12.
   function onSubmit(values: ContactFormValues) {
     console.log('Contact form submission (not yet wired to a backend):', values)
-    toast.success('Message received. We will get back to you.')
+    toast.success('Your inquiry has been received. A member of our team will respond shortly.')
     form.reset()
   }
 
@@ -102,7 +102,7 @@ export function ContactForm() {
         </Field>
 
         <Field data-invalid={!!errors.message}>
-          <FieldLabel htmlFor="contact-message">Message</FieldLabel>
+          <FieldLabel htmlFor="contact-message">Details of Your Matter</FieldLabel>
           <Textarea
             id="contact-message"
             rows={5}
@@ -113,7 +113,7 @@ export function ContactForm() {
         </Field>
 
         <Button type="submit" size="lg" disabled={isSubmitting}>
-          Submit
+          Submit Inquiry
         </Button>
       </FieldGroup>
     </form>

@@ -6,14 +6,14 @@ import { TextLink } from '@/components/common/text-link'
 import { PageBanner } from '@/components/common/page-banner'
 
 export const metadata: Metadata = {
-  title: 'About — PraSanghi',
+  title: 'About Us — PraSanghi',
   description: 'The story behind PraSanghi, The Legal Ladder.',
 }
 
 export default function AboutPage() {
   return (
     <>
-      <Breadcrumb segments={[{ label: 'About' }]} />
+      <Breadcrumb segments={[{ label: 'About Us' }]} />
       <PageBanner
         eyebrow="Our Story"
         title="About PraSanghi"
@@ -55,7 +55,7 @@ export default function AboutPage() {
             href="/practice-areas"
             className="text-body-sm font-semibold text-blue-500 hover:text-teal-600"
           >
-            Explore our Practice Areas
+            Explore Our Practice Areas
           </Link>
         </p>
       </section>

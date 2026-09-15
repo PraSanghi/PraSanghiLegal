@@ -79,7 +79,7 @@ export default function PracticeAreasPage() {
 
       <CtaBand
         headline="Not sure which practice area fits your matter?"
-        ctaLabel="Get in Touch"
+        ctaLabel="Schedule a Consultation"
         ctaHref="/contact"
       />
     </>

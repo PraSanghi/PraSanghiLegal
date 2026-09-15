@@ -40,7 +40,7 @@ export function PracticeAreaCard({
         <h3 className="text-heading-sm font-semibold text-blue-900">{title}</h3>
         <p className="text-body-sm text-muted-foreground">{description}</p>
         <span className="mt-2 flex items-center gap-1.5 text-body-sm font-semibold text-teal-600">
-          Learn more
+          View Details
           <ArrowRight
             weight="light"
             className="size-4 transition-transform duration-150 ease-out group-hover:translate-x-1"
