@@ -32,6 +32,36 @@ export default function HomePage() {
         </RevealOnScroll>
       </section>
 
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <RevealOnScroll className="flex items-end justify-between gap-4">
+          <h2 className="text-heading-lg font-bold text-blue-900">Practice Areas</h2>
+          <TextLink href="/practice-areas" className="hidden sm:inline-flex">
+            View All Practice Areas
+          </TextLink>
+        </RevealOnScroll>
+        <RevealOnScroll className="mt-8">
+          <PracticeAreaCarousel
+            items={practiceAreaSlugs.map((slug) => ({
+              slug,
+              title: practiceAreaDetails[slug].title,
+              summary: practiceAreaDetails[slug].summary,
+              image: practiceAreaCarouselImages[slug],
+            }))}
+          />
+        </RevealOnScroll>
+        <TextLink href="/practice-areas" className="mt-8 inline-flex sm:hidden">
+          View All Practice Areas
+        </TextLink>
+      </section>
+
+      {founder ? (
+        <section className="mx-auto max-w-7xl px-6 py-16">
+          <RevealOnScroll>
+            <FounderSpotlight founder={founder} />
+          </RevealOnScroll>
+        </section>
+      ) : null}
+
       {/* Homepage-exclusive differentiators — not repeated on any other
           page, which keeps the People/Justice/Progress triad on
           /about/vision-values from reading as a duplicate. */}
@@ -62,36 +92,6 @@ export default function HomePage() {
           />
         </div>
       </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <RevealOnScroll className="flex items-end justify-between gap-4">
-          <h2 className="text-heading-lg font-bold text-blue-900">Practice Areas</h2>
-          <TextLink href="/practice-areas" className="hidden sm:inline-flex">
-            View All Practice Areas
-          </TextLink>
-        </RevealOnScroll>
-        <RevealOnScroll className="mt-8">
-          <PracticeAreaCarousel
-            items={practiceAreaSlugs.map((slug) => ({
-              slug,
-              title: practiceAreaDetails[slug].title,
-              summary: practiceAreaDetails[slug].summary,
-              image: practiceAreaCarouselImages[slug],
-            }))}
-          />
-        </RevealOnScroll>
-        <TextLink href="/practice-areas" className="mt-8 inline-flex sm:hidden">
-          View All Practice Areas
-        </TextLink>
-      </section>
-
-      {founder ? (
-        <section className="mx-auto max-w-7xl px-6 py-16">
-          <RevealOnScroll>
-            <FounderSpotlight founder={founder} />
-          </RevealOnScroll>
-        </section>
-      ) : null}
 
       <section className="mx-auto max-w-7xl px-6 py-16">
         <RevealOnScroll className="flex items-end justify-between gap-4">
