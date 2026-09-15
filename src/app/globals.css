@@ -118,6 +118,16 @@
   --text-label-eyebrow--line-height: 1.4;
   --text-button-label: 0.9375rem;
   --text-button-label--line-height: 1;
+
+  --animate-marquee: marquee 28s linear infinite;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @layer base {

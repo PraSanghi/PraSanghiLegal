@@ -32,7 +32,7 @@ export const people: PersonRecord[] = [
     bioPending: true,
     // Hardcoded (not hashed) to a portrait in business attire — more
     // fitting for the founder than whatever the deterministic hash lands on.
-    photo: 'https://randomuser.me/api/portraits/men/85.jpg',
+    photo: 'https://randomuser.me/api/portraits/men/80.jpg',
   },
   {
     slug: 'bhavesh',
