@@ -55,7 +55,7 @@ export default async function InsightDetailPage({
         ) : null}
         <div className="mt-8 flex flex-col gap-4 border-t border-border pt-8">
           {item.body.map((paragraph, i) => (
-            <p key={i} className="text-body-md text-blue-900 italic">
+            <p key={i} className="text-body-md text-blue-900">
               {paragraph}
             </p>
           ))}

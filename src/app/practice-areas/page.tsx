@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
+import { User, Buildings, Bank } from '@phosphor-icons/react/dist/ssr'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { PracticeAreaCard } from '@/components/cards/practice-area-card'
 import { CtaBand } from '@/components/common/cta-band'
 import { RevealOnScroll } from '@/components/common/reveal-on-scroll'
 import { PageBanner } from '@/components/common/page-banner'
+import { ValuesTriad } from '@/components/common/values-triad'
 import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
 
 export const metadata: Metadata = {
@@ -42,6 +44,39 @@ export default function PracticeAreasPage() {
           })}
         </div>
       </section>
+
+      <section className="border-t border-border bg-off-white px-6 py-16">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+            Who We Help
+          </p>
+          <h2 className="mt-2 text-heading-lg font-bold text-blue-900">
+            Individuals, Businesses, and Institutions
+          </h2>
+          <div className="mt-10">
+            <ValuesTriad
+              items={[
+                {
+                  icon: User,
+                  label: 'Individuals',
+                  body: 'Personal disputes and matters that need direct, considered representation — not a case number in a queue.',
+                },
+                {
+                  icon: Buildings,
+                  label: 'SMEs & Growing Businesses',
+                  body: 'The certifications, registrations, and contracts a business needs as it scales, handled with the same rigor as litigation.',
+                },
+                {
+                  icon: Bank,
+                  label: 'Institutions & Enterprises',
+                  body: 'Ongoing regulatory advisory and dispute resolution for organisations with recurring compliance obligations.',
+                },
+              ]}
+            />
+          </div>
+        </div>
+      </section>
+
       <CtaBand
         headline="Not sure which practice area fits your matter?"
         ctaLabel="Get in Touch"

@@ -4,6 +4,9 @@ import { Breadcrumb } from '@/components/common/breadcrumb'
 import { ValuesTriad } from '@/components/common/values-triad'
 import { Button } from '@/components/ui/button'
 import { PageBanner } from '@/components/common/page-banner'
+import { QuickApplyForm } from '@/components/common/quick-apply-form'
+import { FaqAccordion } from '@/components/common/faq-accordion'
+import { careersFaqs } from '@/lib/careers-faq-data'
 
 export const metadata: Metadata = {
   title: 'Careers — PraSanghi',
@@ -55,12 +58,35 @@ export default function CareersPage() {
             project_requirements.md §10, Open Item 5 ("item 6" in the
             founder&rsquo;s original notes was left undefined and Careers is
             its most likely destination). In the meantime, speculative
-            applications are welcome.
+            applications are welcome below, or by emailing directly.
           </p>
-          <Button asChild size="lg" className="mt-6">
-            <a href="mailto:careers@prasanghi.example">Send a Speculative Application</a>
+          <Button asChild size="lg" variant="outline" className="mt-6">
+            <a href="mailto:careers@prasanghi.example">Email Us Directly</a>
           </Button>
         </div>
+      </section>
+
+      <section className="border-t border-border bg-off-white px-6 py-16">
+        <div className="mx-auto max-w-2xl">
+          <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+            Quick Apply
+          </p>
+          <h2 className="mt-2 text-heading-lg font-bold text-blue-900">
+            Send a Speculative Application
+          </h2>
+          <p className="mt-4 text-body-md text-muted-foreground">
+            No posting matches your background exactly? Send this short form
+            anyway — it goes directly to the team, not into a filtered queue.
+          </p>
+          <div className="mt-10">
+            <QuickApplyForm />
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-6 py-16">
+        <h2 className="text-heading-lg font-bold text-blue-900">Careers FAQ</h2>
+        <FaqAccordion items={careersFaqs} />
       </section>
     </>
   )
