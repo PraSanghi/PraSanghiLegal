@@ -3,6 +3,8 @@ import { ibmPlexSans } from "@/lib/fonts";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { BciDisclaimerModal } from "@/components/compliance/bci-disclaimer-modal";
+import { CookieConsentBanner } from "@/components/compliance/cookie-consent-banner";
+import { ConsentedAnalytics } from "@/components/compliance/consented-analytics";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
@@ -23,6 +25,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <CookieConsentBanner />
+        <ConsentedAnalytics />
         <Toaster />
       </body>
     </html>

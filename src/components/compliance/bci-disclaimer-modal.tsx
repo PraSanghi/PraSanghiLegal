@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import {
   Dialog,
   DialogContent,
@@ -37,14 +38,38 @@ export function BciDisclaimerModal() {
           handleCancel()
         }}
         onPointerDownOutside={(event) => event.preventDefault()}
-        className="sm:max-w-lg"
+        className="flex max-h-[85vh] flex-col sm:max-w-xl"
       >
         <DialogHeader>
           <DialogTitle>Disclaimer</DialogTitle>
+        </DialogHeader>
+        <div className="min-h-0 flex-1 overflow-y-auto pr-1">
           <DialogDescription className="text-left text-body-md text-muted-foreground">
             {BCI_DISCLAIMER_TEXT}
           </DialogDescription>
-        </DialogHeader>
+          <p className="mt-4 text-left text-body-sm text-muted-foreground">
+            By clicking &ldquo;I Agree,&rdquo; you also acknowledge our{' '}
+            <Link
+              href="/terms-of-use"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-blue-900"
+            >
+              Terms of Use
+            </Link>{' '}
+            and{' '}
+            <Link
+              href="/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-blue-900"
+            >
+              Privacy Policy
+            </Link>
+            , including our use of essential and optional cookies as
+            described there.
+          </p>
+        </div>
         <DialogFooter className="flex-row justify-end gap-3">
           <Button variant="outline" onClick={handleCancel}>
             Cancel

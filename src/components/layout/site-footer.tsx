@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { LinkSimple } from '@phosphor-icons/react/dist/ssr'
 import { LogoMark } from '@/components/common/logo-mark'
 import { primaryNav } from '@/lib/navigation'
+import { CookiePreferencesLink } from '@/components/compliance/cookie-preferences-link'
 
 export function SiteFooter() {
   return (
@@ -80,6 +81,7 @@ export function SiteFooter() {
             <Link href="/disclaimer" className="hover:text-teal-400">
               Disclaimer
             </Link>
+            <CookiePreferencesLink />
           </div>
         </div>
       </div>

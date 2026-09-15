@@ -1,71 +1,56 @@
-import { Bank, Scales, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
+import { Buildings, UserFocus, Scales } from "@phosphor-icons/react/dist/ssr";
 import { PositioningHero } from "@/components/common/positioning-hero";
-import { PracticeAreaCard } from "@/components/cards/practice-area-card";
-import { AttorneyCard } from "@/components/cards/attorney-card";
+import { PracticeAreaTeaser } from "@/components/common/practice-area-teaser";
+import { FounderSpotlight } from "@/components/common/founder-spotlight";
+import { FaqAccordion } from "@/components/common/faq-accordion";
 import { InsightCard } from "@/components/cards/insight-card";
 import { CtaBand } from "@/components/common/cta-band";
 import { ValuesTriad } from "@/components/common/values-triad";
 import { RevealOnScroll } from "@/components/common/reveal-on-scroll";
 import { TextLink } from "@/components/common/text-link";
-import { practiceAreaDetails, practiceAreaSlugs } from "@/lib/practice-areas-data";
-import { people } from "@/lib/people-data";
+import { practiceAreaDetails } from "@/lib/practice-areas-data";
+import { peopleBySlug } from "@/lib/people-data";
 import { insights } from "@/lib/insights-data";
+import { homeFaqs } from "@/lib/faq-data";
+
+const FEATURED_PRACTICE_SLUGS = [
+  "supreme-court-high-court-practice",
+  "regulatory-advisory",
+  "contract-drafting-commercial-advisory",
+] as const;
 
 export default function HomePage() {
-  const featuredPeople = people.slice(0, 4);
+  const founder = peopleBySlug["rajwardhan-gawde"];
   const featuredInsights = insights.slice(0, 3);
 
   return (
     <>
       <PositioningHero />
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <RevealOnScroll className="flex items-end justify-between gap-4">
-          <h2 className="text-heading-lg font-bold text-blue-900">Practice Areas</h2>
-          <TextLink href="/practice-areas" className="hidden sm:inline-flex">
-            View All
-          </TextLink>
-        </RevealOnScroll>
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {practiceAreaSlugs.map((slug, i) => {
-            const area = practiceAreaDetails[slug];
-            return (
-              <RevealOnScroll key={slug} delayMs={i * 75}>
-                <PracticeAreaCard
-                  title={area.title}
-                  description={area.summary}
-                  href={`/practice-areas/${slug}`}
-                  image={area.image}
-                />
-              </RevealOnScroll>
-            );
-          })}
-        </div>
-      </section>
-
+      {/* Homepage-exclusive differentiators — not repeated on any other
+          page, which keeps the People/Justice/Progress triad on
+          /about/vision-values from reading as a duplicate. */}
       <section className="mx-auto max-w-7xl px-6 py-16">
         <RevealOnScroll>
-          <h2 className="text-heading-lg font-bold text-blue-900">
-            People, Justice, Progress
-          </h2>
+          <h2 className="text-heading-lg font-bold text-blue-900">Why PraSanghi</h2>
         </RevealOnScroll>
         <div className="mt-8">
           <ValuesTriad
             items={[
               {
-                icon: Bank,
-                label: "People",
-                body: "Every matter starts with the person, not the file.",
+                icon: Buildings,
+                label: "One Firm, Every Forum",
+                body: "Litigation and regulatory work sit under one roof — not split across two firms that don't talk to each other.",
+              },
+              {
+                icon: UserFocus,
+                label: "A Named Advocate, Always",
+                body: "The advocate who takes your brief argues your matter — never handed off to unfamiliar staff along the way.",
               },
               {
                 icon: Scales,
-                label: "Justice",
-                body: "Precise, considered advocacy across every forum.",
-              },
-              {
-                icon: ShieldCheck,
-                label: "Progress",
-                body: "Compliance and counsel that move a client forward.",
+                label: "Litigation-Grade Rigor, Applied to Compliance",
+                body: "Certifications and registrations are prepared with the same discipline PraSanghi brings to a courtroom matter.",
               },
             ]}
           />
@@ -74,24 +59,43 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-6 py-16">
         <RevealOnScroll className="flex items-end justify-between gap-4">
-          <h2 className="text-heading-lg font-bold text-blue-900">Our Team</h2>
-          <TextLink href="/people" className="hidden sm:inline-flex">
-            Meet Everyone
+          <h2 className="text-heading-lg font-bold text-blue-900">Practice Areas</h2>
+          <TextLink href="/practice-areas" className="hidden sm:inline-flex">
+            View All Practice Areas
           </TextLink>
         </RevealOnScroll>
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredPeople.map((person, i) => (
-            <RevealOnScroll key={person.slug} delayMs={i * 75}>
-              <AttorneyCard
-                name={person.name}
-                role={person.role}
-                photo={person.photo}
-                href={`/people/${person.slug}`}
-                practiceTags={person.practiceTags}
-              />
-            </RevealOnScroll>
-          ))}
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {FEATURED_PRACTICE_SLUGS.map((slug, i) => {
+            const area = practiceAreaDetails[slug];
+            return (
+              <RevealOnScroll key={slug} delayMs={i * 75}>
+                <PracticeAreaTeaser
+                  title={area.title}
+                  href={`/practice-areas/${slug}`}
+                  image={area.image}
+                />
+              </RevealOnScroll>
+            );
+          })}
         </div>
+        <TextLink href="/practice-areas" className="mt-8 inline-flex sm:hidden">
+          View All Practice Areas
+        </TextLink>
+      </section>
+
+      {founder ? (
+        <section className="mx-auto max-w-7xl px-6 py-16">
+          <RevealOnScroll>
+            <FounderSpotlight founder={founder} />
+          </RevealOnScroll>
+        </section>
+      ) : null}
+
+      <section className="mx-auto max-w-3xl px-6 py-16">
+        <RevealOnScroll>
+          <h2 className="text-heading-lg font-bold text-blue-900">Common Questions</h2>
+          <FaqAccordion items={homeFaqs} />
+        </RevealOnScroll>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-16">
