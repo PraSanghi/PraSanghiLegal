@@ -30,9 +30,12 @@ export const people: PersonRecord[] = [
     isFounder: true,
     practiceTags: ['Litigation', 'Supreme Court & High Court Practice'],
     bioPending: true,
-    // Hardcoded (not hashed) to a portrait in business attire — more
-    // fitting for the founder than whatever the deterministic hash lands on.
-    photo: 'https://randomuser.me/api/portraits/men/80.jpg',
+    // Unsplash (licensed stock photography, not the scraped-personal-photo
+    // pools the other placeholderPhoto() entries use) — chosen for business
+    // attire and high enough resolution to survive the full-bleed banner
+    // treatment on /people/[slug] and /about/leadership without pixelating.
+    photo:
+      'https://images.unsplash.com/photo-1585846416120-3a7354ed7d39?w=1200&h=1200&fit=crop&crop=faces&q=80',
   },
   {
     slug: 'bhavesh',
