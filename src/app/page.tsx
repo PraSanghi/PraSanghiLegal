@@ -1,14 +1,17 @@
-import { Buildings, UserFocus, Scales } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
+import { Buildings, UserFocus, Scales, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { PositioningHero } from "@/components/common/positioning-hero";
 import { PracticeAreaTeaser } from "@/components/common/practice-area-teaser";
 import { FounderSpotlight } from "@/components/common/founder-spotlight";
 import { FaqAccordion } from "@/components/common/faq-accordion";
 import { InsightCard } from "@/components/cards/insight-card";
 import { CtaBand } from "@/components/common/cta-band";
+import { TrustedByStrip } from "@/components/common/trusted-by-strip";
 import { DocumentationTree } from "@/components/common/documentation-tree";
 import { ValuesTriad } from "@/components/common/values-triad";
 import { RevealOnScroll } from "@/components/common/reveal-on-scroll";
 import { TextLink } from "@/components/common/text-link";
+import { Button } from "@/components/ui/button";
 import { practiceAreaDetails } from "@/lib/practice-areas-data";
 import { peopleBySlug } from "@/lib/people-data";
 import { insights } from "@/lib/insights-data";
@@ -27,6 +30,12 @@ export default function HomePage() {
   return (
     <>
       <PositioningHero />
+
+      <section className="mx-auto max-w-7xl px-6 py-12">
+        <RevealOnScroll>
+          <TrustedByStrip />
+        </RevealOnScroll>
+      </section>
 
       {/* Homepage-exclusive differentiators — not repeated on any other
           page, which keeps the People/Justice/Progress triad on
@@ -142,10 +151,13 @@ export default function HomePage() {
             <DocumentationTree />
           </div>
 
-          <div className="mt-12 text-center">
-            <TextLink href="/practice-areas/legal-drafting-documentation">
-              Learn More About Legal Drafting &amp; Documentation
-            </TextLink>
+          <div className="mt-14 text-center">
+            <Button asChild size="lg" variant="outline">
+              <Link href="/practice-areas/legal-drafting-documentation">
+                Learn More About Legal Drafting &amp; Documentation
+                <ArrowRight weight="light" className="size-4" aria-hidden="true" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
