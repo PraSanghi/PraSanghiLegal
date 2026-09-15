@@ -10,12 +10,16 @@ export interface PersonRecord {
 
 // Bios and credentials are blocked pending founder-confirmed content — see
 // project_requirements.md §10, Open Items 1–2. Photos use a deterministic
-// placeholder photo service (seeded by slug, so each person keeps a stable
-// consistent portrait across the site) until real firm photography exists —
-// see design/design-system.md §9. Do not launch with placeholder photos or
-// bios live.
-function placeholderPhoto(slug: string) {
-  return `https://i.pravatar.cc/500?u=${slug}`
+// placeholder photo service until real firm photography exists — see
+// design/design-system.md §9. Do not launch with placeholder photos or bios
+// live. randomuser.me's portraits are split into separate men/women folders
+// (unlike pravatar's single unisex pool, which assigned mismatched-gender
+// photos), and the slug is hashed to a stable index so each person keeps the
+// same portrait across the site.
+function placeholderPhoto(slug: string, gender: 'men' | 'women') {
+  const hash = [...slug].reduce((sum, char) => sum + char.charCodeAt(0), 0)
+  const index = hash % 100
+  return `https://randomuser.me/api/portraits/${gender}/${index}.jpg`
 }
 
 export const people: PersonRecord[] = [
@@ -26,7 +30,7 @@ export const people: PersonRecord[] = [
     isFounder: true,
     practiceTags: ['Litigation', 'Supreme Court & High Court Practice'],
     bioPending: true,
-    photo: placeholderPhoto('rajwardhan-gawde'),
+    photo: placeholderPhoto('rajwardhan-gawde', 'men'),
   },
   {
     slug: 'bhavesh',
@@ -34,7 +38,7 @@ export const people: PersonRecord[] = [
     role: 'Associate',
     practiceTags: [],
     bioPending: true,
-    photo: placeholderPhoto('bhavesh'),
+    photo: placeholderPhoto('bhavesh', 'men'),
   },
   {
     slug: 'pankaj-giri-goswami',
@@ -42,7 +46,7 @@ export const people: PersonRecord[] = [
     role: 'Associate',
     practiceTags: [],
     bioPending: true,
-    photo: placeholderPhoto('pankaj-giri-goswami'),
+    photo: placeholderPhoto('pankaj-giri-goswami', 'men'),
   },
   {
     slug: 'manoj-garg',
@@ -50,7 +54,7 @@ export const people: PersonRecord[] = [
     role: 'Associate',
     practiceTags: [],
     bioPending: true,
-    photo: placeholderPhoto('manoj-garg'),
+    photo: placeholderPhoto('manoj-garg', 'men'),
   },
   {
     slug: 'kavita-sharma',
@@ -58,7 +62,7 @@ export const people: PersonRecord[] = [
     role: 'Associate',
     practiceTags: [],
     bioPending: true,
-    photo: placeholderPhoto('kavita-sharma'),
+    photo: placeholderPhoto('kavita-sharma', 'women'),
   },
   {
     slug: 'abhishek-mantri',
@@ -66,7 +70,7 @@ export const people: PersonRecord[] = [
     role: 'Associate',
     practiceTags: [],
     bioPending: true,
-    photo: placeholderPhoto('abhishek-mantri'),
+    photo: placeholderPhoto('abhishek-mantri', 'men'),
   },
   {
     slug: 'aditya-bharti',
@@ -74,7 +78,7 @@ export const people: PersonRecord[] = [
     role: 'Associate',
     practiceTags: [],
     bioPending: true,
-    photo: placeholderPhoto('aditya-bharti'),
+    photo: placeholderPhoto('aditya-bharti', 'men'),
   },
 ]
 

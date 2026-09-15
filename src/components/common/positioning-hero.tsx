@@ -219,30 +219,32 @@ export function PositioningHero() {
         photograph column, never the text panel — so their contrast must
         never depend on the section's light/dark theme (that was the bug:
         conditioning color on `theme` made them invisible whenever a bright
-        or light-toned photo sat underneath a "light" state). Instead they
-        sit on a permanent translucent dark scrim, always white, so they
-        read correctly against any photograph.
+        or light-toned photo sat underneath a "light" state). A drop-shadow
+        on the text/dots (rather than an enclosing scrim panel) keeps them
+        legible against any photograph — an earlier version wrapped this in
+        a `rounded-full` capsule, which read as a stray dark blob smeared
+        over the image rather than a deliberate control.
       */}
       <div className="pointer-events-none absolute inset-0 z-10">
-        <div className="pointer-events-auto absolute top-1/2 right-6 hidden -translate-y-1/2 flex-col items-end gap-0 rounded-full bg-black/35 px-5 py-4 backdrop-blur-sm lg:flex">
+        <div className="pointer-events-auto absolute top-1/2 right-6 hidden -translate-y-1/2 flex-col items-end gap-0 lg:flex">
           {HERO_STATES.map((s, i) => (
             <div key={s.key} className="flex flex-col items-end">
               <button
                 type="button"
                 onClick={() => goTo(i)}
                 aria-current={i === activeIndex}
-                className={`flex items-center gap-3 text-body-sm font-semibold transition-colors ${
-                  i === activeIndex ? 'text-white' : 'text-white/50 hover:text-white'
+                className={`flex items-center gap-3 text-body-sm font-semibold drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)] transition-colors ${
+                  i === activeIndex ? 'text-white' : 'text-white/60 hover:text-white'
                 }`}
               >
                 {s.eyebrow}
                 <span
-                  className={`inline-block size-2.5 shrink-0 rounded-full border-2 ${
-                    i === activeIndex ? 'border-white bg-white' : 'border-white/50 bg-transparent'
+                  className={`inline-block size-2.5 shrink-0 rounded-full border-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)] ${
+                    i === activeIndex ? 'border-white bg-white' : 'border-white/60 bg-transparent'
                   }`}
                 />
               </button>
-              {i < HERO_STATES.length - 1 ? <div className="my-2 h-6 w-px bg-white/25" /> : null}
+              {i < HERO_STATES.length - 1 ? <div className="my-2 h-6 w-px bg-white/40" /> : null}
             </div>
           ))}
         </div>
