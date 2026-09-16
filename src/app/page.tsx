@@ -7,14 +7,11 @@ import { InsightCard } from "@/components/cards/insight-card";
 import { CtaBand } from "@/components/common/cta-band";
 import { TrustedByStrip } from "@/components/common/trusted-by-strip";
 import { DocumentationTree } from "@/components/common/documentation-tree";
-import { PracticeAreaCarousel } from "@/components/common/practice-area-carousel";
 import { ValuesTriad } from "@/components/common/values-triad";
 import { RevealOnScroll } from "@/components/common/reveal-on-scroll";
 import { TextLink } from "@/components/common/text-link";
 import { Bi } from "@/components/i18n/bi";
 import { Button } from "@/components/ui/button";
-import { practiceAreaDetails, practiceAreaSlugs } from "@/lib/practice-areas-data";
-import { practiceAreaCarouselImages } from "@/lib/practice-area-carousel-images";
 import { peopleBySlug } from "@/lib/people-data";
 import { insights } from "@/lib/insights-data";
 import { homeFaqs } from "@/lib/faq-data";
@@ -31,32 +28,6 @@ export default function HomePage() {
         <RevealOnScroll>
           <TrustedByStrip />
         </RevealOnScroll>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <RevealOnScroll className="flex items-end justify-between gap-4">
-          <h2 className="text-heading-lg font-bold text-blue-900">
-            <Bi en="Practice Areas" hi="प्रैक्टिस क्षेत्र" />
-          </h2>
-          <TextLink href="/practice-areas" className="hidden sm:inline-flex">
-            <Bi en="View All Practice Areas" hi="सभी प्रैक्टिस क्षेत्र देखें" />
-          </TextLink>
-        </RevealOnScroll>
-        <RevealOnScroll className="mt-8">
-          <PracticeAreaCarousel
-            items={practiceAreaSlugs.map((slug) => ({
-              slug,
-              title: practiceAreaDetails[slug].title,
-              titleHi: practiceAreaDetails[slug].titleHi,
-              summary: practiceAreaDetails[slug].summary,
-              summaryHi: practiceAreaDetails[slug].summaryHi,
-              image: practiceAreaCarouselImages[slug],
-            }))}
-          />
-        </RevealOnScroll>
-        <TextLink href="/practice-areas" className="mt-8 inline-flex sm:hidden">
-          <Bi en="View All Practice Areas" hi="सभी प्रैक्टिस क्षेत्र देखें" />
-        </TextLink>
       </section>
 
       {founder ? (
