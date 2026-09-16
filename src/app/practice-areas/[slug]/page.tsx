@@ -120,6 +120,25 @@ export default async function PracticeAreaDetailPage({
             </ul>
           </RevealOnScroll>
 
+          {area.commonSituations && area.commonSituations.length > 0 ? (
+            <RevealOnScroll>
+              <h2 className="mt-12 text-heading-md font-bold text-blue-900">
+                <Bi en="Situations We Handle" hi="वे स्थितियाँ जिन्हें हम संभालते हैं" />
+              </h2>
+              <ul className="mt-6 flex flex-col gap-4">
+                {area.commonSituations.map((situation, i) => (
+                  <li key={situation} className="flex items-start gap-3 text-body-md text-blue-900">
+                    <span
+                      className="mt-2.5 size-1.5 shrink-0 rounded-full bg-teal-600"
+                      aria-hidden="true"
+                    />
+                    <Bi en={situation} hi={area.commonSituationsHi?.[i] ?? situation} />
+                  </li>
+                ))}
+              </ul>
+            </RevealOnScroll>
+          ) : null}
+
           {team.length > 0 ? (
             <RevealOnScroll>
               <h2 className="mt-12 text-heading-md font-bold text-blue-900">

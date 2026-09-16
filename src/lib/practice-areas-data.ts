@@ -8,6 +8,12 @@ export interface PracticeAreaDetail {
   overviewHi: string[]
   specificServices: string[]
   specificServicesHi: string[]
+  // Plain-language client scenarios, not formal service names — the
+  // "Other Legal Support" pattern from research/competitor-analysis-secondary.md
+  // (White Collar Legal Company). Optional: only present where it adds a
+  // distinct layer over specificServices, not duplicated on every area.
+  commonSituations?: string[]
+  commonSituationsHi?: string[]
   teamSlugs: string[]
   image: string
 }
@@ -54,6 +60,16 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'आपराधिक बचाव एवं परिवाद कार्यवाही',
       'जमानत आवेदन एवं रिमांड संबंधी मामले',
       'अधीनस्थ एवं जिला न्यायालयों में पैरवी',
+    ],
+    commonSituations: [
+      'A false police complaint (FIR) has been filed against you',
+      'You are facing harassment or pressure from the police during an investigation',
+      'You have been detained without being told why',
+    ],
+    commonSituationsHi: [
+      'आपके विरुद्ध एक झूठी पुलिस शिकायत (एफआईआर) दर्ज कराई गई है',
+      'जांच के दौरान आपको पुलिस द्वारा उत्पीड़न अथवा दबाव का सामना करना पड़ रहा है',
+      'आपको बिना कारण बताए हिरासत में लिया गया है',
     ],
     teamSlugs: ['rajwardhan-gawde'],
     image: placeholderImage('litigation'),
@@ -168,12 +184,22 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'Service agreements and statements of work',
       'Non-disclosure and confidentiality agreements',
       'Partnership and LLP agreements',
+      'Franchising and reseller/distribution agreements',
+      'Term sheets for equity-linked investment',
+      'Share subscription and shareholder agreements',
+      'Strategic alliance and joint venture agreements',
+      'Transaction documentation for B2B and B2C (single-brand/multi-brand) e-commerce',
     ],
     specificServicesHi: [
       'विक्रेता एवं आपूर्ति अनुबंध',
       'सेवा अनुबंध एवं कार्य विवरण (एसओडब्ल्यू)',
       'गोपनीयता अनुबंध (एनडीए)',
       'साझेदारी एवं एलएलपी अनुबंध',
+      'फ्रैंचाइज़िंग एवं पुनर्विक्रेता/वितरण अनुबंध',
+      'इक्विटी-लिंक्ड निवेश हेतु टर्म शीट',
+      'शेयर अभिदान (सब्सक्रिप्शन) एवं शेयरधारक अनुबंध',
+      'रणनीतिक गठबंधन एवं संयुक्त उद्यम (जॉइंट वेंचर) अनुबंध',
+      'बी2बी एवं बी2सी (सिंगल-ब्रांड/मल्टी-ब्रांड) ई-कॉमर्स हेतु लेनदेन प्रलेखन',
     ],
     teamSlugs: [],
     image: placeholderImage('contracts'),
@@ -221,6 +247,18 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'कृषि भूमि का अकृषिक (एनए) रूपांतरण',
       'भूमि उपग्रह मानचित्रण रिपोर्ट',
       'तहसीलदार एवं प्रांत कार्यालय संबंधी मामले',
+    ],
+    commonSituations: [
+      'A builder is delaying handover of a flat or unit you have already paid for',
+      'Someone has encroached on your land, or your ownership itself is disputed',
+      'A builder has not delivered the amenities promised at the time of sale',
+      'You need agricultural land converted for non-agricultural use before building or selling',
+    ],
+    commonSituationsHi: [
+      'किसी बिल्डर द्वारा पहले ही भुगतान किए गए फ्लैट अथवा यूनिट का कब्ज़ा देने में देरी की जा रही है',
+      'आपकी भूमि पर अतिक्रमण हो गया है, अथवा स्वयं स्वामित्व को लेकर विवाद है',
+      'बिल्डर द्वारा बिक्री के समय वादा की गई सुविधाएँ उपलब्ध नहीं कराई गई हैं',
+      'निर्माण अथवा बिक्री से पूर्व कृषि भूमि को अकृषिक उपयोग हेतु रूपांतरित कराना आवश्यक है',
     ],
     teamSlugs: [],
     image: placeholderImage('legal-drafting-documents'),
@@ -272,12 +310,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'Company structuring and restructuring',
       'Board and shareholder resolution drafting',
       'Statutory compliance under the Companies Act',
+      'Mergers and acquisitions',
+      'Pre-investment and due-diligence regulatory analysis',
+      'Hybrid equity-linked arrangements (services-for-equity, ad-for-equity)',
+      'Advisory for foundation-stage and growth-stage companies',
     ],
     specificServicesHi: [
       'कॉर्पोरेट गवर्नेंस परामर्श',
       'कंपनी संरचना एवं पुनर्गठन',
       'निदेशक मंडल एवं शेयरधारक संकल्प प्रारूपण',
       'कंपनी अधिनियम के अंतर्गत सांविधिक अनुपालन',
+      'विलय एवं अधिग्रहण (मर्जर एवं एक्विजिशन)',
+      'निवेश-पूर्व एवं ड्यू-डिलिजेंस नियामक विश्लेषण',
+      'हाइब्रिड इक्विटी-लिंक्ड व्यवस्थाएँ (सर्विसेज़-फॉर-इक्विटी, ऐड-फॉर-इक्विटी)',
+      'आरंभिक-चरण एवं विकास-चरण की कंपनियों हेतु परामर्श',
     ],
     teamSlugs: [],
     image: placeholderImage('corporate-law'),
@@ -305,6 +351,18 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'बकाया राशि का समझौता-आधारित निपटान',
       'धन वसूली वाद',
       'प्रतिभूति एवं ऋण प्रलेखन समीक्षा',
+    ],
+    commonSituations: [
+      'Someone has borrowed money from you and is refusing to repay',
+      'A business partner has not returned funds you invested',
+      'A cheque given to you has bounced',
+      'A partner is misusing business funds or has breached the partnership agreement',
+    ],
+    commonSituationsHi: [
+      'किसी व्यक्ति ने आपसे धन उधार लिया है और अब चुकाने से इनकार कर रहा है',
+      'किसी व्यावसायिक साझेदार ने आपके निवेश की गई राशि वापस नहीं की है',
+      'आपको प्राप्त एक चेक अनादरित (बाउंस) हो गया है',
+      'कोई साझेदार व्यावसायिक निधि का दुरुपयोग कर रहा है अथवा साझेदारी अनुबंध का उल्लंघन कर रहा है',
     ],
     teamSlugs: [],
     image: placeholderImage('debt-recovery'),
@@ -361,8 +419,144 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'सेवा-समाप्ति एवं प्रतिकर संबंधी मामले',
       'श्रम विवादों में प्रतिनिधित्व',
     ],
+    commonSituations: [
+      'You were terminated without notice or a fair process',
+      'Your salary has gone unpaid for one or more months',
+      'An employer is withholding your full and final settlement after resignation',
+      'You are being asked to work under terms that don’t match what you agreed to',
+    ],
+    commonSituationsHi: [
+      'आपको बिना सूचना अथवा उचित प्रक्रिया के सेवा से हटाया गया है',
+      'एक अथवा अधिक माह का वेतन भुगतान नहीं किया गया है',
+      'त्यागपत्र के पश्चात नियोक्ता द्वारा पूर्ण एवं अंतिम निपटान (फुल एंड फाइनल सेटलमेंट) रोका जा रहा है',
+      'आपसे उन शर्तों पर कार्य कराया जा रहा है जो सहमति में तय शर्तों से मेल नहीं खातीं',
+    ],
     teamSlugs: [],
     image: placeholderImage('employment-law'),
+  },
+  // Scope confirmed directly (not founder-notes-derived like the areas
+  // above) — see research/competitor-analysis-secondary.md's "Other Legal
+  // Support" pattern from White Collar Legal Company, adopted for PraSanghi
+  // 2026-09-17 after confirming the firm actually takes these matters.
+  'family-matrimonial': {
+    slug: 'family-matrimonial',
+    title: 'Family & Matrimonial',
+    titleHi: 'पारिवारिक एवं वैवाहिक विधि',
+    summary:
+      'Representation and counsel in divorce, custody, and domestic matters, handled with discretion.',
+    summaryHi: 'विवाह-विच्छेद, अभिरक्षा (कस्टडी) एवं पारिवारिक मामलों में प्रतिनिधित्व तथा परामर्श, पूर्ण गोपनीयता के साथ।',
+    overview: [
+      'PraSanghi represents individuals through divorce, custody, and maintenance proceedings, and drafts the agreements that prevent family disputes from becoming litigation in the first place.',
+    ],
+    overviewHi: [
+      'प्रासंघी व्यक्तियों का विवाह-विच्छेद, अभिरक्षा एवं भरण-पोषण संबंधी कार्यवाहियों में प्रतिनिधित्व करता है, तथा ऐसे अनुबंध तैयार करता है जो पारिवारिक विवादों को वाद में बदलने से पूर्व ही रोकते हैं।',
+    ],
+    specificServices: [
+      'Divorce petitions (contested and mutual consent)',
+      'Child custody and visitation matters',
+      'Maintenance and alimony claims',
+      'Prenuptial agreements',
+      'Domestic violence proceedings',
+    ],
+    specificServicesHi: [
+      'विवाह-विच्छेद याचिका (विवादित एवं पारस्परिक सहमति दोनों)',
+      'बाल अभिरक्षा एवं भेंट-मुलाकात संबंधी मामले',
+      'भरण-पोषण एवं गुज़ारा-भत्ता दावे',
+      'विवाह-पूर्व अनुबंध (प्रीनप्शियल एग्रीमेंट)',
+      'घरेलू हिंसा संबंधी कार्यवाही',
+    ],
+    commonSituations: [
+      'You are going through a divorce, contested or by mutual consent',
+      'There is a dispute over custody of, or visitation with, a child',
+      'You are facing domestic violence and need protection or relief',
+      'A spouse is not paying agreed or court-ordered maintenance',
+    ],
+    commonSituationsHi: [
+      'आप विवादित अथवा पारस्परिक सहमति से विवाह-विच्छेद की प्रक्रिया में हैं',
+      'किसी बच्चे की अभिरक्षा अथवा भेंट-मुलाकात को लेकर विवाद है',
+      'आप घरेलू हिंसा का सामना कर रहे हैं और संरक्षण अथवा राहत चाहते हैं',
+      'जीवनसाथी सहमत अथवा न्यायालय-आदेशित भरण-पोषण राशि नहीं दे रहा/रही है',
+    ],
+    teamSlugs: [],
+    image: placeholderImage('family-matrimonial'),
+  },
+  'consumer-protection': {
+    slug: 'consumer-protection',
+    title: 'Consumer Protection',
+    titleHi: 'उपभोक्ता संरक्षण',
+    summary: 'Redress for defective products, denied insurance claims, and disputes with service providers.',
+    summaryHi: 'दोषपूर्ण उत्पादों, अस्वीकृत बीमा दावों एवं सेवा प्रदाताओं के साथ विवादों हेतु निवारण।',
+    overview: [
+      'PraSanghi represents individuals and businesses before consumer commissions when a product, service, or insurer has failed to deliver what was promised.',
+    ],
+    overviewHi: [
+      'जब कोई उत्पाद, सेवा अथवा बीमाकर्ता वादा किए गए के अनुरूप कार्य नहीं करता, तब प्रासंघी उपभोक्ता आयोगों के समक्ष व्यक्तियों एवं व्यवसायों का प्रतिनिधित्व करता है।',
+    ],
+    specificServices: [
+      'Consumer complaints before District and State Consumer Commissions',
+      'Defective product and deficient service claims',
+      'Insurance claim denial disputes',
+      'Disputes with airlines, travel operators, and e-commerce platforms',
+    ],
+    specificServicesHi: [
+      'जिला एवं राज्य उपभोक्ता आयोगों के समक्ष उपभोक्ता परिवाद',
+      'दोषपूर्ण उत्पाद एवं न्यूनतापूर्ण सेवा संबंधी दावे',
+      'बीमा दावा अस्वीकृति संबंधी विवाद',
+      'एयरलाइन, यात्रा संचालकों एवं ई-कॉमर्स प्लेटफॉर्म के साथ विवाद',
+    ],
+    commonSituations: [
+      'A product you bought turned out to be defective and the seller won’t help',
+      'An insurance company has rejected a claim you believe is valid',
+      'An airline or travel company has failed to deliver what you paid for',
+      'A service provider has failed to deliver what was promised',
+    ],
+    commonSituationsHi: [
+      'आपके द्वारा खरीदा गया उत्पाद दोषपूर्ण निकला और विक्रेता सहायता नहीं कर रहा',
+      'बीमा कंपनी ने एक ऐसा दावा अस्वीकार किया है जिसे आप वैध मानते हैं',
+      'किसी एयरलाइन अथवा यात्रा कंपनी ने भुगतान के बावजूद वादा की गई सेवा नहीं दी',
+      'किसी सेवा प्रदाता ने वादा की गई सेवा प्रदान नहीं की',
+    ],
+    teamSlugs: [],
+    image: placeholderImage('consumer-protection'),
+  },
+  'cyber-defamation': {
+    slug: 'cyber-defamation',
+    title: 'Cyber & Defamation',
+    titleHi: 'साइबर एवं मानहानि विधि',
+    summary: 'Protection against online defamation, impersonation, and cyber fraud.',
+    summaryHi: 'ऑनलाइन मानहानि, प्रतिरूपण (इम्पर्सनेशन) एवं साइबर धोखाधड़ी के विरुद्ध संरक्षण।',
+    overview: [
+      'PraSanghi advises on defamation notices and IT Act complaints when a client’s reputation, identity, or finances have been attacked online.',
+    ],
+    overviewHi: [
+      'जब किसी मुवक्किल की प्रतिष्ठा, पहचान अथवा वित्त को ऑनलाइन क्षति पहुँचाई जाती है, तब प्रासंघी मानहानि सूचना (डिफेमेशन नोटिस) एवं आईटी अधिनियम के अंतर्गत परिवादों पर सलाह देता है।',
+    ],
+    specificServices: [
+      'Defamation notices and civil defamation suits',
+      'Complaints under the Information Technology Act',
+      'Response to fake profiles and impersonation',
+      'Online financial fraud complaints',
+    ],
+    specificServicesHi: [
+      'मानहानि सूचना एवं सिविल मानहानि वाद',
+      'सूचना प्रौद्योगिकी अधिनियम के अंतर्गत परिवाद',
+      'फ़र्ज़ी प्रोफाइल एवं प्रतिरूपण के विरुद्ध कार्यवाही',
+      'ऑनलाइन वित्तीय धोखाधड़ी संबंधी परिवाद',
+    ],
+    commonSituations: [
+      'False statements about you are being circulated on social media',
+      'You are being impersonated through a fake profile or account',
+      'Your photos or personal information are being used without consent',
+      'You have lost money to an online financial fraud',
+    ],
+    commonSituationsHi: [
+      'आपके विरुद्ध सोशल मीडिया पर झूठे बयान फैलाए जा रहे हैं',
+      'किसी फ़र्ज़ी प्रोफाइल अथवा अकाउंट के माध्यम से आपका प्रतिरूपण किया जा रहा है',
+      'आपकी तस्वीरों अथवा व्यक्तिगत जानकारी का बिना सहमति उपयोग किया जा रहा है',
+      'आपने किसी ऑनलाइन वित्तीय धोखाधड़ी में धन गंवाया है',
+    ],
+    teamSlugs: [],
+    image: placeholderImage('cyber-defamation'),
   },
 }
 
