@@ -26,4 +26,10 @@ export const practiceAreaCarouselImages: Record<string, string> = {
     'https://images.unsplash.com/photo-1768839723311-3a05ab496804?q=80&w=1200&auto=format&fit=crop',
   'employment-law':
     'https://images.unsplash.com/photo-1758520144437-f068ecaf0d83?q=80&w=1200&auto=format&fit=crop',
+  'family-matrimonial':
+    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=1200&auto=format&fit=crop',
+  'consumer-protection':
+    'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=1200&auto=format&fit=crop',
+  'cyber-defamation':
+    'https://images.unsplash.com/photo-1548092372-0d1bd40894a3?q=80&w=1200&auto=format&fit=crop',
 }
