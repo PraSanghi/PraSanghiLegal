@@ -92,16 +92,15 @@ export function SiteHeader() {
         </NavigationMenu>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <LanguageToggle />
           <Button asChild>
             <Link href="/contact">
               <Bi en="Schedule a Consultation" hi="परामर्श निर्धारित करें" />
             </Link>
           </Button>
+          <LanguageToggle />
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <LanguageToggle />
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" aria-label="Open menu">
@@ -147,6 +146,7 @@ export function SiteHeader() {
               </nav>
             </SheetContent>
           </Sheet>
+          <LanguageToggle />
         </div>
       </div>
     </header>
