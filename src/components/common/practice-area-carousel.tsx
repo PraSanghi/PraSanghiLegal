@@ -4,11 +4,14 @@ import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight } from '@phosphor-icons/react/dist/ssr'
+import { Bi } from '@/components/i18n/bi'
 
 export interface PracticeAreaCarouselItem {
   slug: string
   title: string
+  titleHi: string
   summary: string
+  summaryHi: string
   image: string
 }
 
@@ -135,8 +138,12 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent" />
               <div className="relative p-6">
-                <p className="text-heading-sm font-bold text-white">{item.title}</p>
-                <p className="mt-2 line-clamp-3 text-body-md text-white/85">{item.summary}</p>
+                <p className="text-heading-sm font-bold text-white">
+                  <Bi en={item.title} hi={item.titleHi} />
+                </p>
+                <p className="mt-2 line-clamp-3 text-body-md text-white/85">
+                  <Bi en={item.summary} hi={item.summaryHi} />
+                </p>
               </div>
             </Link>
           </div>

@@ -13,6 +13,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
+import { Bi } from '@/components/i18n/bi'
 import { useCookieConsentStore } from '@/store/cookie-consent-store'
 import { useDisclaimerStore } from '@/store/disclaimer-store'
 
@@ -52,13 +53,24 @@ export function CookieConsentBanner() {
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-white px-6 py-5 shadow-[0_-4px_16px_rgba(14,27,51,0.08)]">
           <div className="mx-auto flex max-w-7xl flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-2xl text-body-sm text-muted-foreground">
-              We use cookies to remember your preferences and understand how
-              visitors use this site. Essential cookies keep the site
-              working; analytics cookies are optional. See our{' '}
-              <Link href="/privacy-policy" className="underline hover:text-blue-900">
-                Privacy Policy
-              </Link>{' '}
-              for details.
+              <span className="lang-en">
+                We use cookies to remember your preferences and understand how visitors use this
+                site. Essential cookies keep the site working; analytics cookies are optional.
+                See our{' '}
+                <Link href="/privacy-policy" className="underline hover:text-blue-900">
+                  Privacy Policy
+                </Link>{' '}
+                for details.
+              </span>
+              <span className="lang-hi">
+                हम आपकी प्राथमिकताएँ याद रखने तथा यह समझने हेतु कि आगंतुक इस साइट का उपयोग कैसे
+                करते हैं, कुकीज़ का उपयोग करते हैं। अनिवार्य कुकीज़ साइट को कार्यशील रखती हैं;
+                विश्लेषणात्मक कुकीज़ वैकल्पिक हैं। अधिक जानकारी हेतु हमारी{' '}
+                <Link href="/privacy-policy" className="underline hover:text-blue-900">
+                  गोपनीयता नीति
+                </Link>{' '}
+                देखें।
+              </span>
             </p>
             <div className="flex shrink-0 flex-wrap gap-3">
               <Button
@@ -69,13 +81,13 @@ export function CookieConsentBanner() {
                   setManaging(true)
                 }}
               >
-                Manage Preferences
+                <Bi en="Manage Preferences" hi="प्राथमिकताएँ प्रबंधित करें" />
               </Button>
               <Button variant="outline" size="sm" onClick={rejectNonEssential}>
-                Reject Non-Essential
+                <Bi en="Reject Non-Essential" hi="गैर-अनिवार्य अस्वीकार करें" />
               </Button>
               <Button size="sm" onClick={acceptAll}>
-                Accept All
+                <Bi en="Accept All" hi="सभी स्वीकार करें" />
               </Button>
             </div>
           </div>
@@ -85,21 +97,32 @@ export function CookieConsentBanner() {
       <Dialog open={managing} onOpenChange={setManaging}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Cookie Preferences</DialogTitle>
+            <DialogTitle>
+              <Bi en="Cookie Preferences" hi="कुकी प्राथमिकताएँ" />
+            </DialogTitle>
             <DialogDescription className="text-left text-body-md text-muted-foreground">
-              Choose which cookies PraSanghi&rsquo;s website can use. You can
-              change this at any time from the &ldquo;Cookie
-              Preferences&rdquo; link in the footer.
+              <span className="lang-en">
+                Choose which cookies PraSanghi&rsquo;s website can use. You can change this at
+                any time from the &ldquo;Cookie Preferences&rdquo; link in the footer.
+              </span>
+              <span className="lang-hi">
+                चुनें कि प्रासंघी की वेबसाइट कौन-सी कुकीज़ उपयोग कर सकती है। आप इसे फुटर में दिए
+                गए &ldquo;कुकी प्राथमिकताएँ&rdquo; लिंक से कभी भी बदल सकते हैं।
+              </span>
             </DialogDescription>
           </DialogHeader>
 
           <div className="flex flex-col gap-4 py-2">
             <div className="flex items-start justify-between gap-4 rounded-lg border border-border p-4">
               <div>
-                <p className="text-body-md font-semibold text-blue-900">Essential</p>
+                <p className="text-body-md font-semibold text-blue-900">
+                  <Bi en="Essential" hi="अनिवार्य" />
+                </p>
                 <p className="mt-1 text-body-sm text-muted-foreground">
-                  Required for the site to function (e.g. remembering the BCI
-                  disclaimer and your cookie choice). Always on.
+                  <Bi
+                    en="Required for the site to function (e.g. remembering the BCI disclaimer and your cookie choice). Always on."
+                    hi="साइट के कार्य हेतु आवश्यक (जैसे बीसीआई अस्वीकरण एवं आपकी कुकी पसंद को याद रखना)। सदैव सक्रिय।"
+                  />
                 </p>
               </div>
               <Switch checked disabled aria-label="Essential cookies (always on)" />
@@ -107,11 +130,14 @@ export function CookieConsentBanner() {
 
             <div className="flex items-start justify-between gap-4 rounded-lg border border-border p-4">
               <div>
-                <p className="text-body-md font-semibold text-blue-900">Analytics</p>
+                <p className="text-body-md font-semibold text-blue-900">
+                  <Bi en="Analytics" hi="विश्लेषण (एनालिटिक्स)" />
+                </p>
                 <p className="mt-1 text-body-sm text-muted-foreground">
-                  Helps us understand which pages are useful, via privacy-
-                  friendly Vercel Web Analytics. No personal data is sold or
-                  shared with advertisers.
+                  <Bi
+                    en="Helps us understand which pages are useful, via privacy-friendly Vercel Web Analytics. No personal data is sold or shared with advertisers."
+                    hi="गोपनीयता-अनुकूल Vercel Web Analytics के माध्यम से यह समझने में सहायक कि कौन-से पृष्ठ उपयोगी हैं। कोई व्यक्तिगत डेटा न तो बेचा जाता है और न ही विज्ञापनदाताओं के साथ साझा किया जाता है।"
+                  />
                 </p>
               </div>
               <Label htmlFor="analytics-toggle" className="sr-only">
@@ -134,7 +160,7 @@ export function CookieConsentBanner() {
                 setManaging(false)
               }}
             >
-              Reject Non-Essential
+              <Bi en="Reject Non-Essential" hi="गैर-अनिवार्य अस्वीकार करें" />
             </Button>
             <Button
               onClick={() => {
@@ -142,7 +168,7 @@ export function CookieConsentBanner() {
                 setManaging(false)
               }}
             >
-              Save Preferences
+              <Bi en="Save Preferences" hi="प्राथमिकताएँ सहेजें" />
             </Button>
           </DialogFooter>
         </DialogContent>

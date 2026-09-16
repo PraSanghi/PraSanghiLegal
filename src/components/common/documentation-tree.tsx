@@ -1,5 +1,6 @@
 import { Scales } from '@phosphor-icons/react/dist/ssr'
 import { RevealOnScroll } from '@/components/common/reveal-on-scroll'
+import { Bi } from '@/components/i18n/bi'
 import { documentationTree } from '@/lib/documentation-tree-data'
 
 // Org-chart-style tree: a root node branches down into category nodes,
@@ -15,7 +16,9 @@ export function DocumentationTree() {
         <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
           <Scales weight="light" className="size-6" aria-hidden="true" />
         </span>
-        <p className="text-heading-sm font-bold text-white">Legal Drafting &amp; Documentation</p>
+        <p className="text-heading-sm font-bold text-white">
+          <Bi en="Legal Drafting & Documentation" hi="विधिक प्रारूपण एवं प्रलेखन" />
+        </p>
       </RevealOnScroll>
 
       <div className="h-10 w-px bg-border" aria-hidden="true" />
@@ -36,7 +39,9 @@ export function DocumentationTree() {
               <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600 transition-colors duration-150 ease-out group-hover:bg-teal-600 group-hover:text-white">
                 <category.icon weight="light" className="size-5" aria-hidden="true" />
               </span>
-              <p className="text-body-md font-bold text-blue-900">{category.label}</p>
+              <p className="text-body-md font-bold text-blue-900">
+                <Bi en={category.label} hi={category.labelHi} />
+              </p>
             </RevealOnScroll>
 
             <div className="h-6 w-px bg-border" aria-hidden="true" />
@@ -49,7 +54,7 @@ export function DocumentationTree() {
                       <item.icon weight="light" className="size-5" aria-hidden="true" />
                     </span>
                     <p className="line-clamp-2 text-body-md font-medium text-blue-900">
-                      {item.title}
+                      <Bi en={item.title} hi={item.titleHi} />
                     </p>
                   </div>
                 </RevealOnScroll>

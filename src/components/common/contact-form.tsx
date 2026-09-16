@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Field, FieldGroup, FieldLabel, FieldError } from '@/components/ui/field'
+import { Bi } from '@/components/i18n/bi'
 import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
 
 const contactSchema = z.object({
@@ -40,7 +41,12 @@ export function ContactForm() {
   // build/implementation-roadmap.md Phase 12.
   function onSubmit(values: ContactFormValues) {
     console.log('Contact form submission (not yet wired to a backend):', values)
-    toast.success('Your inquiry has been received. A member of our team will respond shortly.')
+    toast.success(
+      <Bi
+        en="Your inquiry has been received. A member of our team will respond shortly."
+        hi="आपकी पूछताछ प्राप्त हो गई है। हमारी टीम का एक सदस्य शीघ्र आपसे संपर्क करेगा।"
+      />
+    )
     form.reset()
   }
 
@@ -54,13 +60,17 @@ export function ContactForm() {
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <FieldGroup>
         <Field data-invalid={!!errors.name}>
-          <FieldLabel htmlFor="contact-name">Full Name</FieldLabel>
+          <FieldLabel htmlFor="contact-name">
+            <Bi en="Full Name" hi="पूरा नाम" />
+          </FieldLabel>
           <Input id="contact-name" aria-invalid={!!errors.name} {...register('name')} />
           <FieldError errors={errors.name ? [errors.name] : undefined} />
         </Field>
 
         <Field data-invalid={!!errors.email}>
-          <FieldLabel htmlFor="contact-email">Email</FieldLabel>
+          <FieldLabel htmlFor="contact-email">
+            <Bi en="Email" hi="ईमेल" />
+          </FieldLabel>
           <Input
             id="contact-email"
             type="email"
@@ -72,7 +82,9 @@ export function ContactForm() {
         </Field>
 
         <Field>
-          <FieldLabel htmlFor="contact-phone">Phone (optional)</FieldLabel>
+          <FieldLabel htmlFor="contact-phone">
+            <Bi en="Phone (optional)" hi="फ़ोन (वैकल्पिक)" />
+          </FieldLabel>
           <Input
             id="contact-phone"
             type="tel"
@@ -82,7 +94,9 @@ export function ContactForm() {
         </Field>
 
         <Field>
-          <FieldLabel htmlFor="contact-practice-area">Practice Area of Interest</FieldLabel>
+          <FieldLabel htmlFor="contact-practice-area">
+            <Bi en="Practice Area of Interest" hi="रुचि का प्रैक्टिस क्षेत्र" />
+          </FieldLabel>
           <Select
             onValueChange={(value) => form.setValue('practiceArea', value)}
           >
@@ -93,7 +107,7 @@ export function ContactForm() {
               <SelectGroup>
                 {practiceAreaSlugs.map((slug) => (
                   <SelectItem key={slug} value={slug}>
-                    {practiceAreaDetails[slug].title}
+                    <Bi en={practiceAreaDetails[slug].title} hi={practiceAreaDetails[slug].titleHi} />
                   </SelectItem>
                 ))}
               </SelectGroup>
@@ -102,7 +116,9 @@ export function ContactForm() {
         </Field>
 
         <Field data-invalid={!!errors.message}>
-          <FieldLabel htmlFor="contact-message">Details of Your Matter</FieldLabel>
+          <FieldLabel htmlFor="contact-message">
+            <Bi en="Details of Your Matter" hi="अपने मामले का विवरण" />
+          </FieldLabel>
           <Textarea
             id="contact-message"
             rows={5}
@@ -113,7 +129,7 @@ export function ContactForm() {
         </Field>
 
         <Button type="submit" size="lg" disabled={isSubmitting}>
-          Submit Inquiry
+          <Bi en="Submit Inquiry" hi="पूछताछ भेजें" />
         </Button>
       </FieldGroup>
     </form>

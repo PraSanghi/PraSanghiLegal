@@ -27,8 +27,12 @@ describe('AttorneyCard', () => {
         practiceTags={['Civil Litigation', 'Regulatory & Advisory']}
       />
     )
+    // Two matches are expected: AttorneyCard always renders both a .lang-en
+    // and a .lang-hi span for the practice tags (see components/i18n/bi.tsx
+    // for the pattern) — CSS shows only one, but with no practiceTagsHi
+    // passed here both fall back to the same English text.
     expect(
-      screen.getByText('Civil Litigation · Regulatory & Advisory')
-    ).toBeInTheDocument()
+      screen.getAllByText('Civil Litigation · Regulatory & Advisory').length
+    ).toBeGreaterThan(0)
   })
 })

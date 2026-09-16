@@ -2,8 +2,10 @@ export interface PersonRecord {
   slug: string
   name: string
   role: string
+  roleHi: string
   isFounder?: boolean
   practiceTags: string[]
+  practiceTagsHi: string[]
   bioPending: boolean
   photo: string
 }
@@ -27,8 +29,10 @@ export const people: PersonRecord[] = [
     slug: 'rajwardhan-gawde',
     name: 'Rajwardhan Gawde',
     role: 'Founder',
+    roleHi: 'संस्थापक',
     isFounder: true,
     practiceTags: ['Litigation', 'Supreme Court & High Court Practice'],
+    practiceTagsHi: ['वाद-विवाद (लिटिगेशन)', 'उच्चतम न्यायालय एवं उच्च न्यायालय व्यवहार'],
     bioPending: true,
     // Unsplash (licensed stock photography, not the scraped-personal-photo
     // pools the other placeholderPhoto() entries use) — chosen for business
@@ -41,7 +45,9 @@ export const people: PersonRecord[] = [
     slug: 'bhavesh',
     name: 'Bhavesh',
     role: 'Associate',
+    roleHi: 'सहयोगी अधिवक्ता',
     practiceTags: [],
+    practiceTagsHi: [],
     bioPending: true,
     photo: placeholderPhoto('bhavesh', 'men'),
   },
@@ -49,7 +55,9 @@ export const people: PersonRecord[] = [
     slug: 'pankaj-giri-goswami',
     name: 'Pankaj Giri Goswami',
     role: 'Associate',
+    roleHi: 'सहयोगी अधिवक्ता',
     practiceTags: [],
+    practiceTagsHi: [],
     bioPending: true,
     photo: placeholderPhoto('pankaj-giri-goswami', 'men'),
   },
@@ -57,7 +65,9 @@ export const people: PersonRecord[] = [
     slug: 'manoj-garg',
     name: 'Manoj Garg',
     role: 'Associate',
+    roleHi: 'सहयोगी अधिवक्ता',
     practiceTags: [],
+    practiceTagsHi: [],
     bioPending: true,
     photo: placeholderPhoto('manoj-garg', 'men'),
   },
@@ -65,7 +75,9 @@ export const people: PersonRecord[] = [
     slug: 'kavita-sharma',
     name: 'Kavita Sharma',
     role: 'Associate',
+    roleHi: 'सहयोगी अधिवक्ता',
     practiceTags: [],
+    practiceTagsHi: [],
     bioPending: true,
     photo: placeholderPhoto('kavita-sharma', 'women'),
   },
@@ -73,7 +85,9 @@ export const people: PersonRecord[] = [
     slug: 'abhishek-mantri',
     name: 'Abhishek Mantri',
     role: 'Associate',
+    roleHi: 'सहयोगी अधिवक्ता',
     practiceTags: [],
+    practiceTagsHi: [],
     bioPending: true,
     photo: placeholderPhoto('abhishek-mantri', 'men'),
   },
@@ -81,7 +95,9 @@ export const people: PersonRecord[] = [
     slug: 'aditya-bharti',
     name: 'Aditya Bharti',
     role: 'Associate',
+    roleHi: 'सहयोगी अधिवक्ता',
     practiceTags: [],
+    practiceTagsHi: [],
     bioPending: true,
     photo: placeholderPhoto('aditya-bharti', 'men'),
   },

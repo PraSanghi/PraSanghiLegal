@@ -7,6 +7,7 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Field, FieldGroup, FieldLabel, FieldError } from '@/components/ui/field'
+import { Bi } from '@/components/i18n/bi'
 
 const quickApplySchema = z.object({
   name: z.string().min(2, 'Please enter your full name.'),
@@ -34,7 +35,7 @@ export function QuickApplyForm() {
   // ContactForm. See build/implementation-roadmap.md Phase 12.
   function onSubmit(values: QuickApplyValues) {
     console.log('Quick Apply submission (not yet wired to a backend):', values)
-    toast.success("Application received. We'll be in touch.")
+    toast.success(<Bi en="Application received. We'll be in touch." hi="आवेदन प्राप्त हो गया है। हम शीघ्र संपर्क करेंगे।" />)
     form.reset()
   }
 
@@ -48,13 +49,17 @@ export function QuickApplyForm() {
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <FieldGroup>
         <Field data-invalid={!!errors.name}>
-          <FieldLabel htmlFor="apply-name">Full Name</FieldLabel>
+          <FieldLabel htmlFor="apply-name">
+            <Bi en="Full Name" hi="पूरा नाम" />
+          </FieldLabel>
           <Input id="apply-name" aria-invalid={!!errors.name} {...register('name')} />
           <FieldError errors={errors.name ? [errors.name] : undefined} />
         </Field>
 
         <Field data-invalid={!!errors.email}>
-          <FieldLabel htmlFor="apply-email">Email</FieldLabel>
+          <FieldLabel htmlFor="apply-email">
+            <Bi en="Email" hi="ईमेल" />
+          </FieldLabel>
           <Input
             id="apply-email"
             type="email"
@@ -66,7 +71,9 @@ export function QuickApplyForm() {
         </Field>
 
         <Field data-invalid={!!errors.preferredRole}>
-          <FieldLabel htmlFor="apply-role">Preferred Role / Area of Interest</FieldLabel>
+          <FieldLabel htmlFor="apply-role">
+            <Bi en="Preferred Role / Area of Interest" hi="पसंदीदा पद / रुचि का क्षेत्र" />
+          </FieldLabel>
           <Input
             id="apply-role"
             placeholder="e.g. Litigation Associate, Regulatory Advisory"
@@ -77,7 +84,9 @@ export function QuickApplyForm() {
         </Field>
 
         <Field data-invalid={!!errors.linkedinOrCv}>
-          <FieldLabel htmlFor="apply-link">LinkedIn Profile or CV Link</FieldLabel>
+          <FieldLabel htmlFor="apply-link">
+            <Bi en="LinkedIn Profile or CV Link" hi="लिंक्डइन प्रोफ़ाइल अथवा सीवी लिंक" />
+          </FieldLabel>
           <Input
             id="apply-link"
             placeholder="https://"
@@ -88,7 +97,7 @@ export function QuickApplyForm() {
         </Field>
 
         <Button type="submit" size="lg" disabled={isSubmitting}>
-          Send Application
+          <Bi en="Send Application" hi="आवेदन भेजें" />
         </Button>
       </FieldGroup>
     </form>

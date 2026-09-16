@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { ContactForm } from '@/components/common/contact-form'
 import { PageBanner } from '@/components/common/page-banner'
+import { Bi } from '@/components/i18n/bi'
 import { pageMetadata } from '@/lib/site-config'
 
 export const metadata: Metadata = pageMetadata({
@@ -14,16 +15,20 @@ export const metadata: Metadata = pageMetadata({
 export default function ContactPage() {
   return (
     <>
-      <Breadcrumb segments={[{ label: 'Contact Us' }]} />
+      <Breadcrumb segments={[{ label: 'Contact Us', labelHi: 'संपर्क करें' }]} />
       <PageBanner
         eyebrow="Contact Us"
+        eyebrowHi="संपर्क करें"
         title="Schedule a Consultation"
+        titleHi="परामर्श निर्धारित करें"
         image="https://picsum.photos/seed/prasanghi-contact/1600/700"
       />
       <section className="mx-auto max-w-5xl px-6 py-12">
         <p className="max-w-2xl text-body-lg text-muted-foreground">
-          Share the details of your matter, and a member of our team will
-          respond promptly.
+          <Bi
+            en="Share the details of your matter, and a member of our team will respond promptly."
+            hi="अपने मामले का विवरण साझा करें, हमारी टीम का एक सदस्य शीघ्र आपसे संपर्क करेगा।"
+          />
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2">
@@ -39,16 +44,21 @@ export default function ContactPage() {
                 className="object-cover"
               />
             </div>
-            <h2 className="mt-8 text-heading-md font-bold text-blue-900">Office</h2>
+            <h2 className="mt-8 text-heading-md font-bold text-blue-900">
+              <Bi en="Office" hi="कार्यालय" />
+            </h2>
             <address className="mt-3 text-body-md not-italic text-muted-foreground">
-              Address pending confirmation — see project_requirements.md §10,
-              Open Item 3.
+              <Bi en="Address pending confirmation." hi="पता शीघ्र प्रकाशित किया जाएगा।" />
               <br />
-              Office hours pending confirmation.
+              <Bi en="Office hours pending confirmation." hi="कार्यालय समय शीघ्र प्रकाशित किया जाएगा।" />
             </address>
-            <h2 className="mt-8 text-heading-md font-bold text-blue-900">Email</h2>
+            <h2 className="mt-8 text-heading-md font-bold text-blue-900">
+              <Bi en="Email" hi="ईमेल" />
+            </h2>
             <p className="mt-3 text-body-md text-muted-foreground">
-              contact@prasanghi.example (placeholder pending a confirmed domain)
+              contact@prasanghi.example{' '}
+              <span className="lang-en">(placeholder pending a confirmed domain)</span>
+              <span className="lang-hi">(डोमेन पुष्टि होने तक अस्थायी)</span>
             </p>
           </div>
         </div>

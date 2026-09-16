@@ -5,9 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { CaretDown } from '@phosphor-icons/react/dist/ssr'
 import { Button } from '@/components/ui/button'
+import { Bi } from '@/components/i18n/bi'
 
 interface HeroCta {
   label: string
+  labelHi: string
   href: string
   variant?: 'default' | 'outline'
 }
@@ -15,8 +17,11 @@ interface HeroCta {
 interface HeroState {
   key: string
   eyebrow: string
+  eyebrowHi: string
   headline: string
+  headlineHi: string
   body: string
+  bodyHi: string
   ctas: HeroCta[]
   image: string
   theme: 'light' | 'dark'
@@ -30,11 +35,20 @@ const HERO_STATES: HeroState[] = [
   {
     key: 'practice',
     eyebrow: 'Litigation & Regulatory Counsel',
+    eyebrowHi: 'वाद-विवाद एवं नियामक परामर्श',
     headline: 'One legal partner for the courtroom and the compliance desk.',
+    headlineHi: 'न्यायालय एवं अनुपालन — दोनों के लिए एक ही विधिक साझेदार।',
     body: 'PraSanghi represents clients before the Supreme Court, High Courts, and subordinate forums, alongside a substantive regulatory and advisory practice — built as one firm, not two.',
+    bodyHi:
+      'प्रासंघी उच्चतम न्यायालय, उच्च न्यायालयों एवं अधीनस्थ फोरमों के समक्ष पक्षकारों का प्रतिनिधित्व करता है, साथ ही एक सशक्त नियामक व सलाहकार प्रैक्टिस भी संचालित करता है — एक ही फर्म के रूप में, दो अलग फर्मों के रूप में नहीं।',
     ctas: [
-      { label: 'Explore Practice Areas', href: '/practice-areas' },
-      { label: 'Regulatory & Advisory', href: '/practice-areas/regulatory-advisory', variant: 'outline' },
+      { label: 'Explore Practice Areas', labelHi: 'प्रैक्टिस क्षेत्र देखें', href: '/practice-areas' },
+      {
+        label: 'Regulatory & Advisory',
+        labelHi: 'नियामक एवं सलाहकार सेवाएँ',
+        href: '/practice-areas/regulatory-advisory',
+        variant: 'outline',
+      },
     ],
     image: 'https://picsum.photos/seed/prasanghi-practice/1200/1500',
     theme: 'light',
@@ -42,27 +56,39 @@ const HERO_STATES: HeroState[] = [
   {
     key: 'insights',
     eyebrow: 'Legal Insights',
+    eyebrowHi: 'विधिक विश्लेषण',
     headline: 'Considered analysis on the law that affects your business.',
+    headlineHi: 'आपके व्यवसाय को प्रभावित करने वाले कानून पर सुविचारित विश्लेषण।',
     body: 'From regulatory updates to litigation strategy, our Legal Insights section tracks the developments that matter to the clients we serve.',
-    ctas: [{ label: 'Explore Legal Insights', href: '/insights' }],
+    bodyHi:
+      'नियामक अद्यतनों से लेकर वाद-विवाद रणनीति तक, हमारा विधिक विश्लेषण खंड उन घटनाक्रमों पर नज़र रखता है जो हमारे ग्राहकों के लिए महत्वपूर्ण हैं।',
+    ctas: [{ label: 'Explore Legal Insights', labelHi: 'विधिक विश्लेषण देखें', href: '/insights' }],
     image: 'https://picsum.photos/seed/prasanghi-insights/1200/1500',
     theme: 'dark',
   },
   {
     key: 'people',
     eyebrow: 'Our Advocates',
+    eyebrowHi: 'हमारे अधिवक्ता',
     headline: 'A team built to be reached, not just retained.',
+    headlineHi: 'एक ऐसी टीम जिस तक पहुँचा जा सके, केवल नियुक्त न किया जाए।',
     body: 'Every matter at PraSanghi is led by a named advocate you can speak with directly — not routed through layers of unfamiliar staff.',
-    ctas: [{ label: 'Meet Our Advocates', href: '/people' }],
+    bodyHi:
+      'प्रासंघी में प्रत्येक मामले का नेतृत्व एक नामित अधिवक्ता करता है जिससे आप सीधे बात कर सकते हैं — न कि अपरिचित स्टाफ की कई परतों के माध्यम से।',
+    ctas: [{ label: 'Meet Our Advocates', labelHi: 'हमारे अधिवक्ताओं से मिलें', href: '/people' }],
     image: 'https://picsum.photos/seed/prasanghi-people/1200/1500',
     theme: 'light',
   },
   {
     key: 'vision',
     eyebrow: 'Our Vision',
+    eyebrowHi: 'हमारा दृष्टिकोण',
     headline: 'People, Justice, Progress.',
+    headlineHi: 'व्यक्ति, न्याय, प्रगति।',
     body: 'The Legal Ladder is a direction, not just a name — every matter we take on is measured against whether it moves a client meaningfully forward.',
-    ctas: [{ label: 'About PraSanghi', href: '/about' }],
+    bodyHi:
+      '"द लीगल लैडर" एक दिशा है, केवल एक नाम नहीं — हम जो भी मामला लेते हैं, उसे इस कसौटी पर परखा जाता है कि क्या वह ग्राहक को सार्थक रूप से आगे ले जाता है।',
+    ctas: [{ label: 'About PraSanghi', labelHi: 'प्रासंघी के बारे में', href: '/about' }],
     image: 'https://picsum.photos/seed/prasanghi-vision/1200/1500',
     theme: 'dark',
   },
@@ -167,17 +193,17 @@ export function PositioningHero() {
                     isDark ? 'text-teal-400' : 'text-teal-600'
                   }`}
                 >
-                  {state.eyebrow}
+                  <Bi en={state.eyebrow} hi={state.eyebrowHi} />
                 </p>
                 <h1 className="max-w-xl text-balance text-display-lg font-bold">
-                  {state.headline}
+                  <Bi en={state.headline} hi={state.headlineHi} />
                 </h1>
                 <p
                   className={`max-w-lg text-pretty text-body-lg ${
                     isDark ? 'text-dark-text-muted' : 'text-muted-foreground'
                   }`}
                 >
-                  {state.body}
+                  <Bi en={state.body} hi={state.bodyHi} />
                 </p>
                 <div className="flex flex-wrap gap-4">
                   {state.ctas.map((cta) => (
@@ -194,7 +220,9 @@ export function PositioningHero() {
                             : undefined
                       }
                     >
-                      <Link href={cta.href}>{cta.label}</Link>
+                      <Link href={cta.href}>
+                        <Bi en={cta.label} hi={cta.labelHi} />
+                      </Link>
                     </Button>
                   ))}
                 </div>
@@ -237,7 +265,7 @@ export function PositioningHero() {
                   i === activeIndex ? 'text-white' : 'text-white/60 hover:text-white'
                 }`}
               >
-                {s.eyebrow}
+                <Bi en={s.eyebrow} hi={s.eyebrowHi} />
                 <span
                   className={`inline-block size-2.5 shrink-0 rounded-full border-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)] ${
                     i === activeIndex ? 'border-white bg-white' : 'border-white/60 bg-transparent'

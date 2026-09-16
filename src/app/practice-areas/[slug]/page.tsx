@@ -8,6 +8,7 @@ import { AttorneyCard } from '@/components/cards/attorney-card'
 import { PracticeAreaCard } from '@/components/cards/practice-area-card'
 import { CtaBand } from '@/components/common/cta-band'
 import { RevealOnScroll } from '@/components/common/reveal-on-scroll'
+import { Bi } from '@/components/i18n/bi'
 import { Button } from '@/components/ui/button'
 import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
 import { practiceAreaCarouselImages } from '@/lib/practice-area-carousel-images'
@@ -55,8 +56,8 @@ export default async function PracticeAreaDetailPage({
     <>
       <Breadcrumb
         segments={[
-          { label: 'Practice Areas', href: '/practice-areas' },
-          { label: area.title },
+          { label: 'Practice Areas', labelHi: 'प्रैक्टिस क्षेत्र', href: '/practice-areas' },
+          { label: area.title, labelHi: area.titleHi },
         ]}
       />
 
@@ -64,16 +65,24 @@ export default async function PracticeAreaDetailPage({
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_minmax(0,420px)]">
           <RevealOnScroll>
             <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
-              Practice Area
+              <Bi en="Practice Area" hi="प्रैक्टिस क्षेत्र" />
             </p>
-            <h1 className="mt-2 text-display-lg font-bold text-blue-900">{area.title}</h1>
-            <p className="mt-4 text-body-lg text-muted-foreground">{area.summary}</p>
+            <h1 className="mt-2 text-display-lg font-bold text-blue-900">
+              <Bi en={area.title} hi={area.titleHi} />
+            </h1>
+            <p className="mt-4 text-body-lg text-muted-foreground">
+              <Bi en={area.summary} hi={area.summaryHi} />
+            </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <Button asChild>
-                <Link href="/contact">Discuss Your Matter</Link>
+                <Link href="/contact">
+                  <Bi en="Discuss Your Matter" hi="अपने मामले पर चर्चा करें" />
+                </Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/practice-areas">View All Practice Areas</Link>
+                <Link href="/practice-areas">
+                  <Bi en="View All Practice Areas" hi="सभी प्रैक्टिस क्षेत्र देखें" />
+                </Link>
               </Button>
             </div>
           </RevealOnScroll>
@@ -88,22 +97,24 @@ export default async function PracticeAreaDetailPage({
           <RevealOnScroll className="flex flex-col gap-4">
             {area.overview.map((paragraph, i) => (
               <p key={i} className="text-body-md text-blue-900">
-                {paragraph}
+                <Bi en={paragraph} hi={area.overviewHi[i] ?? paragraph} />
               </p>
             ))}
           </RevealOnScroll>
 
           <RevealOnScroll>
-            <h2 className="mt-12 text-heading-md font-bold text-blue-900">What&rsquo;s Included</h2>
+            <h2 className="mt-12 text-heading-md font-bold text-blue-900">
+              <Bi en="What's Included" hi="इसमें क्या शामिल है" />
+            </h2>
             <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
-              {area.specificServices.map((service) => (
+              {area.specificServices.map((service, i) => (
                 <li key={service} className="flex items-start gap-3 text-body-md text-blue-900">
                   <CheckCircle
                     weight="fill"
                     className="mt-0.5 size-5 shrink-0 text-teal-600"
                     aria-hidden="true"
                   />
-                  {service}
+                  <Bi en={service} hi={area.specificServicesHi[i] ?? service} />
                 </li>
               ))}
             </ul>
@@ -111,16 +122,20 @@ export default async function PracticeAreaDetailPage({
 
           {team.length > 0 ? (
             <RevealOnScroll>
-              <h2 className="mt-12 text-heading-md font-bold text-blue-900">Team</h2>
+              <h2 className="mt-12 text-heading-md font-bold text-blue-900">
+                <Bi en="Team" hi="टीम" />
+              </h2>
               <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
                 {team.map((person) => (
                   <AttorneyCard
                     key={person.slug}
                     name={person.name}
                     role={person.role}
+                    roleHi={person.roleHi}
                     photo={person.photo}
                     href={`/people/${person.slug}`}
                     practiceTags={person.practiceTags}
+                    practiceTagsHi={person.practiceTagsHi}
                   />
                 ))}
               </div>
@@ -132,14 +147,18 @@ export default async function PracticeAreaDetailPage({
       {related.length > 0 ? (
         <section className="mx-auto max-w-7xl px-6 py-16">
           <RevealOnScroll>
-            <h2 className="text-heading-lg font-bold text-blue-900">Related Practice Areas</h2>
+            <h2 className="text-heading-lg font-bold text-blue-900">
+              <Bi en="Related Practice Areas" hi="संबंधित प्रैक्टिस क्षेत्र" />
+            </h2>
           </RevealOnScroll>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {related.map((s, i) => (
               <RevealOnScroll key={s} delayMs={i * 75}>
                 <PracticeAreaCard
                   title={practiceAreaDetails[s].title}
+                  titleHi={practiceAreaDetails[s].titleHi}
                   description={practiceAreaDetails[s].summary}
+                  descriptionHi={practiceAreaDetails[s].summaryHi}
                   href={`/practice-areas/${s}`}
                   image={practiceAreaCarouselImages[s] ?? practiceAreaDetails[s].image}
                 />
@@ -151,7 +170,9 @@ export default async function PracticeAreaDetailPage({
 
       <CtaBand
         headline={`Consult Our ${area.title} Team`}
+        headlineHi={`हमारी ${area.titleHi} टीम से परामर्श करें`}
         ctaLabel="Schedule a Consultation"
+        ctaLabelHi="परामर्श निर्धारित करें"
         ctaHref="/contact"
       />
     </>

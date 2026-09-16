@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ibmPlexSans } from "@/lib/fonts";
+import { ibmPlexSans, ibmPlexSansDevanagari } from "@/lib/fonts";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { BciDisclaimerModal } from "@/components/compliance/bci-disclaimer-modal";
@@ -43,8 +43,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-IN"
-      className={`${ibmPlexSans.variable} h-full antialiased`}
+      className={`${ibmPlexSans.variable} ${ibmPlexSansDevanagari.variable} h-full antialiased`}
     >
+      <head>
+        {/* Applies a returning visitor's EN/HI choice (site-header.tsx
+            LanguageToggle) before first paint, so there's no flash of the
+            other language — the same technique a dark-mode toggle uses. */}
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var l=localStorage.getItem('prasanghi-lang');if(l==='hi'){document.documentElement.setAttribute('data-lang','hi');document.documentElement.setAttribute('lang','hi');}}catch(e){}",
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"

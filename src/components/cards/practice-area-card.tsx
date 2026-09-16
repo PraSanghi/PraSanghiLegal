@@ -2,10 +2,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
 import { cn } from '@/lib/utils'
+import { Bi } from '@/components/i18n/bi'
 
 export interface PracticeAreaCardProps {
   title: string
+  titleHi?: string
   description: string
+  descriptionHi?: string
   href: string
   image?: string
   className?: string
@@ -13,7 +16,9 @@ export interface PracticeAreaCardProps {
 
 export function PracticeAreaCard({
   title,
+  titleHi,
   description,
+  descriptionHi,
   href,
   image,
   className,
@@ -37,10 +42,14 @@ export function PracticeAreaCard({
         </div>
       ) : null}
       <div className="flex flex-1 flex-col gap-2 p-6">
-        <h3 className="text-heading-sm font-semibold text-blue-900">{title}</h3>
-        <p className="text-body-sm text-muted-foreground">{description}</p>
+        <h3 className="text-heading-sm font-semibold text-blue-900">
+          <Bi en={title} hi={titleHi ?? title} />
+        </h3>
+        <p className="text-body-sm text-muted-foreground">
+          <Bi en={description} hi={descriptionHi ?? description} />
+        </p>
         <span className="mt-2 flex items-center gap-1.5 text-body-sm font-semibold text-teal-600">
-          View Details
+          <Bi en="View Details" hi="विवरण देखें" />
           <ArrowRight
             weight="light"
             className="size-4 transition-transform duration-150 ease-out group-hover:translate-x-1"

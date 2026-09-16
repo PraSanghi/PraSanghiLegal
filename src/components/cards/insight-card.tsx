@@ -1,15 +1,25 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
+import { Bi } from '@/components/i18n/bi'
 
 export type InsightContentType = 'Legal Update' | 'Article' | 'Podcast'
+
+export const CONTENT_TYPE_HI: Record<InsightContentType, string> = {
+  'Legal Update': 'विधिक अद्यतन',
+  Article: 'लेख',
+  Podcast: 'पॉडकास्ट',
+}
 
 export interface InsightCardProps {
   contentType: InsightContentType
   date: string
   headline: string
+  headlineHi?: string
   excerpt?: string
+  excerptHi?: string
   practiceAreaTag?: string
+  practiceAreaTagHi?: string
   image?: string
   href: string
   className?: string
@@ -19,8 +29,11 @@ export function InsightCard({
   contentType,
   date,
   headline,
+  headlineHi,
   excerpt,
+  excerptHi,
   practiceAreaTag,
+  practiceAreaTagHi,
   image,
   href,
   className,
@@ -52,15 +65,25 @@ export function InsightCard({
       ) : null}
       <div className="flex flex-1 flex-col gap-3 p-6">
         <div className="flex items-center justify-between text-label-eyebrow tracking-wide text-teal-600">
-          <span className="uppercase">{contentType}</span>
+          <span className="uppercase">
+            <Bi en={contentType} hi={CONTENT_TYPE_HI[contentType]} />
+          </span>
           <time dateTime={date} className="text-muted-foreground">
             {formattedDate}
           </time>
         </div>
-        <h3 className="text-heading-sm font-semibold text-blue-900">{headline}</h3>
-        {excerpt ? <p className="text-body-sm text-muted-foreground">{excerpt}</p> : null}
+        <h3 className="text-heading-sm font-semibold text-blue-900">
+          <Bi en={headline} hi={headlineHi ?? headline} />
+        </h3>
+        {excerpt ? (
+          <p className="text-body-sm text-muted-foreground">
+            <Bi en={excerpt} hi={excerptHi ?? excerpt} />
+          </p>
+        ) : null}
         {practiceAreaTag ? (
-          <span className="mt-auto text-body-sm font-medium text-blue-500">{practiceAreaTag}</span>
+          <span className="mt-auto text-body-sm font-medium text-blue-500">
+            <Bi en={practiceAreaTag} hi={practiceAreaTagHi ?? practiceAreaTag} />
+          </span>
         ) : null}
       </div>
     </Link>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Hexagon, Target, Mountains, Diamond, Waves } from '@phosphor-icons/react/dist/ssr'
 import { cn } from '@/lib/utils'
+import { Bi } from '@/components/i18n/bi'
 
 /**
  * Abstract marks from the site's own icon library (Phosphor, light weight —
@@ -35,7 +36,7 @@ export function TrustedByStrip() {
   return (
     <div ref={trackRef}>
       <h2 className="text-center text-heading-lg font-bold text-blue-900">
-        Trusted by Leading Enterprises
+        <Bi en="Trusted by Leading Enterprises" hi="अग्रणी उद्यमों का विश्वास" />
       </h2>
       <span className="mx-auto mt-3 block h-0.5 w-12 bg-teal-500" aria-hidden="true" />
 

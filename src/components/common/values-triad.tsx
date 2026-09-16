@@ -1,9 +1,12 @@
 import type { Icon } from '@phosphor-icons/react'
+import { Bi } from '@/components/i18n/bi'
 
 export interface ValuesTriadItem {
   icon: Icon
   label: string
+  labelHi?: string
   body?: string
+  bodyHi?: string
 }
 
 export interface ValuesTriadProps {
@@ -16,8 +19,14 @@ export function ValuesTriad({ items }: ValuesTriadProps) {
       {items.map((item) => (
         <div key={item.label} className="flex flex-col items-start gap-3">
           <item.icon weight="light" className="size-8 text-teal-600" aria-hidden="true" />
-          <p className="text-heading-sm font-semibold text-blue-900">{item.label}</p>
-          {item.body ? <p className="text-body-sm text-muted-foreground">{item.body}</p> : null}
+          <p className="text-heading-sm font-semibold text-blue-900">
+            <Bi en={item.label} hi={item.labelHi ?? item.label} />
+          </p>
+          {item.body ? (
+            <p className="text-body-sm text-muted-foreground">
+              <Bi en={item.body} hi={item.bodyHi ?? item.body} />
+            </p>
+          ) : null}
         </div>
       ))}
     </div>

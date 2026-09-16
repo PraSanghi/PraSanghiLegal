@@ -151,3 +151,24 @@
     display: none;
   }
 }
+
+/* EN/HI language toggle (site-header.tsx LanguageToggle): both languages
+   are always in the DOM (see components/i18n/bi.tsx) — this is what
+   switches which one is visible, and swaps the brand typeface to its
+   Devanagari cut, with no client re-render, route change, or hydration
+   mismatch. `html[data-lang]` is set by a blocking inline script in
+   layout.tsx before first paint, so there's no flash of the wrong
+   language on load for a returning Hindi-preferring visitor. */
+.lang-hi {
+  display: none;
+}
+html[data-lang='hi'] {
+  --font-sans: var(--font-plex-sans-devanagari);
+
+  .lang-en {
+    display: none;
+  }
+  .lang-hi {
+    display: inline;
+  }
+}

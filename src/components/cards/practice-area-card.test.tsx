@@ -13,6 +13,10 @@ describe('PracticeAreaCard', () => {
     )
     const link = screen.getByRole('link', { name: /Regulatory & Advisory/i })
     expect(link).toHaveAttribute('href', '/practice-areas/regulatory-advisory')
-    expect(screen.getByText(/Fire safety certification/i)).toBeInTheDocument()
+    // Two matches are expected: the i18n Bi() helper always renders both an
+    // English and a Hindi span (see components/i18n/bi.tsx) — CSS shows only
+    // one, but with no descriptionHi passed here both fall back to the same
+    // English text.
+    expect(screen.getAllByText(/Fire safety certification/i).length).toBeGreaterThan(0)
   })
 })

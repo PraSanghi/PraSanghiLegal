@@ -6,6 +6,7 @@ import { z } from 'zod'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Bi } from '@/components/i18n/bi'
 
 const newsletterSchema = z.object({
   email: z.email('Enter a valid email address.'),
@@ -30,14 +31,19 @@ export function NewsletterSignupForm() {
 
   function onSubmit(values: NewsletterValues) {
     console.log('Newsletter signup (not yet wired to a mailing list):', values)
-    toast.success('Thank you for subscribing. You will receive our updates going forward.')
+    toast.success(
+      <Bi
+        en="Thank you for subscribing. You will receive our updates going forward."
+        hi="सदस्यता हेतु धन्यवाद। अब से आपको हमारे अद्यतन प्राप्त होते रहेंगे।"
+      />
+    )
     reset()
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="mt-3 flex flex-col gap-2">
       <label htmlFor="footer-newsletter-email" className="sr-only">
-        Email address
+        <Bi en="Email address" hi="ईमेल पता" />
       </label>
       <div className="flex gap-2">
         <Input
@@ -49,7 +55,7 @@ export function NewsletterSignupForm() {
           {...register('email')}
         />
         <Button type="submit" variant="secondary" disabled={isSubmitting}>
-          Subscribe
+          <Bi en="Subscribe" hi="सदस्यता लें" />
         </Button>
       </div>
       {errors.email ? (
