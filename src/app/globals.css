@@ -168,7 +168,22 @@ html[data-lang='hi'] {
   .lang-en {
     display: none;
   }
+
+  /* Devanagari carries matras and conjuncts above/below the baseline that
+     Latin line-height values (tuned for text-heading-lg, text-body-md,
+     etc. in the @theme block above) don't leave room for, and it reads
+     better a little larger than the equivalent Latin size. line-height
+     set here on the inline .lang-hi span only ever enlarges — never
+     shrinks — the line box for the line(s) it sits on (CSS2.1 §10.8), so
+     this is safe to apply globally without auditing every heading/body
+     utility that might wrap Hindi text. letter-spacing: normal cancels
+     tracking-wide/tracking-tight utilities (e.g. eyebrow labels) that
+     were tuned for Latin caps and otherwise pry Devanagari conjuncts
+     apart, breaking their shaping. */
   .lang-hi {
     display: inline;
+    line-height: 1.7;
+    letter-spacing: normal;
+    font-size: 1.06em;
   }
 }
