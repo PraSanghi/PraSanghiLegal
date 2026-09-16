@@ -18,6 +18,14 @@ export const siteTagline = 'The Legal Ladder'
 export const siteDescription =
   'PraSanghi is a Pan-India, full-service legal LLP combining Supreme Court and High Court litigation with regulatory, compliance, and advisory practice.'
 
+// Direct-contact channels (Call/WhatsApp) — intentionally left unset until
+// the founder confirms a public number, per project_requirements.md §10.
+// Consuming components (e.g. practice-area-modal.tsx) must render a
+// pending state rather than a broken tel:/wa.me link when these are null.
+export const contactPhoneDisplay: string | null = null // e.g. '+91 98765 43210'
+export const contactPhoneDialable: string | null = null // digits only, for tel:
+export const contactWhatsappNumber: string | null = null // digits only with country code, for wa.me
+
 // Next.js does not deep-merge a route's `openGraph`/`twitter` objects with
 // the root layout's — a child that sets one replaces it entirely, dropping
 // type/siteName/locale unless it re-declares them. Every page's metadata

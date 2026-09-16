@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { ArrowLeft, ArrowRight } from '@phosphor-icons/react/dist/ssr'
 import { Bi } from '@/components/i18n/bi'
+import { PracticeAreaModal } from '@/components/common/practice-area-modal'
 
 export interface PracticeAreaCarouselItem {
   slug: string
@@ -19,7 +19,7 @@ export interface PracticeAreaCarouselProps {
   items: PracticeAreaCarouselItem[]
 }
 
-const AUTO_ADVANCE_MS = 4000
+const AUTO_ADVANCE_MS = 2800
 
 // Discrete, one-card-at-a-time auto-advance — not a continuous marquee —
 // that loops forever: the item list is rendered twice back-to-back, and
@@ -33,6 +33,13 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
   const hoveredRef = useRef(false)
   const offScreenRef = useRef(false)
   const intervalRef = useRef<number | undefined>(undefined)
+  const activeItemRef = useRef<PracticeAreaCarouselItem | null>(null)
+  const [activeItem, setActiveItemState] = useState<PracticeAreaCarouselItem | null>(null)
+
+  function setActiveItem(item: PracticeAreaCarouselItem | null) {
+    activeItemRef.current = item
+    setActiveItemState(item)
+  }
 
   function stepWidth() {
     const card = trackRef.current?.querySelector<HTMLElement>('[data-carousel-card]')
@@ -57,7 +64,7 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
   function restartInterval() {
     window.clearInterval(intervalRef.current)
     intervalRef.current = window.setInterval(() => {
-      if (!hoveredRef.current && !offScreenRef.current) advance(1)
+      if (!hoveredRef.current && !offScreenRef.current && !activeItemRef.current) advance(1)
     }, AUTO_ADVANCE_MS)
   }
 
@@ -123,11 +130,12 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
             data-carousel-card
             className="relative h-96 w-[80%] shrink-0 snap-start sm:w-[46%] lg:w-[calc(32%-16px)]"
           >
-            <Link
-              href={`/practice-areas/${item.slug}`}
+            <button
+              type="button"
+              onClick={() => setActiveItem(item)}
               tabIndex={i < items.length ? 0 : -1}
               aria-hidden={i >= items.length}
-              className="group relative flex h-full w-full flex-col justify-end overflow-hidden bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="group relative flex h-full w-full flex-col justify-end overflow-hidden bg-muted text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               <Image
                 src={item.image}
@@ -145,7 +153,7 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
                   <Bi en={item.summary} hi={item.summaryHi} />
                 </p>
               </div>
-            </Link>
+            </button>
           </div>
         ))}
       </div>
@@ -166,6 +174,8 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
       >
         <ArrowRight weight="light" className="size-4" aria-hidden="true" />
       </button>
+
+      <PracticeAreaModal item={activeItem} onOpenChange={(open) => !open && setActiveItem(null)} />
     </div>
   )
 }

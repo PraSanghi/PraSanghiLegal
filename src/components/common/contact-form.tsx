@@ -29,10 +29,20 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>
 
-export function ContactForm() {
+export interface ContactFormProps {
+  defaultPracticeArea?: string
+}
+
+export function ContactForm({ defaultPracticeArea = '' }: ContactFormProps) {
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { name: '', email: '', phone: '', practiceArea: '', message: '' },
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      practiceArea: defaultPracticeArea,
+      message: '',
+    },
   })
 
   // NOTE: no backend endpoint exists yet — this is a structural placeholder.
@@ -98,6 +108,7 @@ export function ContactForm() {
             <Bi en="Practice Area of Interest" hi="रुचि का प्रैक्टिस क्षेत्र" />
           </FieldLabel>
           <Select
+            defaultValue={defaultPracticeArea || undefined}
             onValueChange={(value) => form.setValue('practiceArea', value)}
           >
             <SelectTrigger id="contact-practice-area" className="w-full">
