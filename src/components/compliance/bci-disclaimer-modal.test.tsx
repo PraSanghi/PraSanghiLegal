@@ -18,11 +18,11 @@ describe('BciDisclaimerModal', () => {
     expect(screen.getByText(/Bar Council of India/i)).toBeInTheDocument()
   })
 
-  it('hides the dialog and updates the store after clicking "I Agree"', async () => {
+  it('hides the dialog and updates the store after clicking "Proceed to Website"', async () => {
     const user = userEvent.setup()
     render(<BciDisclaimerModal />)
     await waitFor(() => screen.getByRole('dialog'))
-    await user.click(screen.getByRole('button', { name: /i agree/i }))
+    await user.click(screen.getByRole('button', { name: /proceed to website/i }))
     await waitFor(() => {
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     })
