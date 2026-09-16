@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { CaretDown } from '@phosphor-icons/react/dist/ssr'
 import { Button } from '@/components/ui/button'
 import { Bi } from '@/components/i18n/bi'
+import { PracticeAreaCarousel } from '@/components/common/practice-area-carousel'
+import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
+import { practiceAreaCarouselImages } from '@/lib/practice-area-carousel-images'
 
 interface HeroCta {
   label: string
@@ -25,7 +28,21 @@ interface HeroState {
   ctas: HeroCta[]
   image: string
   theme: 'light' | 'dark'
+  // Second slide only, per the client's explicit direction — swaps that
+  // slide's photograph for the same Practice Areas carousel used further
+  // down the homepage, so it's reachable one scroll in rather than only
+  // after scrolling past the whole hero.
+  showServicesCarousel?: boolean
 }
+
+const HERO_CAROUSEL_ITEMS = practiceAreaSlugs.map((slug) => ({
+  slug,
+  title: practiceAreaDetails[slug].title,
+  titleHi: practiceAreaDetails[slug].titleHi,
+  summary: practiceAreaDetails[slug].summary,
+  summaryHi: practiceAreaDetails[slug].summaryHi,
+  image: practiceAreaCarouselImages[slug],
+}))
 
 // Photography is a placeholder (deterministic seeded photos) pending real
 // firm photography — see design/design-system.md §9. Content per state
@@ -54,17 +71,17 @@ const HERO_STATES: HeroState[] = [
     theme: 'light',
   },
   {
-    key: 'insights',
-    eyebrow: 'Legal Insights',
-    eyebrowHi: 'विधिक विश्लेषण',
-    headline: 'Considered analysis on the law that affects your business.',
-    headlineHi: 'आपके व्यवसाय को प्रभावित करने वाले कानून पर सुविचारित विश्लेषण।',
-    body: 'From regulatory updates to litigation strategy, our Legal Insights section tracks the developments that matter to the clients we serve.',
-    bodyHi:
-      'नियामक अद्यतनों से लेकर वाद-विवाद रणनीति तक, हमारा विधिक विश्लेषण खंड उन घटनाक्रमों पर नज़र रखता है जो हमारे ग्राहकों के लिए महत्वपूर्ण हैं।',
-    ctas: [{ label: 'Explore Legal Insights', labelHi: 'विधिक विश्लेषण देखें', href: '/insights' }],
+    key: 'services',
+    eyebrow: 'Practice Areas',
+    eyebrowHi: 'प्रैक्टिस क्षेत्र',
+    headline: 'Every service we provide, in one place.',
+    headlineHi: 'हमारी हर सेवा, एक ही स्थान पर।',
+    body: 'Browse every practice area we cover, from litigation to compliance.',
+    bodyHi: 'वाद-विवाद से लेकर अनुपालन तक, हमारे सभी प्रैक्टिस क्षेत्र देखें।',
+    ctas: [],
     image: 'https://picsum.photos/seed/prasanghi-insights/1200/1500',
     theme: 'dark',
+    showServicesCarousel: true,
   },
   {
     key: 'people',
@@ -183,60 +200,93 @@ export function PositioningHero() {
                 sectionRefs.current[i] = el
               }}
               data-index={i}
-              className={`grid h-dvh snap-start snap-always grid-cols-1 overflow-hidden lg:grid-cols-2 ${
-                isDark ? 'bg-blue-900 text-dark-text-primary' : 'bg-white text-blue-900'
-              }`}
+              className={`h-dvh snap-start snap-always overflow-hidden ${
+                state.showServicesCarousel ? 'flex flex-col justify-center' : 'grid grid-cols-1 lg:grid-cols-2'
+              } ${isDark ? 'bg-blue-900 text-dark-text-primary' : 'bg-white text-blue-900'}`}
             >
-              <div className="flex flex-col justify-center gap-6 px-6 py-16 sm:px-12 lg:px-16 lg:py-0">
-                <p
-                  className={`text-label-eyebrow uppercase tracking-wide ${
-                    isDark ? 'text-teal-400' : 'text-teal-600'
-                  }`}
-                >
-                  <Bi en={state.eyebrow} hi={state.eyebrowHi} />
-                </p>
-                <h1 className="max-w-xl text-balance text-display-lg font-bold">
-                  <Bi en={state.headline} hi={state.headlineHi} />
-                </h1>
-                <p
-                  className={`max-w-lg text-pretty text-body-lg ${
-                    isDark ? 'text-dark-text-muted' : 'text-muted-foreground'
-                  }`}
-                >
-                  <Bi en={state.body} hi={state.bodyHi} />
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  {state.ctas.map((cta) => (
-                    <Button
-                      key={cta.href}
-                      asChild
-                      size="lg"
-                      variant={cta.variant === 'outline' ? 'outline' : 'default'}
-                      className={
-                        isDark && cta.variant !== 'outline'
-                          ? 'bg-white text-blue-900 hover:bg-off-white'
-                          : isDark && cta.variant === 'outline'
-                            ? 'border-white text-white hover:bg-white/10'
-                            : undefined
-                      }
+              {state.showServicesCarousel ? (
+                // Full-width takeover for this slide — no image column, no
+                // CTAs, just an intro line and the carousel itself as the
+                // content. Right padding at lg+ (asymmetric with the lg:pl)
+                // keeps the carousel's cards and arrow clear of the
+                // stepper overlay, which is always positioned over the
+                // right edge of the hero (see comment below).
+                <div className="flex flex-col gap-10 px-6 py-16 sm:px-12 lg:py-0 lg:pl-16 lg:pr-[260px]">
+                  <div className="max-w-2xl">
+                    <p
+                      className={`text-label-eyebrow uppercase tracking-wide ${
+                        isDark ? 'text-teal-400' : 'text-teal-600'
+                      }`}
                     >
-                      <Link href={cta.href}>
-                        <Bi en={cta.label} hi={cta.labelHi} />
-                      </Link>
-                    </Button>
-                  ))}
+                      <Bi en={state.eyebrow} hi={state.eyebrowHi} />
+                    </p>
+                    <h1 className="mt-2 text-balance text-display-lg font-bold">
+                      <Bi en={state.headline} hi={state.headlineHi} />
+                    </h1>
+                    <p
+                      className={`mt-4 text-pretty text-body-lg ${
+                        isDark ? 'text-dark-text-muted' : 'text-muted-foreground'
+                      }`}
+                    >
+                      <Bi en={state.body} hi={state.bodyHi} />
+                    </p>
+                  </div>
+                  <PracticeAreaCarousel items={HERO_CAROUSEL_ITEMS} />
                 </div>
-              </div>
+              ) : (
+                <>
+                  <div className="flex flex-col justify-center gap-6 px-6 py-16 sm:px-12 lg:px-16 lg:py-0">
+                    <p
+                      className={`text-label-eyebrow uppercase tracking-wide ${
+                        isDark ? 'text-teal-400' : 'text-teal-600'
+                      }`}
+                    >
+                      <Bi en={state.eyebrow} hi={state.eyebrowHi} />
+                    </p>
+                    <h1 className="max-w-xl text-balance text-display-lg font-bold">
+                      <Bi en={state.headline} hi={state.headlineHi} />
+                    </h1>
+                    <p
+                      className={`max-w-lg text-pretty text-body-lg ${
+                        isDark ? 'text-dark-text-muted' : 'text-muted-foreground'
+                      }`}
+                    >
+                      <Bi en={state.body} hi={state.bodyHi} />
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                      {state.ctas.map((cta) => (
+                        <Button
+                          key={cta.href}
+                          asChild
+                          size="lg"
+                          variant={cta.variant === 'outline' ? 'outline' : 'default'}
+                          className={
+                            isDark && cta.variant !== 'outline'
+                              ? 'bg-white text-blue-900 hover:bg-off-white'
+                              : isDark && cta.variant === 'outline'
+                                ? 'border-white text-white hover:bg-white/10'
+                                : undefined
+                          }
+                        >
+                          <Link href={cta.href}>
+                            <Bi en={cta.label} hi={cta.labelHi} />
+                          </Link>
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
 
-              <div className="relative min-h-[320px] lg:min-h-full">
-                <Image
-                  src={state.image}
-                  alt=""
-                  fill
-                  priority={i === 0}
-                  className="object-cover"
-                />
-              </div>
+                  <div className="relative min-h-[320px] lg:min-h-full">
+                    <Image
+                      src={state.image}
+                      alt=""
+                      fill
+                      priority={i === 0}
+                      className="object-cover"
+                    />
+                  </div>
+                </>
+              )}
             </section>
           )
         })}
