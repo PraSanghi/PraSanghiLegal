@@ -130,7 +130,7 @@ export default function HomePage() {
             </p>
           </RevealOnScroll>
 
-          <div className="mt-14 overflow-x-auto">
+          <div className="mt-14 overflow-x-auto overflow-y-hidden">
             <DocumentationTree />
           </div>
 
