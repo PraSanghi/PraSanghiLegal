@@ -50,6 +50,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             LanguageToggle) before first paint, so there's no flash of the
             other language — the same technique a dark-mode toggle uses. */}
         <script
+          // Browser extensions (ad blockers, color pickers, etc.) commonly
+          // inject their own <script> tag as the first child of <head>
+          // before React hydrates, which React then diffs against this
+          // element and reports as a hydration mismatch. suppressHydrationWarning
+          // silences only that false positive for this one node — see
+          // https://react.dev/link/hydration-mismatch.
+          suppressHydrationWarning
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html:
