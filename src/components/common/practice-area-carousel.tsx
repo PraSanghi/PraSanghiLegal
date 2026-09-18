@@ -34,6 +34,7 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
   const offScreenRef = useRef(false)
   const intervalRef = useRef<number | undefined>(undefined)
   const activeItemRef = useRef<PracticeAreaCarouselItem | null>(null)
+  const advancingRef = useRef(false)
   const [activeItem, setActiveItemState] = useState<PracticeAreaCarouselItem | null>(null)
 
   function setActiveItem(item: PracticeAreaCarouselItem | null) {
@@ -46,19 +47,48 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
     return card ? card.offsetWidth + 24 : 0
   }
 
+  // One copy's width, computed as an exact multiple of a single card's step
+  // rather than track.scrollWidth / 2 — the latter can be a fraction of a
+  // pixel off (flex rounding), which would make every wrap land slightly
+  // off a card boundary and drift further with each cycle.
+  function setWidth() {
+    return stepWidth() * items.length
+  }
+
   function normalizeLoop() {
     const track = trackRef.current
     if (!track) return
-    const setWidth = track.scrollWidth / 2
-    if (track.scrollLeft >= setWidth) track.scrollLeft -= setWidth
-    else if (track.scrollLeft < 0) track.scrollLeft += setWidth
+    const width = setWidth()
+    // The track has scroll-behavior: smooth (Tailwind's scroll-smooth), and
+    // per spec that also governs plain `scrollLeft = x` assignments — so a
+    // "silent" jump-back would actually animate across every card, looking
+    // exactly like scrolling back to the first item. behavior: 'instant'
+    // explicitly overrides the CSS smooth behavior to make it truly instant.
+    if (track.scrollLeft >= width) track.scrollTo({ left: track.scrollLeft - width, behavior: 'instant' })
   }
 
   function advance(direction: 1 | -1) {
     const track = trackRef.current
     if (!track) return
-    track.scrollBy({ left: direction * stepWidth(), behavior: 'smooth' })
-    window.setTimeout(normalizeLoop, 500)
+    const step = stepWidth()
+    // Suppress the ambient 'scrollend' normalizer for the duration of this
+    // advance: it would otherwise see the instant teleport below land AT
+    // the copy boundary and immediately fold it back — before the smooth
+    // scroll a few lines down even starts — undoing the teleport and
+    // making "Previous" from the first card do nothing.
+    advancingRef.current = true
+    // scrollLeft can't go negative, so a native scrollBy(-step) from near
+    // the start would just clamp at 0 instead of wrapping. Teleport
+    // (no animation) into the second, identical copy first, then scroll
+    // backward smoothly from there — the jump itself is invisible.
+    if (direction === -1 && track.scrollLeft < step) {
+      track.scrollTo({ left: track.scrollLeft + setWidth(), behavior: 'instant' })
+    }
+    track.scrollBy({ left: direction * step, behavior: 'smooth' })
+    window.setTimeout(() => {
+      normalizeLoop()
+      advancingRef.current = false
+    }, 500)
   }
 
   function restartInterval() {
@@ -72,7 +102,10 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
     const track = trackRef.current
     if (!track) return
 
-    track.addEventListener('scrollend', normalizeLoop)
+    const handleScrollEnd = () => {
+      if (!advancingRef.current) normalizeLoop()
+    }
+    track.addEventListener('scrollend', handleScrollEnd)
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -87,7 +120,7 @@ export function PracticeAreaCarousel({ items }: PracticeAreaCarouselProps) {
     }
 
     return () => {
-      track.removeEventListener('scrollend', normalizeLoop)
+      track.removeEventListener('scrollend', handleScrollEnd)
       observer.disconnect()
       window.clearInterval(intervalRef.current)
     }
