@@ -15,7 +15,13 @@ export function FounderSpotlight({ founder }: FounderSpotlightProps) {
   return (
     <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,320px)_1fr]">
       <div className="relative aspect-4/5 w-full max-w-xs overflow-hidden bg-muted">
-        <Image src={founder.photo} alt={founder.name} fill className="object-cover" />
+        <Image
+          src={founder.photo}
+          alt={founder.name}
+          fill
+          sizes="(min-width: 1024px) 320px, 100vw"
+          className="object-cover"
+        />
       </div>
       <div>
         <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">

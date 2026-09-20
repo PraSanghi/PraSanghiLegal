@@ -26,7 +26,7 @@ export function AttorneyProfileHeader({
   return (
     <div className="relative">
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted sm:aspect-[21/9]">
-        <Image src={photo} alt="" fill className="object-cover" />
+        <Image src={photo} alt="" fill sizes="100vw" className="object-cover" />
       </div>
       <div className="relative mx-4 -mt-16 max-w-xl border border-border bg-blue-900 p-6 text-dark-text-primary sm:mx-8 sm:-mt-20 sm:p-8">
         <h1 className="text-heading-lg font-bold">{name}</h1>

@@ -52,7 +52,14 @@ export default async function InsightDetailPage({
         ]}
       />
       <div className="relative mx-auto mt-4 aspect-[21/9] w-full max-w-5xl overflow-hidden bg-muted px-0">
-        <Image src={item.image} alt="" fill priority className="object-cover" />
+        <Image
+          src={item.image}
+          alt=""
+          fill
+          priority
+          sizes="(min-width: 1024px) 1024px, 100vw"
+          className="object-cover"
+        />
       </div>
       <article className="mx-auto max-w-3xl px-6 py-12">
         <div className="flex items-center gap-3 text-label-eyebrow uppercase tracking-wide text-teal-600">

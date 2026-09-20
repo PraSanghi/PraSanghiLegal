@@ -44,6 +44,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en-IN"
       className={`${ibmPlexSans.variable} ${ibmPlexSansDevanagari.variable} h-full antialiased`}
+      // The inline script below intentionally sets lang/data-lang on this
+      // element before hydration for a returning Hindi-preferring visitor,
+      // which will always differ from the server-rendered "en-IN" — a real,
+      // self-inflicted mismatch, not a bug. suppressHydrationWarning here
+      // only silences that one expected case (React only applies it one
+      // level deep, so it doesn't hide mismatches elsewhere in the tree).
+      suppressHydrationWarning
     >
       <head>
         {/* Applies a returning visitor's EN/HI choice (site-header.tsx

@@ -87,7 +87,14 @@ export default async function PracticeAreaDetailPage({
             </div>
           </RevealOnScroll>
           <RevealOnScroll delayMs={75} className="relative aspect-4/5 w-full overflow-hidden bg-muted">
-            <Image src={image} alt="" fill priority className="object-cover" />
+            <Image
+              src={image}
+              alt=""
+              fill
+              priority
+              sizes="(min-width: 1024px) 420px, 100vw"
+              className="object-cover"
+            />
           </RevealOnScroll>
         </div>
       </section>

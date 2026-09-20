@@ -49,7 +49,13 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
             </DialogHeader>
 
             <div className="relative mt-4 h-48 w-full shrink-0 overflow-hidden bg-muted">
-              <Image src={item.image} alt="" fill className="object-cover" />
+              <Image
+                src={item.image}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 420px, 90vw"
+                className="object-cover"
+              />
             </div>
 
             {detail.specificServices.length > 0 ? (

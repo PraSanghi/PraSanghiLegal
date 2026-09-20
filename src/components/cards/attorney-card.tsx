@@ -33,7 +33,13 @@ export function AttorneyCard({
       )}
     >
       <div className="relative aspect-4/5 w-full overflow-hidden bg-muted">
-        <Image src={photo} alt={`${name}, ${role}`} fill className="object-cover" />
+        <Image
+          src={photo}
+          alt={`${name}, ${role}`}
+          fill
+          sizes="(min-width: 640px) 50vw, 100vw"
+          className="object-cover"
+        />
       </div>
       <div className="flex flex-col gap-1 p-4">
         <p className="text-heading-sm font-semibold text-blue-900">{name}</p>
