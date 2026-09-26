@@ -52,15 +52,15 @@ export function PracticeAreaGrid({ items }: PracticeAreaGridProps) {
                     <Bi en={item.title} hi={item.titleHi} />
                   </p>
                 </div>
-                {/* Back: description — blue-700, not blue-900: this grid
-                    sits on a blue-900 hero panel, so a blue-900 back face
-                    would be visually identical to the page behind it and
-                    the card would appear to vanish on flip. blue-700 is
-                    already the site's tested white-on-dark-blue combo
-                    (primary button fill), so it reads as a distinct card
-                    without introducing a new color. */}
-                <div className="absolute inset-0 flex flex-col justify-center overflow-hidden bg-blue-700 p-3 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                  <p className="line-clamp-5 text-body-sm text-white/90">
+                {/* Back: description — off-white, not another dark blue:
+                    this grid sits on a solid blue-900 hero panel, so any
+                    dark back face (blue-900, blue-700) reads as barely
+                    distinct from the page itself. A light card flipping up
+                    against the dark backdrop is unambiguous at a glance,
+                    and blue-900 text on off-white is the site's standard
+                    body-text pairing everywhere else. */}
+                <div className="absolute inset-0 flex flex-col justify-center overflow-hidden bg-off-white p-3 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <p className="line-clamp-5 text-body-sm text-blue-900">
                     <Bi en={item.summary} hi={item.summaryHi} />
                   </p>
                 </div>
