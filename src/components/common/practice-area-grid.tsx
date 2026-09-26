@@ -31,23 +31,34 @@ export function PracticeAreaGrid({ items }: PracticeAreaGridProps) {
     <div>
       <ul className="grid grid-cols-2 gap-3 pb-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {items.map((item) => (
-          <li key={item.slug} className="relative h-36 sm:h-40 lg:h-44">
+          <li key={item.slug} className="relative h-36 [perspective:1000px] sm:h-40 lg:h-44">
             <button
               type="button"
               onClick={() => setActiveItem(item)}
-              className="group relative flex h-full w-full flex-col justify-end overflow-hidden bg-muted text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="group relative block h-full w-full text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
-              <Image
-                src={item.image}
-                alt=""
-                fill
-                sizes="(min-width: 1280px) 18vw, (min-width: 1024px) 23vw, (min-width: 640px) 31vw, 47vw"
-                className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/25 to-transparent" />
-              <p className="relative p-3 text-body-sm font-bold leading-tight text-white">
-                <Bi en={item.title} hi={item.titleHi} />
-              </p>
+              <div className="relative h-full w-full transition-transform duration-500 ease-out [transform-style:preserve-3d] motion-reduce:transition-none group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)]">
+                {/* Front: image + heading only */}
+                <div className="absolute inset-0 flex flex-col justify-end overflow-hidden bg-muted [backface-visibility:hidden]">
+                  <Image
+                    src={item.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1280px) 18vw, (min-width: 1024px) 23vw, (min-width: 640px) 31vw, 47vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/25 to-transparent" />
+                  <p className="relative p-3 text-body-sm font-bold leading-tight text-white">
+                    <Bi en={item.title} hi={item.titleHi} />
+                  </p>
+                </div>
+                {/* Back: description */}
+                <div className="absolute inset-0 flex flex-col justify-center overflow-hidden bg-blue-900 p-3 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <p className="line-clamp-5 text-body-sm text-white/90">
+                    <Bi en={item.summary} hi={item.summaryHi} />
+                  </p>
+                </div>
+              </div>
             </button>
           </li>
         ))}
