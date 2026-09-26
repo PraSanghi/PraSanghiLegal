@@ -29,9 +29,9 @@ export function PracticeAreaGrid({ items }: PracticeAreaGridProps) {
 
   return (
     <div>
-      <ul className="grid grid-cols-1 gap-4 pb-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-3 pb-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {items.map((item) => (
-          <li key={item.slug} className="relative h-64 sm:h-72">
+          <li key={item.slug} className="relative h-36 sm:h-40 lg:h-44">
             <button
               type="button"
               onClick={() => setActiveItem(item)}
@@ -41,18 +41,13 @@ export function PracticeAreaGrid({ items }: PracticeAreaGridProps) {
                 src={item.image}
                 alt=""
                 fill
-                sizes="(min-width: 1280px) 23vw, (min-width: 1024px) 31vw, (min-width: 640px) 47vw, 90vw"
+                sizes="(min-width: 1280px) 18vw, (min-width: 1024px) 23vw, (min-width: 640px) 31vw, 47vw"
                 className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent" />
-              <div className="relative p-5">
-                <p className="text-heading-sm font-bold text-white">
-                  <Bi en={item.title} hi={item.titleHi} />
-                </p>
-                <p className="mt-1.5 line-clamp-2 text-body-sm text-white/85">
-                  <Bi en={item.summary} hi={item.summaryHi} />
-                </p>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/25 to-transparent" />
+              <p className="relative p-3 text-body-sm font-bold leading-tight text-white">
+                <Bi en={item.title} hi={item.titleHi} />
+              </p>
             </button>
           </li>
         ))}
