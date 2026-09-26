@@ -32,4 +32,6 @@ export const practiceAreaCarouselImages: Record<string, string> = {
     'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=1200&auto=format&fit=crop',
   'cyber-defamation':
     'https://images.unsplash.com/photo-1548092372-0d1bd40894a3?q=80&w=1200&auto=format&fit=crop',
+  'other-legal-matters':
+    'https://images.unsplash.com/photo-1619771699034-fec6b1aabde3?q=80&w=1200&auto=format&fit=crop',
 }

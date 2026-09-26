@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { CaretDown } from '@phosphor-icons/react/dist/ssr'
 import { Button } from '@/components/ui/button'
 import { Bi } from '@/components/i18n/bi'
-import { PracticeAreaCarousel } from '@/components/common/practice-area-carousel'
+import { PracticeAreaGrid } from '@/components/common/practice-area-grid'
 import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
 import { practiceAreaCarouselImages } from '@/lib/practice-area-carousel-images'
 
@@ -35,7 +35,7 @@ interface HeroState {
   showServicesCarousel?: boolean
 }
 
-const HERO_CAROUSEL_ITEMS = practiceAreaSlugs.map((slug) => ({
+const HERO_GRID_ITEMS = practiceAreaSlugs.map((slug) => ({
   slug,
   title: practiceAreaDetails[slug].title,
   titleHi: practiceAreaDetails[slug].titleHi,
@@ -200,38 +200,35 @@ export function PositioningHero() {
                 sectionRefs.current[i] = el
               }}
               data-index={i}
-              className={`h-dvh snap-start snap-always overflow-hidden ${
-                state.showServicesCarousel ? 'flex flex-col justify-center' : 'grid grid-cols-1 lg:grid-cols-2'
+              className={`snap-start snap-always ${
+                state.showServicesCarousel
+                  ? 'min-h-dvh flex flex-col'
+                  : 'h-dvh overflow-hidden grid grid-cols-1 lg:grid-cols-2'
               } ${isDark ? 'bg-blue-900 text-dark-text-primary' : 'bg-white text-blue-900'}`}
             >
               {state.showServicesCarousel ? (
                 // Full-width takeover for this slide — no image column, no
-                // CTAs, just an intro line and the carousel itself as the
-                // content. Right padding at lg+ (asymmetric with the lg:pl)
-                // keeps the carousel's cards and arrow clear of the
-                // stepper overlay, which is always positioned over the
-                // right edge of the hero (see comment below).
-                <div className="flex flex-col gap-10 px-6 py-16 sm:px-12 lg:py-0 lg:pl-16 lg:pr-[260px]">
-                  <div className="max-w-2xl">
-                    <p
-                      className={`text-label-eyebrow uppercase tracking-wide ${
-                        isDark ? 'text-teal-400' : 'text-teal-600'
-                      }`}
-                    >
-                      <Bi en={state.eyebrow} hi={state.eyebrowHi} />
-                    </p>
-                    <h1 className="mt-2 text-balance text-display-lg font-bold">
-                      <Bi en={state.headline} hi={state.headlineHi} />
-                    </h1>
-                    <p
-                      className={`mt-4 text-pretty text-body-lg ${
-                        isDark ? 'text-dark-text-muted' : 'text-muted-foreground'
-                      }`}
-                    >
-                      <Bi en={state.body} hi={state.bodyHi} />
-                    </p>
-                  </div>
-                  <PracticeAreaCarousel items={HERO_CAROUSEL_ITEMS} />
+                // CTAs, no eyebrow/body clutter, just one heading line and
+                // every service listed below it, using nearly the full
+                // section width (edge-to-edge, no max-w-7xl cap unlike the
+                // rest of the homepage). lg:pr-64 is the one exception, not
+                // a leftover: it's the stepper's actual measured footprint
+                // ("Litigation & Regulatory Counsel" is the longest label)
+                // — removing it puts the stepper's white text directly on
+                // top of a card's white title, an actual legibility bug,
+                // not a style preference. Deliberately NOT height-capped
+                // like the other 3 states: with 15 services there's no
+                // fitting "one screen, no scrolling" honestly, so this
+                // section grows taller than the viewport and scrolls as
+                // part of the single page scroll (the outer snap container
+                // handles that natively) — a nested scrollbar-inside-a-
+                // scrollbar was tried and is exactly the confusing thing
+                // to avoid.
+                <div className="flex w-full flex-col gap-6 px-6 py-10 sm:px-12 lg:py-16 lg:pr-64">
+                  <h1 className="max-w-2xl text-balance text-display-lg font-bold">
+                    <Bi en={state.headline} hi={state.headlineHi} />
+                  </h1>
+                  <PracticeAreaGrid items={HERO_GRID_ITEMS} />
                 </div>
               ) : (
                 <>

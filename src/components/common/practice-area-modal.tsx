@@ -15,10 +15,10 @@ import { ContactForm } from '@/components/common/contact-form'
 import { Bi } from '@/components/i18n/bi'
 import { practiceAreaDetails } from '@/lib/practice-areas-data'
 import { contactPhoneDisplay, contactPhoneDialable, contactWhatsappNumber } from '@/lib/site-config'
-import type { PracticeAreaCarouselItem } from '@/components/common/practice-area-carousel'
+import type { PracticeAreaGridItem } from '@/components/common/practice-area-grid'
 
 export interface PracticeAreaModalProps {
-  item: PracticeAreaCarouselItem | null
+  item: PracticeAreaGridItem | null
   onOpenChange: (open: boolean) => void
 }
 

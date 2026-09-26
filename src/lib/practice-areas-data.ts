@@ -558,6 +558,40 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
     teamSlugs: [],
     image: placeholderImage('cyber-defamation'),
   },
+  // Deliberate catch-all, not a filler card — see design-system.md §1 "no
+  // fabricated scale": this stays honest and generic rather than inventing
+  // a specific competency. Kept as a real PracticeAreaDetail entry (not
+  // special-cased in the grid/modal) so it gets its own page, nav
+  // placement, and sitemap entry for free, the same as any other area.
+  'other-legal-matters': {
+    slug: 'other-legal-matters',
+    title: 'Other Legal Matters',
+    titleHi: 'अन्य विधिक मामले',
+    summary:
+      'A matter that doesn’t fit neatly into a category above? Tell us about it — we’ll advise honestly on whether, and how, we can help.',
+    summaryHi:
+      'क्या आपका मामला उपरोक्त किसी श्रेणी में ठीक से फिट नहीं बैठता? हमें इसके बारे में बताएं — हम ईमानदारी से सलाह देंगे कि क्या और कैसे हम सहायता कर सकते हैं।',
+    overview: [
+      'Not every matter announces itself as a clean category, and PraSanghi would rather hear about it directly than have a prospective client guess which page to click.',
+      'If it turns out to be outside what we handle, we’ll say so plainly rather than take on a brief we can’t serve well.',
+    ],
+    overviewHi: [
+      'हर मामला किसी स्पष्ट श्रेणी में फिट नहीं बैठता, और प्रासंघी यह पसंद करेगा कि संभावित मुवक्किल अनुमान लगाने के बजाय सीधे हमसे संपर्क करे।',
+      'यदि मामला हमारी कार्यक्षेत्र से बाहर है, तो हम स्पष्ट रूप से यह बता देंगे, बजाय ऐसा ब्रीफ स्वीकार करने के जिसे हम भली-भांति नहीं संभाल सकते।',
+    ],
+    specificServices: [
+      'Matters spanning more than one practice area',
+      'Situations you’re unsure how to categorize',
+      'A first opinion on whether legal action is warranted at all',
+    ],
+    specificServicesHi: [
+      'एक से अधिक प्रैक्टिस क्षेत्र से जुड़े मामले',
+      'ऐसी स्थितियाँ जिन्हें आप वर्गीकृत करने में अनिश्चित हैं',
+      'क्या विधिक कार्रवाई आवश्यक है भी या नहीं, इस पर प्रारंभिक राय',
+    ],
+    teamSlugs: [],
+    image: placeholderImage('other-legal-matters'),
+  },
 }
 
 export const practiceAreaSlugs = Object.keys(practiceAreaDetails)
