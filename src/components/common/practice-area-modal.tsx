@@ -60,7 +60,7 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
 
             {detail.specificServices.length > 0 ? (
               <ul className="mt-4 flex flex-col gap-2">
-                {detail.specificServices.slice(0, 4).map((service, i) => (
+                {detail.specificServices.slice(0, 3).map((service, i) => (
                   <li key={service} className="flex items-start gap-2 text-body-sm text-blue-900">
                     <span
                       className="mt-2 size-1 shrink-0 rounded-full bg-teal-600"
@@ -71,6 +71,27 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
                 ))}
               </ul>
             ) : null}
+
+            <dl className="mt-4 flex flex-col gap-2 border-t border-border pt-4">
+              {(
+                [
+                  ['What', 'क्या', detail.quickFacts.what, detail.quickFactsHi.what],
+                  ['When', 'कब', detail.quickFacts.when, detail.quickFactsHi.when],
+                  ['How', 'कैसे', detail.quickFacts.how, detail.quickFactsHi.how],
+                  ['Why Us', 'क्यों', detail.quickFacts.why, detail.quickFactsHi.why],
+                  ['Where', 'कहाँ', detail.quickFacts.where, detail.quickFactsHi.where],
+                ] as const
+              ).map(([labelEn, labelHi, valueEn, valueHi]) => (
+                <div key={labelEn} className="flex gap-3">
+                  <dt className="w-14 shrink-0 text-label-eyebrow font-semibold uppercase tracking-wide text-teal-600">
+                    <Bi en={labelEn} hi={labelHi} />
+                  </dt>
+                  <dd className="text-body-sm text-blue-900">
+                    <Bi en={valueEn} hi={valueHi} />
+                  </dd>
+                </div>
+              ))}
+            </dl>
 
             <Link
               href={`/practice-areas/${item.slug}`}

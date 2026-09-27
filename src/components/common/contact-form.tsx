@@ -21,8 +21,8 @@ import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-dat
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Please enter your full name.'),
-  email: z.email('Please enter a valid email address.'),
-  phone: z.string().optional(),
+  phone: z.string().trim().min(10, 'Please enter a valid phone number.'),
+  email: z.email('Please enter a valid email address.').optional().or(z.literal('')),
   practiceArea: z.string().optional(),
   message: z.string().min(10, 'Please include a few details about your matter.'),
 })
@@ -77,9 +77,23 @@ export function ContactForm({ defaultPracticeArea = '' }: ContactFormProps) {
           <FieldError errors={errors.name ? [errors.name] : undefined} />
         </Field>
 
+        <Field data-invalid={!!errors.phone}>
+          <FieldLabel htmlFor="contact-phone">
+            <Bi en="Phone" hi="फ़ोन" />
+          </FieldLabel>
+          <Input
+            id="contact-phone"
+            type="tel"
+            className="text-base sm:text-sm"
+            aria-invalid={!!errors.phone}
+            {...register('phone')}
+          />
+          <FieldError errors={errors.phone ? [errors.phone] : undefined} />
+        </Field>
+
         <Field data-invalid={!!errors.email}>
           <FieldLabel htmlFor="contact-email">
-            <Bi en="Email" hi="ईमेल" />
+            <Bi en="Email (optional)" hi="ईमेल (वैकल्पिक)" />
           </FieldLabel>
           <Input
             id="contact-email"
@@ -89,18 +103,6 @@ export function ContactForm({ defaultPracticeArea = '' }: ContactFormProps) {
             {...register('email')}
           />
           <FieldError errors={errors.email ? [errors.email] : undefined} />
-        </Field>
-
-        <Field>
-          <FieldLabel htmlFor="contact-phone">
-            <Bi en="Phone (optional)" hi="फ़ोन (वैकल्पिक)" />
-          </FieldLabel>
-          <Input
-            id="contact-phone"
-            type="tel"
-            className="text-base sm:text-sm"
-            {...register('phone')}
-          />
         </Field>
 
         <Field>

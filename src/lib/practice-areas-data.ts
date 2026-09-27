@@ -14,8 +14,21 @@ export interface PracticeAreaDetail {
   // distinct layer over specificServices, not duplicated on every area.
   commonSituations?: string[]
   commonSituationsHi?: string[]
+  // Compact What/When/How/Why(-us)/Where block for the practice-area
+  // modal (practice-area-modal.tsx) — a quick-orientation layer distinct
+  // from overview (narrative) and commonSituations (scenario examples).
+  quickFacts: QuickFacts
+  quickFactsHi: QuickFacts
   teamSlugs: string[]
   image: string
+}
+
+export interface QuickFacts {
+  what: string
+  when: string
+  how: string
+  why: string
+  where: string
 }
 
 // Deterministic placeholder photography (seeded by slug) pending real firm
@@ -71,6 +84,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'जांच के दौरान आपको पुलिस द्वारा उत्पीड़न अथवा दबाव का सामना करना पड़ रहा है',
       'आपको बिना कारण बताए हिरासत में लिया गया है',
     ],
+    quickFacts: {
+      what: 'Civil and criminal representation before subordinate courts.',
+      when: "You're facing an FIR, a civil suit, an arrest, or need bail.",
+      how: 'The same advocate takes your matter from filing through final hearing.',
+      why: 'One firm handles both the courtroom fight and the compliance angle.',
+      where: 'Subordinate and district courts across the jurisdictions we practice in.',
+    },
+    quickFactsHi: {
+      what: 'अधीनस्थ न्यायालयों में सिविल एवं आपराधिक मामलों का प्रतिनिधित्व।',
+      when: 'आपके विरुद्ध एफआईआर दर्ज है, सिविल वाद है, गिरफ्तारी हुई है, अथवा जमानत चाहिए।',
+      how: 'आपका मामला दाखिल करने से अंतिम सुनवाई तक वही अधिवक्ता संभालता है।',
+      why: 'न्यायालयीन पैरवी एवं अनुपालन — दोनों पक्ष एक ही फर्म संभालती है।',
+      where: 'जिन क्षेत्राधिकारों में हम कार्यरत हैं, वहाँ के अधीनस्थ एवं जिला न्यायालय।',
+    },
     teamSlugs: ['rajwardhan-gawde'],
     image: placeholderImage('litigation'),
   },
@@ -101,6 +128,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'विशेष अनुमति याचिका (एसएलपी)',
       'संवैधानिक एवं नियामक चुनौतियाँ',
     ],
+    quickFacts: {
+      what: 'Writ petitions, appeals, and constitutional matters before higher courts.',
+      when: 'A subordinate court order needs to be challenged or appealed.',
+      how: 'The advocate who took your brief argues the appeal — no hand-off.',
+      why: 'Continuity of counsel from the trial court to the highest bench.',
+      where: 'High Courts and the Supreme Court of India.',
+    },
+    quickFactsHi: {
+      what: 'उच्च न्यायालयों के समक्ष रिट याचिका, अपील एवं संवैधानिक मामले।',
+      when: 'अधीनस्थ न्यायालय के आदेश को चुनौती देनी हो अथवा अपील करनी हो।',
+      how: 'जिस अधिवक्ता ने ब्रीफ लिया, वही अपील की पैरवी करता है — कोई स्थानांतरण नहीं।',
+      why: 'विचारण न्यायालय से उच्चतम न्यायालय तक अधिवक्ता की निरंतरता।',
+      where: 'उच्च न्यायालय एवं भारत का उच्चतम न्यायालय।',
+    },
     teamSlugs: ['rajwardhan-gawde'],
     image: placeholderImage('supreme-court'),
   },
@@ -132,6 +173,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'मध्यस्थ अधिनिर्णयों का प्रवर्तन एवं चुनौती',
       'मध्यस्थता (मीडिएशन) एवं सुलह',
     ],
+    quickFacts: {
+      what: 'Arbitration proceedings and mediation, in place of a courtroom trial.',
+      when: 'A commercial dispute needs resolving faster or more privately than litigation allows.',
+      how: 'We advise on strategy before proceedings begin, then represent you throughout.',
+      why: 'Access to the Adjudix Dispute Resolution Institute network.',
+      where: 'Domestic arbitral tribunals and mediation forums.',
+    },
+    quickFactsHi: {
+      what: 'न्यायालयीन वाद के स्थान पर मध्यस्थता कार्यवाही एवं सुलह।',
+      when: 'किसी वाणिज्यिक विवाद का शीघ्र अथवा निजी समाधान चाहिए।',
+      how: 'कार्यवाही आरंभ होने से पूर्व रणनीति सलाह, फिर पूर्ण प्रतिनिधित्व।',
+      why: 'Adjudix Dispute Resolution Institute नेटवर्क तक पहुंच।',
+      where: 'घरेलू मध्यस्थ न्यायाधिकरण एवं सुलह मंच।',
+    },
     teamSlugs: [],
     image: placeholderImage('arbitration'),
   },
@@ -163,6 +218,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'दुकान एवं प्रतिष्ठान पंजीकरण',
       'सांविधिक एवं नियामक अनुपालन परामर्श',
     ],
+    quickFacts: {
+      what: 'Certifications and statutory registrations a business needs to operate lawfully.',
+      when: "You're starting, expanding, or renewing a compliance-linked registration.",
+      how: 'We identify exactly which certificate or registration applies to you.',
+      why: 'Compliance work treated with the same depth as litigation, not an afterthought.',
+      where: 'Filed with the relevant municipal, MSME, and regulatory authorities.',
+    },
+    quickFactsHi: {
+      what: 'व्यवसाय संचालन हेतु आवश्यक प्रमाणन एवं सांविधिक पंजीकरण।',
+      when: 'व्यवसाय आरंभ, विस्तार अथवा अनुपालन-संबंधी पंजीकरण के नवीनीकरण के समय।',
+      how: 'आपके लिए उपयुक्त सही प्रमाणपत्र अथवा पंजीकरण की पहचान करते हैं।',
+      why: 'अनुपालन कार्य को वाद-विवाद जितनी ही गंभीरता से लिया जाता है।',
+      where: 'संबंधित नगरपालिका, एमएसएमई एवं नियामक प्राधिकरणों के समक्ष।',
+    },
     teamSlugs: [],
     image: placeholderImage('regulatory'),
   },
@@ -201,6 +270,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'रणनीतिक गठबंधन एवं संयुक्त उद्यम (जॉइंट वेंचर) अनुबंध',
       'बी2बी एवं बी2सी (सिंगल-ब्रांड/मल्टी-ब्रांड) ई-कॉमर्स हेतु लेनदेन प्रलेखन',
     ],
+    quickFacts: {
+      what: 'The commercial agreements a growing business actually signs.',
+      when: "You're entering a vendor, investment, partnership, or franchise deal.",
+      how: "Every clause is drafted for your specific deal, not copied from a template.",
+      why: 'Specificity is what protects you in the clause that actually gets disputed.',
+      where: 'Wherever your business operates and its counterparties are based.',
+    },
+    quickFactsHi: {
+      what: 'बढ़ते व्यवसाय द्वारा वास्तव में हस्ताक्षरित वाणिज्यिक अनुबंध।',
+      when: 'आप विक्रेता, निवेश, साझेदारी अथवा फ्रैंचाइज़ी सौदे में प्रवेश कर रहे हों।',
+      how: 'प्रत्येक शर्त आपके विशिष्ट सौदे हेतु तैयार होती है, किसी टेम्पलेट से नहीं।',
+      why: 'विशिष्टता ही उस शर्त में सुरक्षा देती है जो वास्तव में विवादित होती है।',
+      where: 'जहाँ भी आपका व्यवसाय अथवा प्रतिपक्ष स्थित हो।',
+    },
     teamSlugs: [],
     image: placeholderImage('contracts'),
   },
@@ -260,6 +343,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'बिल्डर द्वारा बिक्री के समय वादा की गई सुविधाएँ उपलब्ध नहीं कराई गई हैं',
       'निर्माण अथवा बिक्री से पूर्व कृषि भूमि को अकृषिक उपयोग हेतु रूपांतरित कराना आवश्यक है',
     ],
+    quickFacts: {
+      what: 'Notices, affidavits, MOUs, and land-related filings drafted precisely.',
+      when: "A builder is delaying possession, land is disputed, or a filing is due.",
+      how: "Documents drafted to withstand scrutiny the first time they're used.",
+      why: "Precision matters most in paperwork you can't afford to redo.",
+      where: 'Courts, Tahasildar and Prant offices, and registration authorities.',
+    },
+    quickFactsHi: {
+      what: 'नोटिस, शपथ-पत्र, एमओयू एवं भूमि-संबंधी दाखिलों का सटीक प्रारूपण।',
+      when: 'बिल्डर कब्ज़ा देने में देरी करे, भूमि विवादित हो, अथवा कोई दाखिला शेष हो।',
+      how: 'दस्तावेज़ पहली बार उपयोग में आने पर ही निर्दोष सिद्ध हों, इसी तरह तैयार किए जाते हैं।',
+      why: 'जिस कागज़ी कार्रवाई को दोबारा नहीं किया जा सकता, वहाँ सटीकता सर्वाधिक मायने रखती है।',
+      where: 'न्यायालय, तहसीलदार एवं प्रांत कार्यालय, तथा पंजीकरण प्राधिकरण।',
+    },
     teamSlugs: [],
     image: placeholderImage('legal-drafting-documents'),
   },
@@ -289,6 +386,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'आरंभिक चरण का नियामक एवं लाइसेंसिंग अनुपालन',
       'टर्म शीट एवं आरंभिक निवेश प्रलेखन',
     ],
+    quickFacts: {
+      what: 'Entity selection, incorporation, and founder agreements for early-stage businesses.',
+      when: "You're about to register a company or bring on a co-founder.",
+      how: 'We sequence the legal decisions founders need before day one.',
+      why: 'The agreements that prevent a co-founder dispute later are the ones easiest to skip early.',
+      where: 'Registrar of Companies and related incorporation authorities.',
+    },
+    quickFactsHi: {
+      what: 'आरंभिक चरण के व्यवसायों हेतु संस्था चयन, निगमन एवं संस्थापक अनुबंध।',
+      when: 'आप कंपनी पंजीकृत करने अथवा सह-संस्थापक जोड़ने वाले हों।',
+      how: 'प्रथम दिवस से पूर्व आवश्यक विधिक निर्णयों को क्रमबद्ध करते हैं।',
+      why: 'जो अनुबंध बाद में सह-संस्थापक विवाद रोकते हैं, वही शुरुआत में सबसे अधिक टाले जाते हैं।',
+      where: 'कंपनी रजिस्ट्रार एवं संबंधित निगमन प्राधिकरण।',
+    },
     teamSlugs: [],
     image: placeholderImage('start-up-support'),
   },
@@ -325,6 +436,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'हाइब्रिड इक्विटी-लिंक्ड व्यवस्थाएँ (सर्विसेज़-फॉर-इक्विटी, ऐड-फॉर-इक्विटी)',
       'आरंभिक-चरण एवं विकास-चरण की कंपनियों हेतु परामर्श',
     ],
+    quickFacts: {
+      what: 'Governance, structuring, and statutory compliance for companies at every stage.',
+      when: "You're restructuring, raising investment, or due for statutory filings.",
+      how: "Advisory scoped to your company's actual stage, from foundation to growth.",
+      why: 'Board-level advice without a big-firm retainer.',
+      where: 'Applicable wherever your company is registered and operates.',
+    },
+    quickFactsHi: {
+      what: 'प्रत्येक चरण की कंपनियों हेतु शासन, संरचना एवं सांविधिक अनुपालन।',
+      when: 'आप पुनर्गठन, निवेश जुटाने अथवा सांविधिक दाखिलों की समय-सीमा में हों।',
+      how: 'परामर्श आपकी कंपनी के वास्तविक चरण के अनुरूप निर्धारित होता है।',
+      why: 'बड़ी फर्म के प्रतिधारण-शुल्क के बिना बोर्ड-स्तरीय सलाह।',
+      where: 'जहाँ भी आपकी कंपनी पंजीकृत एवं संचालित हो।',
+    },
     teamSlugs: [],
     image: placeholderImage('corporate-law'),
   },
@@ -364,6 +489,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'आपको प्राप्त एक चेक अनादरित (बाउंस) हो गया है',
       'कोई साझेदार व्यावसायिक निधि का दुरुपयोग कर रहा है अथवा साझेदारी अनुबंध का उल्लंघन कर रहा है',
     ],
+    quickFacts: {
+      what: 'Demand notices, negotiated settlement, and recovery suits for unpaid dues.',
+      when: "A loan, cheque, or business investment hasn't been repaid.",
+      how: 'We start with a demand notice and escalate only as far as needed.',
+      why: 'Recovery pursued efficiently, without defaulting straight to litigation.',
+      where: 'Civil courts, and negotiation directly with the other party.',
+    },
+    quickFactsHi: {
+      what: 'बकाया राशि हेतु मांग सूचना, समझौता एवं वसूली वाद।',
+      when: 'ऋण, चेक अथवा व्यावसायिक निवेश की राशि वापस न मिली हो।',
+      how: 'मांग सूचना से आरंभ कर आवश्यकतानुसार ही आगे बढ़ते हैं।',
+      why: 'बिना सीधे वाद में गए, प्रभावी ढंग से वसूली।',
+      where: 'सिविल न्यायालय, तथा दूसरे पक्ष के साथ प्रत्यक्ष वार्ता।',
+    },
     teamSlugs: [],
     image: placeholderImage('debt-recovery'),
   },
@@ -392,6 +531,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'पेटेंट एवं डिज़ाइन पंजीकरण सहायता',
       'बौद्धिक संपदा उल्लंघन विवाद',
     ],
+    quickFacts: {
+      what: 'Registration and protection for trademarks, copyrights, and inventions.',
+      when: "You're launching a brand or your IP has been copied.",
+      how: 'We register what\'s protectable, then act on any infringement.',
+      why: 'Brand protection handled before it becomes a dispute, not after.',
+      where: 'Trademark, copyright, and patent registries, plus relevant courts.',
+    },
+    quickFactsHi: {
+      what: 'ट्रेडमार्क, कॉपीराइट एवं आविष्कारों का पंजीकरण तथा संरक्षण।',
+      when: 'आप नया ब्रांड लॉन्च कर रहे हों अथवा आपकी बौद्धिक संपदा की नकल हुई हो।',
+      how: 'संरक्षणीय संपदा को पंजीकृत करते हैं, फिर उल्लंघन पर कार्यवाही करते हैं।',
+      why: 'विवाद बनने से पहले ही ब्रांड का संरक्षण।',
+      where: 'ट्रेडमार्क, कॉपीराइट एवं पेटेंट रजिस्ट्री, तथा संबंधित न्यायालय।',
+    },
     teamSlugs: [],
     image: placeholderImage('intellectual-property'),
   },
@@ -431,6 +584,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'त्यागपत्र के पश्चात नियोक्ता द्वारा पूर्ण एवं अंतिम निपटान (फुल एंड फाइनल सेटलमेंट) रोका जा रहा है',
       'आपसे उन शर्तों पर कार्य कराया जा रहा है जो सहमति में तय शर्तों से मेल नहीं खातीं',
     ],
+    quickFacts: {
+      what: 'Employment contracts, workplace compliance, and labour dispute representation.',
+      when: "You've been terminated unfairly, gone unpaid, or need workplace policies drafted.",
+      how: 'Advice for either the employer or the employee side, matched to your position.',
+      why: 'Labour law fluency that protects both compliance and people.',
+      where: 'Labour courts and tribunals, and directly with employers.',
+    },
+    quickFactsHi: {
+      what: 'सेवायोजन अनुबंध, कार्यस्थल अनुपालन एवं श्रम विवाद प्रतिनिधित्व।',
+      when: 'आपको अनुचित रूप से हटाया गया, वेतन नहीं मिला, अथवा नीति प्रारूपण चाहिए।',
+      how: 'नियोक्ता एवं कर्मचारी — दोनों पक्षों हेतु, आपकी स्थिति के अनुरूप सलाह।',
+      why: 'श्रम विधि की समझ जो अनुपालन एवं व्यक्ति, दोनों की रक्षा करे।',
+      where: 'श्रम न्यायालय एवं अधिकरण, तथा नियोक्ता के साथ प्रत्यक्ष वार्ता।',
+    },
     teamSlugs: [],
     image: placeholderImage('employment-law'),
   },
@@ -477,6 +644,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'आप घरेलू हिंसा का सामना कर रहे हैं और संरक्षण अथवा राहत चाहते हैं',
       'जीवनसाथी सहमत अथवा न्यायालय-आदेशित भरण-पोषण राशि नहीं दे रहा/रही है',
     ],
+    quickFacts: {
+      what: 'Divorce, custody, maintenance, and domestic matters, handled discreetly.',
+      when: "You're separating, disputing custody, or facing domestic violence.",
+      how: 'Every matter is handled with the discretion family disputes require.',
+      why: 'Representation that protects both your rights and your privacy.',
+      where: 'Family courts within the applicable jurisdiction.',
+    },
+    quickFactsHi: {
+      what: 'विवाह-विच्छेद, अभिरक्षा, भरण-पोषण एवं पारिवारिक मामले, पूर्ण गोपनीयता से।',
+      when: 'आप पृथक हो रहे हों, अभिरक्षा विवाद में हों, अथवा घरेलू हिंसा का सामना कर रहे हों।',
+      how: 'प्रत्येक मामला उस गोपनीयता के साथ संभाला जाता है जो पारिवारिक विवाद मांगते हैं।',
+      why: 'ऐसा प्रतिनिधित्व जो आपके अधिकार एवं निजता, दोनों की रक्षा करे।',
+      where: 'संबंधित क्षेत्राधिकार के पारिवारिक न्यायालय।',
+    },
     teamSlugs: [],
     image: placeholderImage('family-matrimonial'),
   },
@@ -516,6 +697,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'किसी एयरलाइन अथवा यात्रा कंपनी ने भुगतान के बावजूद वादा की गई सेवा नहीं दी',
       'किसी सेवा प्रदाता ने वादा की गई सेवा प्रदान नहीं की',
     ],
+    quickFacts: {
+      what: 'Redress for defective products, denied claims, and service failures.',
+      when: "A seller, insurer, or service provider hasn't delivered what was promised.",
+      how: "We file the complaint with the commission that fits your claim's value.",
+      why: "You shouldn't have to absorb the cost of someone else's failure.",
+      where: 'District and State Consumer Commissions.',
+    },
+    quickFactsHi: {
+      what: 'दोषपूर्ण उत्पाद, अस्वीकृत दावों एवं सेवा-विफलता हेतु निवारण।',
+      when: 'विक्रेता, बीमाकर्ता अथवा सेवा प्रदाता ने वादा पूरा न किया हो।',
+      how: 'आपके दावे के मूल्य के अनुरूप उपयुक्त आयोग में परिवाद दाखिल करते हैं।',
+      why: 'किसी और की चूक का मूल्य आपको नहीं चुकाना चाहिए।',
+      where: 'जिला एवं राज्य उपभोक्ता आयोग।',
+    },
     teamSlugs: [],
     image: placeholderImage('consumer-protection'),
   },
@@ -555,6 +750,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'आपकी तस्वीरों अथवा व्यक्तिगत जानकारी का बिना सहमति उपयोग किया जा रहा है',
       'आपने किसी ऑनलाइन वित्तीय धोखाधड़ी में धन गंवाया है',
     ],
+    quickFacts: {
+      what: 'Protection against online defamation, impersonation, and cyber fraud.',
+      when: 'False claims, a fake profile, or financial fraud has targeted you online.',
+      how: 'We move quickly — notices and IT Act complaints filed without delay.',
+      why: 'Online harm compounds the longer it goes unaddressed.',
+      where: 'Civil courts and cyber cells, under the IT Act.',
+    },
+    quickFactsHi: {
+      what: 'ऑनलाइन मानहानि, प्रतिरूपण एवं साइबर धोखाधड़ी से संरक्षण।',
+      when: 'झूठे दावे, फ़र्ज़ी प्रोफाइल, अथवा वित्तीय धोखाधड़ी ने आपको ऑनलाइन निशाना बनाया हो।',
+      how: 'हम शीघ्रता से कार्य करते हैं — सूचना एवं आईटी अधिनियम परिवाद बिना विलंब दाखिल किए जाते हैं।',
+      why: 'ऑनलाइन क्षति जितनी देर अनसुलझी रहे, उतनी ही बढ़ती जाती है।',
+      where: 'सिविल न्यायालय एवं साइबर सेल, आईटी अधिनियम के अंतर्गत।',
+    },
     teamSlugs: [],
     image: placeholderImage('cyber-defamation'),
   },
@@ -589,6 +798,20 @@ export const practiceAreaDetails: Record<string, PracticeAreaDetail> = {
       'ऐसी स्थितियाँ जिन्हें आप वर्गीकृत करने में अनिश्चित हैं',
       'क्या विधिक कार्रवाई आवश्यक है भी या नहीं, इस पर प्रारंभिक राय',
     ],
+    quickFacts: {
+      what: "A matter that doesn't fit neatly into the categories above.",
+      when: "You're unsure which practice area applies, or it spans more than one.",
+      how: "Tell us what's happening — we'll tell you honestly if and how we can help.",
+      why: "You shouldn't have to self-diagnose your legal problem before asking for help.",
+      where: "Wherever the matter needs to be pursued, once we've scoped it.",
+    },
+    quickFactsHi: {
+      what: 'ऐसा मामला जो ऊपर दी गई किसी श्रेणी में ठीक से फिट न बैठे।',
+      when: 'आप अनिश्चित हों कि कौन-सा प्रैक्टिस क्षेत्र लागू होता है, अथवा मामला एक से अधिक क्षेत्रों से जुड़ा हो।',
+      how: 'हमें बताइए क्या हो रहा है — हम ईमानदारी से बताएंगे कि क्या और कैसे सहायता कर सकते हैं।',
+      why: 'सहायता मांगने से पहले आपको स्वयं अपनी विधिक समस्या का निदान करने की आवश्यकता नहीं।',
+      where: 'मामले का दायरा समझने के पश्चात, जहाँ भी आवश्यक हो।',
+    },
     teamSlugs: [],
     image: placeholderImage('other-legal-matters'),
   },
