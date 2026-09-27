@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Bi } from '@/components/i18n/bi'
 import { PracticeAreaModal } from '@/components/common/practice-area-modal'
@@ -26,12 +26,50 @@ export interface PracticeAreaGridProps {
 // is a plain flowing grid, not a scrollable panel.
 export function PracticeAreaGrid({ items }: PracticeAreaGridProps) {
   const [activeItem, setActiveItem] = useState<PracticeAreaGridItem | null>(null)
+  const gridRef = useRef<HTMLUListElement>(null)
+  const [revealed, setRevealed] = useState(false)
+
+  // Entrance stagger for the grid's first reveal — 15 cards appearing at
+  // once (the site's single biggest visual moment) read as considerably
+  // less "designed" than a quick per-card stagger. 25ms/item keeps the
+  // full 15-card cascade under 400ms — fast enough not to feel like a
+  // wait, per improve-animations AUDIT.md §7 (30-80ms stagger guidance,
+  // biased toward the fast end for a grid this size, not a handful of
+  // cards).
+  useEffect(() => {
+    const el = gridRef.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setRevealed(true)
+      return
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <div>
-      <ul className="grid grid-cols-2 gap-3 pb-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {items.map((item) => (
-          <li key={item.slug} className="relative h-36 [perspective:1000px] sm:h-40 lg:h-44">
+      <ul
+        ref={gridRef}
+        className="grid grid-cols-2 gap-3 pb-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+      >
+        {items.map((item, i) => (
+          <li
+            key={item.slug}
+            style={{ transitionDelay: `${Math.min(i, 14) * 25}ms` }}
+            className={`relative h-36 [perspective:1000px] transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none sm:h-40 lg:h-44 ${
+              revealed ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
+            }`}
+          >
             <button
               type="button"
               onClick={() => setActiveItem(item)}

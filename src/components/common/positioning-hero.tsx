@@ -115,6 +115,18 @@ export function PositioningHero() {
   const containerRef = useRef<HTMLDivElement>(null)
   const sectionRefs = useRef<(HTMLElement | null)[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
+  // First-load-only entrance (design-system.md §7: "a subtle fade/slide-up
+  // (150–200ms, ease-out) on hero content on first load only") — applies
+  // just to state 0's text panel, the only one visible before any
+  // scrolling happens. Starts false so the initial paint is the "before"
+  // state, then flips true a frame later so the transition actually runs;
+  // motion-reduce:transition-none (applied below) keeps this instant for
+  // reduced-motion users without needing a separate branch here.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setMounted(true))
+    return () => cancelAnimationFrame(id)
+  }, [])
 
   // Native CSS scroll-snap drives the "scroll down cycles through all 4
   // states, then the page continues" behavior the client asked for —
@@ -232,7 +244,13 @@ export function PositioningHero() {
                 </div>
               ) : (
                 <>
-                  <div className="flex flex-col justify-center gap-6 px-6 py-16 sm:px-12 lg:px-16 lg:py-0">
+                  <div
+                    className={`flex flex-col justify-center gap-6 px-6 py-16 sm:px-12 lg:px-16 lg:py-0 ${
+                      i === 0
+                        ? `transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'}`
+                        : ''
+                    }`}
+                  >
                     <p
                       className={`text-label-eyebrow uppercase tracking-wide ${
                         isDark ? 'text-teal-400' : 'text-teal-600'

@@ -119,6 +119,16 @@
   --text-button-label: 0.9375rem;
   --text-button-label--line-height: 1;
 
+  /* Overrides Tailwind's built-in ease-out/ease-in-out theme tokens (not
+     new utilities) — every existing `ease-out`/`ease-in-out` class
+     site-wide (buttons, cards, dialogs, reveal-on-scroll, ...) picks up
+     these stronger curves automatically, no markup changes needed.
+     Tailwind's stock ease-out (cubic-bezier(0,0,0.2,1)) is the "too weak
+     for deliberate motion" curve — see improve-animations skill AUDIT.md
+     §2. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
   --animate-marquee: marquee 28s linear infinite;
   @keyframes marquee {
     from {
