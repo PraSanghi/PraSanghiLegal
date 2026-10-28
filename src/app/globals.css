@@ -58,6 +58,38 @@
   --ring: var(--gold-500);
 }
 
+/* Classic palette (the original navy / teal, pre-Oct 2026), offered as an
+   option via the header ThemeToggle. Same token names remapped, so every
+   ink-* / gold-* utility follows: ink → navy, gold → teal. Headings go
+   back to the sans face it was designed with. */
+html[data-theme='classic'] {
+  --ink-950: oklch(0.21 0.07 265.364);
+  --ink-900: oklch(0.248 0.076 265.364);
+  --ink-800: oklch(0.3 0.09 264);
+  --ink-700: oklch(0.363 0.112 262.32);
+  --gold-700: oklch(0.536 0.089 205.032);
+  --gold-600: oklch(0.536 0.089 205.032);
+  --gold-500: oklch(0.536 0.089 205.032);
+  --gold-300: oklch(0.744 0.101 201.757);
+  --gold-100: oklch(0.93 0.03 203);
+  --gold-50: oklch(0.97 0.015 203);
+  --off-white: oklch(0.978 0.005 258.324);
+  --neutral-700: oklch(0.429 0.022 258.372);
+  --neutral-300: oklch(0.893 0.011 256.699);
+  --neutral-100: oklch(0.957 0.006 255.475);
+  --dark-text-primary: oklch(0.972 0.006 255.475);
+  --dark-text-muted: oklch(0.782 0.026 257.656);
+  --dark-border: oklch(0.336 0.063 269.602);
+  --primary: var(--ink-700);
+  --primary-foreground: var(--white);
+  --accent: var(--gold-700);
+  --ring: oklch(0.473 0.124 258.674);
+  --font-heading: var(--font-plex-sans);
+}
+html[data-theme='classic'][data-lang='hi'] {
+  --font-heading: var(--font-plex-sans-devanagari);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

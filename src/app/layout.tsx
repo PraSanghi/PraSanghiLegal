@@ -45,7 +45,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en-IN"
       className={`${ibmPlexSans.variable} ${ibmPlexSansDevanagari.variable} ${libreCaslon.variable} ${notoSerifDevanagari.variable} h-full antialiased`}
       // The inline script below intentionally sets lang/data-lang on this
-      // element before hydration for a returning Hindi-preferring visitor,
+      // element before hydration for a returning Hindi-preferring visitor
+      // (and data-theme for one who chose the classic palette),
       // which will always differ from the server-rendered "en-IN" — a real,
       // self-inflicted mismatch, not a bug. suppressHydrationWarning here
       // only silences that one expected case (React only applies it one
@@ -53,8 +54,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
-        {/* Applies a returning visitor's EN/HI choice (site-header.tsx
-            LanguageToggle) before first paint, so there's no flash of the
+        {/* Applies a returning visitor's EN/HI and colour-theme choices
+            (site-header.tsx LanguageToggle / ThemeToggle) before first paint, so there's no flash of the
             other language — the same technique a dark-mode toggle uses. */}
         <script
           // Browser extensions (ad blockers, color pickers, etc.) commonly
@@ -67,7 +68,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html:
-              "try{var l=localStorage.getItem('prasanghi-lang');if(l==='hi'){document.documentElement.setAttribute('data-lang','hi');document.documentElement.setAttribute('lang','hi');}}catch(e){}",
+              "try{var l=localStorage.getItem('prasanghi-lang');if(l==='hi'){document.documentElement.setAttribute('data-lang','hi');document.documentElement.setAttribute('lang','hi');}if(localStorage.getItem('prasanghi-theme')==='classic'){document.documentElement.setAttribute('data-theme','classic');}}catch(e){}",
           }}
         />
       </head>

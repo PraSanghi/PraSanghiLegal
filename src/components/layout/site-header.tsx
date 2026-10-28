@@ -22,6 +22,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { BrandLogo } from '@/components/common/logo-mark'
 import { LanguageToggle } from '@/components/layout/language-toggle'
+import { ThemeToggle } from '@/components/layout/theme-toggle'
 import { Bi } from '@/components/i18n/bi'
 import { primaryNav } from '@/lib/navigation'
 import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
@@ -96,6 +97,7 @@ export function SiteHeader() {
               <Bi en="Schedule a Consultation" hi="परामर्श निर्धारित करें" />
             </Link>
           </Button>
+          <ThemeToggle />
           <LanguageToggle />
         </div>
 
@@ -152,6 +154,7 @@ export function SiteHeader() {
               </nav>
             </SheetContent>
           </Sheet>
+          <ThemeToggle />
           <LanguageToggle />
         </div>
       </div>
