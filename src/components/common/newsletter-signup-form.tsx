@@ -51,7 +51,7 @@ export function NewsletterSignupForm() {
           type="email"
           placeholder="you@example.com"
           aria-invalid={!!errors.email}
-          className="border-dark-border bg-blue-900 text-dark-text-primary placeholder:text-dark-text-muted"
+          className="border-dark-border bg-ink-900 text-dark-text-primary placeholder:text-dark-text-muted"
           {...register('email')}
         />
         <Button type="submit" variant="secondary" disabled={isSubmitting}>

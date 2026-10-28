@@ -17,7 +17,7 @@ export function Breadcrumb({ segments }: BreadcrumbProps) {
     <nav aria-label="Breadcrumb" className="mx-auto max-w-7xl px-6 pt-8">
       <ol className="flex flex-wrap items-center gap-2 text-body-sm text-muted-foreground">
         <li>
-          <Link href="/" className="hover:text-blue-700">
+          <Link href="/" className="hover:text-ink-700">
             <Bi en="Home" hi="होम" />
           </Link>
         </li>
@@ -28,11 +28,11 @@ export function Breadcrumb({ segments }: BreadcrumbProps) {
             <li key={segment.label} className="flex items-center gap-2">
               <CaretRight weight="light" className="size-3.5" aria-hidden="true" />
               {isLast || !segment.href ? (
-                <span aria-current={isLast ? 'page' : undefined} className="font-medium text-blue-900">
+                <span aria-current={isLast ? 'page' : undefined} className="font-medium text-ink-900">
                   {label}
                 </span>
               ) : (
-                <Link href={segment.href} className="hover:text-blue-700">
+                <Link href={segment.href} className="hover:text-ink-700">
                   {label}
                 </Link>
               )}

@@ -60,7 +60,7 @@ export default function AboutPage() {
         image="https://picsum.photos/seed/prasanghi-about/1600/700"
       />
       <section className="mx-auto max-w-3xl px-6 py-12">
-        <div className="flex flex-col gap-4 text-body-md text-blue-900">
+        <div className="flex flex-col gap-4 text-body-md text-ink-900">
           <p>
             <span className="lang-en">
               PraSanghi is an Advocates LLP founded by Rajwardhan Gawde, built around a
@@ -113,7 +113,7 @@ export default function AboutPage() {
         <p className="mt-10">
           <Link
             href="/practice-areas"
-            className="text-body-sm font-semibold text-blue-500 hover:text-teal-600"
+            className="text-body-sm font-semibold text-gold-700 hover:text-gold-600"
           >
             <Bi en="Explore Our Practice Areas" hi="हमारे प्रैक्टिस क्षेत्र देखें" />
           </Link>
@@ -122,10 +122,10 @@ export default function AboutPage() {
 
       <section className="border-t border-border bg-off-white px-6 py-16">
         <div className="mx-auto max-w-5xl">
-          <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+          <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
             <Bi en="How We Work" hi="हम कैसे कार्य करते हैं" />
           </p>
-          <h2 className="mt-2 text-heading-lg font-bold text-blue-900">
+          <h2 className="mt-2 text-heading-lg font-bold text-ink-900">
             <Bi en="Our Approach" hi="हमारी कार्यशैली" />
           </h2>
           <p className="mt-4 max-w-2xl text-body-lg text-muted-foreground">
@@ -138,11 +138,11 @@ export default function AboutPage() {
           <ol className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {APPROACH_STEPS.map((step, i) => (
               <li key={step.title} className="flex flex-col gap-3">
-                <span className="flex size-10 items-center justify-center rounded-full bg-blue-900 text-body-sm font-semibold text-white">
+                <span className="flex size-10 items-center justify-center rounded-full bg-ink-900 text-body-sm font-semibold text-white">
                   {i + 1}
                 </span>
-                <step.icon weight="light" className="size-7 text-teal-600" aria-hidden="true" />
-                <p className="text-heading-sm font-semibold text-blue-900">
+                <step.icon weight="light" className="size-7 text-gold-700" aria-hidden="true" />
+                <p className="text-heading-sm font-semibold text-ink-900">
                   <Bi en={step.title} hi={step.titleHi} />
                 </p>
                 <p className="text-body-sm text-muted-foreground">

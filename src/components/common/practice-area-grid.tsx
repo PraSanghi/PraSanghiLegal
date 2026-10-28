@@ -85,7 +85,7 @@ export function PracticeAreaGrid({ items }: PracticeAreaGridProps) {
                     sizes="(min-width: 1280px) 18vw, (min-width: 1024px) 23vw, (min-width: 640px) 31vw, 47vw"
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/25 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-900/90 via-ink-900/25 to-transparent" />
                   <p className="relative p-3 text-body-sm font-bold leading-tight text-white">
                     <Bi en={item.title} hi={item.titleHi} />
                   </p>
@@ -98,7 +98,7 @@ export function PracticeAreaGrid({ items }: PracticeAreaGridProps) {
                     and blue-900 text on off-white is the site's standard
                     body-text pairing everywhere else. */}
                 <div className="absolute inset-0 flex flex-col justify-center overflow-hidden bg-off-white p-3 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                  <p className="line-clamp-5 text-body-sm text-blue-900">
+                  <p className="line-clamp-5 text-body-sm text-ink-900">
                     <Bi en={item.summary} hi={item.summaryHi} />
                   </p>
                 </div>

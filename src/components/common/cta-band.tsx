@@ -12,7 +12,7 @@ export interface CtaBandProps {
 
 export function CtaBand({ headline, headlineHi, ctaLabel, ctaLabelHi, ctaHref }: CtaBandProps) {
   return (
-    <section className="bg-blue-900 px-6 py-16 text-dark-text-primary">
+    <section className="bg-ink-900 px-6 py-16 text-dark-text-primary">
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
         <h2 className="text-balance text-heading-lg font-medium">
           <Bi en={headline} hi={headlineHi ?? headline} />

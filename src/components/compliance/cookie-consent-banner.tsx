@@ -57,7 +57,7 @@ export function CookieConsentBanner() {
                 We use cookies to remember your preferences and understand how visitors use this
                 site. Essential cookies keep the site working; analytics cookies are optional.
                 See our{' '}
-                <Link href="/privacy-policy" className="underline hover:text-blue-900">
+                <Link href="/privacy-policy" className="underline hover:text-ink-900">
                   Privacy Policy
                 </Link>{' '}
                 for details.
@@ -66,7 +66,7 @@ export function CookieConsentBanner() {
                 हम आपकी प्राथमिकताएँ याद रखने तथा यह समझने हेतु कि आगंतुक इस साइट का उपयोग कैसे
                 करते हैं, कुकीज़ का उपयोग करते हैं। अनिवार्य कुकीज़ साइट को कार्यशील रखती हैं;
                 विश्लेषणात्मक कुकीज़ वैकल्पिक हैं। अधिक जानकारी हेतु हमारी{' '}
-                <Link href="/privacy-policy" className="underline hover:text-blue-900">
+                <Link href="/privacy-policy" className="underline hover:text-ink-900">
                   गोपनीयता नीति
                 </Link>{' '}
                 देखें।
@@ -115,7 +115,7 @@ export function CookieConsentBanner() {
           <div className="flex flex-col gap-4 py-2">
             <div className="flex items-start justify-between gap-4 rounded-lg border border-border p-4">
               <div>
-                <p className="text-body-md font-semibold text-blue-900">
+                <p className="text-body-md font-semibold text-ink-900">
                   <Bi en="Essential" hi="अनिवार्य" />
                 </p>
                 <p className="mt-1 text-body-sm text-muted-foreground">
@@ -130,7 +130,7 @@ export function CookieConsentBanner() {
 
             <div className="flex items-start justify-between gap-4 rounded-lg border border-border p-4">
               <div>
-                <p className="text-body-md font-semibold text-blue-900">
+                <p className="text-body-md font-semibold text-ink-900">
                   <Bi en="Analytics" hi="विश्लेषण (एनालिटिक्स)" />
                 </p>
                 <p className="mt-1 text-body-sm text-muted-foreground">

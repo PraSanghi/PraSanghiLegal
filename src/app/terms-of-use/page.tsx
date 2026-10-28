@@ -13,7 +13,7 @@ export default function TermsOfUsePage() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-12">
       <Breadcrumb segments={[{ label: 'Terms of Use', labelHi: 'उपयोग की शर्तें' }]} />
-      <h1 className="mt-4 text-display-lg font-bold text-blue-900">
+      <h1 className="mt-4 text-display-lg font-bold text-ink-900">
         <Bi en="Terms of Use" hi="उपयोग की शर्तें" />
       </h1>
       <p className="mt-3 text-body-sm text-muted-foreground">
@@ -22,7 +22,7 @@ export default function TermsOfUsePage() {
 
       <div className="mt-10 flex flex-col gap-8 text-body-md text-muted-foreground">
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="1. Acceptance of Terms" hi="1. शर्तों की स्वीकृति" />
           </h2>
           <p className="mt-3">
@@ -34,7 +34,7 @@ export default function TermsOfUsePage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="2. No Advocate-Client Relationship" hi="2. अधिवक्ता-मुवक्किल संबंध का अभाव" />
           </h2>
           <p className="mt-3">
@@ -46,7 +46,7 @@ export default function TermsOfUsePage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="3. No Legal Advice" hi="3. विधिक सलाह का अभाव" />
           </h2>
           <p className="mt-3">
@@ -58,7 +58,7 @@ export default function TermsOfUsePage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="4. Intellectual Property" hi="4. बौद्धिक संपदा" />
           </h2>
           <p className="mt-3">
@@ -70,7 +70,7 @@ export default function TermsOfUsePage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="5. Third-Party Links" hi="5. तृतीय-पक्ष लिंक" />
           </h2>
           <p className="mt-3">
@@ -82,7 +82,7 @@ export default function TermsOfUsePage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="6. Limitation of Liability" hi="6. दायित्व की सीमा" />
           </h2>
           <p className="mt-3">
@@ -102,7 +102,7 @@ export default function TermsOfUsePage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="7. Governing Law" hi="7. शासी विधि" />
           </h2>
           <p className="mt-3">
@@ -114,7 +114,7 @@ export default function TermsOfUsePage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="8. Changes to These Terms" hi="8. इन शर्तों में परिवर्तन" />
           </h2>
           <p className="mt-3">
@@ -126,20 +126,20 @@ export default function TermsOfUsePage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="9. Contact" hi="9. संपर्क" />
           </h2>
           <p className="mt-3">
             <span className="lang-en">
               Questions about these Terms of Use can be sent through the{' '}
-              <a href="/contact" className="underline hover:text-blue-900">
+              <a href="/contact" className="underline hover:text-ink-900">
                 Contact
               </a>{' '}
               page.
             </span>
             <span className="lang-hi">
               इन उपयोग की शर्तों के बारे में प्रश्न{' '}
-              <a href="/contact" className="underline hover:text-blue-900">
+              <a href="/contact" className="underline hover:text-ink-900">
                 संपर्क करें
               </a>{' '}
               पृष्ठ के माध्यम से भेजे जा सकते हैं।

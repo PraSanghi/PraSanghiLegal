@@ -43,10 +43,10 @@ export default function HomePage() {
           /about/vision-values from reading as a duplicate. */}
       <section className="mx-auto max-w-7xl px-6 py-16">
         <RevealOnScroll>
-          <h2 className="text-heading-lg font-bold text-blue-900">
+          <h2 className="text-heading-lg font-bold text-ink-900">
             <Bi en="Why Choose PraSanghi" hi="प्रासंघी को क्यों चुनें" />
           </h2>
-          <span className="mt-3 block h-0.5 w-12 bg-teal-500" aria-hidden="true" />
+          <span className="mt-3 block h-0.5 w-12 bg-gold-500" aria-hidden="true" />
         </RevealOnScroll>
         <div className="mt-8">
           <ValuesTriad
@@ -82,7 +82,7 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-6 py-16">
         <RevealOnScroll className="flex items-end justify-between gap-4">
-          <h2 className="text-heading-lg font-bold text-blue-900">
+          <h2 className="text-heading-lg font-bold text-ink-900">
             <Bi en="Legal Insights" hi="विधिक विश्लेषण" />
           </h2>
           <TextLink href="/insights" className="hidden sm:inline-flex">
@@ -112,10 +112,10 @@ export default function HomePage() {
       <section className="border-t border-border bg-off-white px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <RevealOnScroll className="mx-auto max-w-2xl text-center">
-            <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+            <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
               <Bi en="Expert Documentation" hi="विशेषज्ञ प्रलेखन" />
             </p>
-            <span className="mx-auto mt-2 block h-0.5 w-12 bg-teal-500" aria-hidden="true" />
+            <span className="mx-auto mt-2 block h-0.5 w-12 bg-gold-500" aria-hidden="true" />
             <p className="mt-4 text-body-lg text-muted-foreground">
               <Bi
                 en="The exact documents individuals and businesses need — named specifically, drafted with the same care as a courtroom filing."
@@ -144,10 +144,10 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-6 py-16">
         <RevealOnScroll>
-          <h2 className="text-heading-lg font-bold text-blue-900">
+          <h2 className="text-heading-lg font-bold text-ink-900">
             <Bi en="Frequently Asked Questions" hi="अक्सर पूछे जाने वाले प्रश्न" />
           </h2>
-          <span className="mt-3 block h-0.5 w-12 bg-teal-500" aria-hidden="true" />
+          <span className="mt-3 block h-0.5 w-12 bg-gold-500" aria-hidden="true" />
           <FaqAccordion items={homeFaqs} />
         </RevealOnScroll>
       </section>

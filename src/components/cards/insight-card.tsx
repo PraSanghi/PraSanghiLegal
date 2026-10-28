@@ -65,7 +65,7 @@ export function InsightCard({
         </div>
       ) : null}
       <div className="flex flex-1 flex-col gap-3 p-6">
-        <div className="flex items-center justify-between text-label-eyebrow tracking-wide text-teal-600">
+        <div className="flex items-center justify-between text-label-eyebrow tracking-wide text-gold-700">
           <span className="uppercase">
             <Bi en={contentType} hi={CONTENT_TYPE_HI[contentType]} />
           </span>
@@ -73,7 +73,7 @@ export function InsightCard({
             {formattedDate}
           </time>
         </div>
-        <h3 className="text-heading-sm font-semibold text-blue-900">
+        <h3 className="text-heading-sm font-semibold text-ink-900">
           <Bi en={headline} hi={headlineHi ?? headline} />
         </h3>
         {excerpt ? (
@@ -82,7 +82,7 @@ export function InsightCard({
           </p>
         ) : null}
         {practiceAreaTag ? (
-          <span className="mt-auto text-body-sm font-medium text-blue-500">
+          <span className="mt-auto text-body-sm font-medium text-gold-700">
             <Bi en={practiceAreaTag} hi={practiceAreaTagHi ?? practiceAreaTag} />
           </span>
         ) : null}

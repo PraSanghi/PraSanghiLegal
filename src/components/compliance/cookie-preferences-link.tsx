@@ -7,7 +7,7 @@ export function CookiePreferencesLink() {
     <button
       type="button"
       onClick={() => window.dispatchEvent(new Event('open-cookie-preferences'))}
-      className="hover:text-teal-400"
+      className="hover:text-gold-300"
     >
       <Bi en="Cookie Preferences" hi="कुकी प्राथमिकताएँ" />
     </button>

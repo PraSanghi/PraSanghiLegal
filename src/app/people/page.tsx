@@ -36,7 +36,7 @@ export default function PeoplePage() {
           />
         </p>
 
-        <h2 className="mt-12 text-heading-md font-bold text-blue-900">
+        <h2 className="mt-12 text-heading-md font-bold text-ink-900">
           <Bi en="Leadership & Partners" hi="नेतृत्व एवं भागीदार" />
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -55,7 +55,7 @@ export default function PeoplePage() {
           ))}
         </div>
 
-        <h2 className="mt-12 text-heading-md font-bold text-blue-900">
+        <h2 className="mt-12 text-heading-md font-bold text-ink-900">
           <Bi en="Associates" hi="सहयोगी अधिवक्ता" />
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">

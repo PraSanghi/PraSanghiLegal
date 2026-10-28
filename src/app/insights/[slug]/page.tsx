@@ -62,7 +62,7 @@ export default async function InsightDetailPage({
         />
       </div>
       <article className="mx-auto max-w-3xl px-6 py-12">
-        <div className="flex items-center gap-3 text-label-eyebrow uppercase tracking-wide text-teal-600">
+        <div className="flex items-center gap-3 text-label-eyebrow uppercase tracking-wide text-gold-700">
           <span>
             <Bi en={item.contentType} hi={CONTENT_TYPE_HI[item.contentType]} />
           </span>
@@ -70,17 +70,17 @@ export default async function InsightDetailPage({
             {formattedDate}
           </time>
         </div>
-        <h1 className="mt-3 text-display-lg font-bold text-blue-900">
+        <h1 className="mt-3 text-display-lg font-bold text-ink-900">
           <Bi en={item.headline} hi={item.headlineHi} />
         </h1>
         {item.practiceAreaTag ? (
-          <p className="mt-3 text-body-sm font-medium text-blue-500">
+          <p className="mt-3 text-body-sm font-medium text-gold-700">
             <Bi en={item.practiceAreaTag} hi={item.practiceAreaTagHi ?? item.practiceAreaTag} />
           </p>
         ) : null}
         <div className="mt-8 flex flex-col gap-4 border-t border-border pt-8">
           {item.body.map((paragraph, i) => (
-            <p key={i} className="text-body-md text-blue-900">
+            <p key={i} className="text-body-md text-ink-900">
               <Bi en={paragraph} hi={item.bodyHi[i] ?? paragraph} />
             </p>
           ))}

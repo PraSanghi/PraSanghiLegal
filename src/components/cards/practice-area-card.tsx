@@ -43,13 +43,13 @@ export function PracticeAreaCard({
         </div>
       ) : null}
       <div className="flex flex-1 flex-col gap-2 p-6">
-        <h3 className="text-heading-sm font-semibold text-blue-900">
+        <h3 className="text-heading-sm font-semibold text-ink-900">
           <Bi en={title} hi={titleHi ?? title} />
         </h3>
         <p className="text-body-sm text-muted-foreground">
           <Bi en={description} hi={descriptionHi ?? description} />
         </p>
-        <span className="mt-2 flex items-center gap-1.5 text-body-sm font-semibold text-teal-600">
+        <span className="mt-2 flex items-center gap-1.5 text-body-sm font-semibold text-gold-700">
           <Bi en="View Details" hi="विवरण देखें" />
           <ArrowRight
             weight="light"

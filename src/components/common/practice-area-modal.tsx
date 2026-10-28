@@ -37,10 +37,10 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
         {item && detail ? (
           <div className="flex flex-col">
             <DialogHeader className="text-left">
-              <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+              <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
                 <Bi en="Practice Area" hi="प्रैक्टिस क्षेत्र" />
               </p>
-              <DialogTitle className="text-heading-md font-bold text-blue-900">
+              <DialogTitle className="text-heading-md font-bold text-ink-900">
                 <Bi en={item.title} hi={item.titleHi} />
               </DialogTitle>
               <DialogDescription className="text-body-md text-muted-foreground">
@@ -61,9 +61,9 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
             {detail.specificServices.length > 0 ? (
               <ul className="mt-4 flex flex-col gap-2">
                 {detail.specificServices.slice(0, 3).map((service, i) => (
-                  <li key={service} className="flex items-start gap-2 text-body-sm text-blue-900">
+                  <li key={service} className="flex items-start gap-2 text-body-sm text-ink-900">
                     <span
-                      className="mt-2 size-1 shrink-0 rounded-full bg-teal-600"
+                      className="mt-2 size-1 shrink-0 rounded-full bg-gold-500"
                       aria-hidden="true"
                     />
                     <Bi en={service} hi={detail.specificServicesHi[i] ?? service} />
@@ -83,10 +83,10 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
                 ] as const
               ).map(([labelEn, labelHi, valueEn, valueHi]) => (
                 <div key={labelEn} className="flex gap-3">
-                  <dt className="w-14 shrink-0 text-label-eyebrow font-semibold uppercase tracking-wide text-teal-600">
+                  <dt className="w-14 shrink-0 text-label-eyebrow font-semibold uppercase tracking-wide text-gold-700">
                     <Bi en={labelEn} hi={labelHi} />
                   </dt>
-                  <dd className="text-body-sm text-blue-900">
+                  <dd className="text-body-sm text-ink-900">
                     <Bi en={valueEn} hi={valueHi} />
                   </dd>
                 </div>
@@ -95,7 +95,7 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
 
             <Link
               href={`/practice-areas/${item.slug}`}
-              className="mt-4 inline-flex w-fit items-center gap-1.5 text-body-sm font-semibold text-blue-500 hover:text-teal-600"
+              className="mt-4 inline-flex w-fit items-center gap-1.5 text-body-sm font-semibold text-gold-700 hover:text-gold-600"
             >
               <Bi en="View Full Details" hi="पूर्ण विवरण देखें" />
               <ArrowRight weight="light" className="size-3.5" aria-hidden="true" />
@@ -105,7 +105,7 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
 
         {item ? (
           <div className="flex flex-col border-t border-border pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
-            <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+            <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
               <Bi en="How to Contact Us" hi="हमसे संपर्क करने का तरीका" />
             </p>
 
@@ -154,7 +154,7 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
               )}
             </div>
 
-            <p className="mt-6 text-body-sm font-semibold text-blue-900">
+            <p className="mt-6 text-body-sm font-semibold text-ink-900">
               <Bi en="Or send us the details directly" hi="अथवा हमें सीधे विवरण भेजें" />
             </p>
             <div className="mt-3">

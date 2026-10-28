@@ -14,10 +14,10 @@ export default function DisclaimerPage() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-12">
       <Breadcrumb segments={[{ label: 'Disclaimer', labelHi: 'अस्वीकरण' }]} />
-      <h1 className="mt-4 text-display-lg font-bold text-blue-900">
+      <h1 className="mt-4 text-display-lg font-bold text-ink-900">
         <Bi en="Disclaimer" hi="अस्वीकरण" />
       </h1>
-      <p className="mt-8 text-body-md text-blue-900">
+      <p className="mt-8 text-body-md text-ink-900">
         <Bi en={BCI_DISCLAIMER_TEXT} hi={BCI_DISCLAIMER_TEXT_HI} />
       </p>
     </section>

@@ -42,8 +42,8 @@ export function AttorneyCard({
         />
       </div>
       <div className="flex flex-col gap-1 p-4">
-        <p className="text-heading-sm font-semibold text-blue-900">{name}</p>
-        <p className="text-body-sm text-teal-600">
+        <p className="text-heading-sm font-semibold text-ink-900">{name}</p>
+        <p className="text-body-sm text-gold-700">
           <Bi en={role} hi={roleHi ?? role} />
         </p>
         {practiceTags && practiceTags.length > 0 ? (

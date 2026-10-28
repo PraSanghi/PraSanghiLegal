@@ -216,7 +216,7 @@ export function PositioningHero() {
                 state.showServicesCarousel
                   ? 'min-h-dvh flex flex-col'
                   : 'h-dvh overflow-hidden grid grid-cols-1 lg:grid-cols-2'
-              } ${isDark ? 'bg-blue-900 text-dark-text-primary' : 'bg-white text-blue-900'}`}
+              } ${isDark ? 'bg-ink-900 text-dark-text-primary' : 'bg-white text-ink-900'}`}
             >
               {state.showServicesCarousel ? (
                 // Full-width takeover for this slide — no image column, no
@@ -253,7 +253,7 @@ export function PositioningHero() {
                   >
                     <p
                       className={`text-label-eyebrow uppercase tracking-wide ${
-                        isDark ? 'text-teal-400' : 'text-teal-600'
+                        isDark ? 'text-gold-300' : 'text-gold-700'
                       }`}
                     >
                       <Bi en={state.eyebrow} hi={state.eyebrowHi} />
@@ -277,7 +277,7 @@ export function PositioningHero() {
                           variant={cta.variant === 'outline' ? 'outline' : 'default'}
                           className={
                             isDark && cta.variant !== 'outline'
-                              ? 'bg-white text-blue-900 hover:bg-off-white'
+                              ? 'bg-white text-ink-900 hover:bg-off-white'
                               : isDark && cta.variant === 'outline'
                                 ? 'border-white text-white hover:bg-white/10'
                                 : undefined

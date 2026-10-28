@@ -64,10 +64,10 @@ export default async function PracticeAreaDetailPage({
       <section className="mx-auto max-w-7xl px-6 py-12">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_minmax(0,420px)]">
           <RevealOnScroll>
-            <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+            <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
               <Bi en="Practice Area" hi="प्रैक्टिस क्षेत्र" />
             </p>
-            <h1 className="mt-2 text-display-lg font-bold text-blue-900">
+            <h1 className="mt-2 text-display-lg font-bold text-ink-900">
               <Bi en={area.title} hi={area.titleHi} />
             </h1>
             <p className="mt-4 text-body-lg text-muted-foreground">
@@ -103,22 +103,22 @@ export default async function PracticeAreaDetailPage({
         <div className="mx-auto max-w-4xl">
           <RevealOnScroll className="flex flex-col gap-4">
             {area.overview.map((paragraph, i) => (
-              <p key={i} className="text-body-md text-blue-900">
+              <p key={i} className="text-body-md text-ink-900">
                 <Bi en={paragraph} hi={area.overviewHi[i] ?? paragraph} />
               </p>
             ))}
           </RevealOnScroll>
 
           <RevealOnScroll>
-            <h2 className="mt-12 text-heading-md font-bold text-blue-900">
+            <h2 className="mt-12 text-heading-md font-bold text-ink-900">
               <Bi en="What's Included" hi="इसमें क्या शामिल है" />
             </h2>
             <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
               {area.specificServices.map((service, i) => (
-                <li key={service} className="flex items-start gap-3 text-body-md text-blue-900">
+                <li key={service} className="flex items-start gap-3 text-body-md text-ink-900">
                   <CheckCircle
                     weight="fill"
-                    className="mt-0.5 size-5 shrink-0 text-teal-600"
+                    className="mt-0.5 size-5 shrink-0 text-gold-700"
                     aria-hidden="true"
                   />
                   <Bi en={service} hi={area.specificServicesHi[i] ?? service} />
@@ -129,14 +129,14 @@ export default async function PracticeAreaDetailPage({
 
           {area.commonSituations && area.commonSituations.length > 0 ? (
             <RevealOnScroll>
-              <h2 className="mt-12 text-heading-md font-bold text-blue-900">
+              <h2 className="mt-12 text-heading-md font-bold text-ink-900">
                 <Bi en="Situations We Handle" hi="वे स्थितियाँ जिन्हें हम संभालते हैं" />
               </h2>
               <ul className="mt-6 flex flex-col gap-4">
                 {area.commonSituations.map((situation, i) => (
-                  <li key={situation} className="flex items-start gap-3 text-body-md text-blue-900">
+                  <li key={situation} className="flex items-start gap-3 text-body-md text-ink-900">
                     <span
-                      className="mt-2.5 size-1.5 shrink-0 rounded-full bg-teal-600"
+                      className="mt-2.5 size-1.5 shrink-0 rounded-full bg-gold-500"
                       aria-hidden="true"
                     />
                     <Bi en={situation} hi={area.commonSituationsHi?.[i] ?? situation} />
@@ -148,7 +148,7 @@ export default async function PracticeAreaDetailPage({
 
           {team.length > 0 ? (
             <RevealOnScroll>
-              <h2 className="mt-12 text-heading-md font-bold text-blue-900">
+              <h2 className="mt-12 text-heading-md font-bold text-ink-900">
                 <Bi en="Team" hi="टीम" />
               </h2>
               <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -173,7 +173,7 @@ export default async function PracticeAreaDetailPage({
       {related.length > 0 ? (
         <section className="mx-auto max-w-7xl px-6 py-16">
           <RevealOnScroll>
-            <h2 className="text-heading-lg font-bold text-blue-900">
+            <h2 className="text-heading-lg font-bold text-ink-900">
               <Bi en="Related Practice Areas" hi="संबंधित प्रैक्टिस क्षेत्र" />
             </h2>
           </RevealOnScroll>

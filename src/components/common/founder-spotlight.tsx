@@ -24,10 +24,10 @@ export function FounderSpotlight({ founder }: FounderSpotlightProps) {
         />
       </div>
       <div>
-        <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+        <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
           <Bi en="Founder" hi="संस्थापक" />
         </p>
-        <h3 className="mt-2 text-heading-lg font-bold text-blue-900">{founder.name}</h3>
+        <h3 className="mt-2 text-heading-lg font-bold text-ink-900">{founder.name}</h3>
         <p className="mt-4 max-w-xl text-body-lg text-muted-foreground">
           <span className="lang-en">
             PraSanghi is built around Rajwardhan Gawde&rsquo;s straightforward idea: a client

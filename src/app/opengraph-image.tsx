@@ -1,16 +1,19 @@
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import { ImageResponse } from 'next/og'
-import { siteName, siteTagline } from '@/lib/site-config'
+import { siteName, siteSlogan, siteTagline } from '@/lib/site-config'
 
 export const alt = `${siteName} — ${siteTagline}`
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 // Sitewide fallback social-share card — any route without its own
-// opengraph-image.tsx inherits this one. Colors are the brand's blue-900
-// and teal-600 as plain hex (Satori, the renderer behind ImageResponse,
-// doesn't support the oklch() functions globals.css uses for the same
-// tokens).
-export default function OpengraphImage() {
+// opengraph-image.tsx inherits this one. Plain hex: Satori, the renderer
+// behind ImageResponse, doesn't read globals.css tokens (ink-900, gold-300).
+export default async function OpengraphImage() {
+  const logo = await readFile(join(process.cwd(), 'public/brand/prasanghi-lockup-light.png'))
+  const logoSrc = `data:image/png;base64,${logo.toString('base64')}`
+
   return new ImageResponse(
     (
       <div
@@ -21,24 +24,15 @@ export default function OpengraphImage() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#0f1e45',
-          fontFamily: 'sans-serif',
+          backgroundColor: '#15171c',
+          fontFamily: 'serif',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            width: 88,
-            height: 6,
-            backgroundColor: '#14b8a6',
-            marginBottom: 40,
-          }}
-        />
-        <div style={{ display: 'flex', fontSize: 88, fontWeight: 700, color: '#ffffff' }}>
-          {siteName}
-        </div>
-        <div style={{ display: 'flex', fontSize: 36, color: '#a9b4d0', marginTop: 20 }}>
-          {siteTagline}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={logoSrc} width={369} height={343} alt="" />
+        <div style={{ display: 'flex', width: 88, height: 2, backgroundColor: '#bc9a53', marginTop: 36 }} />
+        <div style={{ display: 'flex', fontSize: 36, fontStyle: 'italic', color: '#d9bc78', marginTop: 28 }}>
+          {siteSlogan}
         </div>
       </div>
     ),

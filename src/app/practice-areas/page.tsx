@@ -56,10 +56,10 @@ export default function PracticeAreasPage() {
 
       <section className="border-t border-border bg-off-white px-6 py-16">
         <div className="mx-auto max-w-7xl">
-          <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+          <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
             <Bi en="Who We Help" hi="हम किनकी सहायता करते हैं" />
           </p>
-          <h2 className="mt-2 text-heading-lg font-bold text-blue-900">
+          <h2 className="mt-2 text-heading-lg font-bold text-ink-900">
             <Bi en="Individuals, Businesses, and Institutions" hi="व्यक्ति, व्यवसाय एवं संस्थान" />
           </h2>
           <div className="mt-10">

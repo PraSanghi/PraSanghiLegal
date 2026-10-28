@@ -69,10 +69,10 @@ export default function AffiliatedOrganisationsPage() {
         ]}
       />
       <div className="mt-4">
-        <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+        <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
           <Bi en="About Us" hi="हमारे बारे में" />
         </p>
-        <h1 className="mt-3 text-display-lg font-bold text-blue-900">
+        <h1 className="mt-3 text-display-lg font-bold text-ink-900">
           <Bi en="Affiliated Organisations" hi="सहबद्ध संगठन" />
         </h1>
       </div>
@@ -86,7 +86,7 @@ export default function AffiliatedOrganisationsPage() {
         {ASSOCIATED_ORGANISATIONS.map((org) => (
           <li key={org.name} className="py-4">
             <div className="flex items-baseline justify-between gap-4">
-              <span className="text-body-lg font-semibold text-blue-900">{org.name}</span>
+              <span className="text-body-lg font-semibold text-ink-900">{org.name}</span>
               {org.note ? (
                 <span className="shrink-0 text-body-sm text-muted-foreground">
                   <Bi en={org.note} hi={org.noteHi ?? org.note} />

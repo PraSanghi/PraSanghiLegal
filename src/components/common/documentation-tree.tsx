@@ -12,7 +12,7 @@ import { documentationTree } from '@/lib/documentation-tree-data'
 export function DocumentationTree() {
   return (
     <div className="flex flex-col items-center">
-      <RevealOnScroll className="group flex items-center gap-4 border-2 border-blue-900 bg-blue-900 px-10 py-5">
+      <RevealOnScroll className="group flex items-center gap-4 border-2 border-ink-900 bg-ink-900 px-10 py-5">
         <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
           <Scales weight="light" className="size-6" aria-hidden="true" />
         </span>
@@ -34,12 +34,12 @@ export function DocumentationTree() {
 
             <RevealOnScroll
               delayMs={ci * 75}
-              className="group flex h-16 w-full items-center justify-center gap-3 border border-border bg-card px-5 outline outline-2 outline-offset-2 outline-transparent transition-colors duration-150 ease-out hover:outline-teal-500"
+              className="group flex h-16 w-full items-center justify-center gap-3 border border-border bg-card px-5 outline outline-2 outline-offset-2 outline-transparent transition-colors duration-150 ease-out hover:outline-gold-500"
             >
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600 transition-colors duration-150 ease-out group-hover:bg-teal-600 group-hover:text-white">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-gold-50 text-gold-700 transition-colors duration-150 ease-out group-hover:bg-gold-500 group-hover:text-white">
                 <category.icon weight="light" className="size-5" aria-hidden="true" />
               </span>
-              <p className="text-body-md font-bold text-blue-900">
+              <p className="text-body-md font-bold text-ink-900">
                 <Bi en={category.label} hi={category.labelHi} />
               </p>
             </RevealOnScroll>
@@ -49,11 +49,11 @@ export function DocumentationTree() {
             <div className="flex w-full flex-col gap-3">
               {category.items.map((item, i) => (
                 <RevealOnScroll key={item.title} delayMs={ci * 75 + i * 30}>
-                  <div className="group flex h-20 items-center gap-3 border border-border bg-card px-4 outline outline-2 outline-offset-2 outline-transparent transition-colors duration-150 ease-out hover:outline-teal-500">
-                    <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600 transition-colors duration-150 ease-out group-hover:bg-teal-600 group-hover:text-white">
+                  <div className="group flex h-20 items-center gap-3 border border-border bg-card px-4 outline outline-2 outline-offset-2 outline-transparent transition-colors duration-150 ease-out hover:outline-gold-500">
+                    <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-gold-50 text-gold-700 transition-colors duration-150 ease-out group-hover:bg-gold-500 group-hover:text-white">
                       <item.icon weight="light" className="size-5" aria-hidden="true" />
                     </span>
-                    <p className="line-clamp-2 text-body-md font-medium text-blue-900">
+                    <p className="line-clamp-2 text-body-md font-medium text-ink-900">
                       <Bi en={item.title} hi={item.titleHi} />
                     </p>
                   </div>

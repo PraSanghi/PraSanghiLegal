@@ -13,7 +13,7 @@ export function TextLink({ href, children, className }: TextLinkProps) {
     <Link
       href={href}
       className={cn(
-        'group inline-flex items-center gap-1.5 text-sm font-semibold text-blue-500 hover:text-teal-600',
+        'group inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700 hover:text-gold-600',
         className
       )}
     >

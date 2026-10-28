@@ -35,10 +35,10 @@ export function TrustedByStrip() {
 
   return (
     <div ref={trackRef}>
-      <h2 className="text-center text-heading-lg font-bold text-blue-900">
+      <h2 className="text-center text-heading-lg font-bold text-ink-900">
         <Bi en="Trusted by Leading Enterprises" hi="अग्रणी उद्यमों का विश्वास" />
       </h2>
-      <span className="mx-auto mt-3 block h-0.5 w-12 bg-teal-500" aria-hidden="true" />
+      <span className="mx-auto mt-3 block h-0.5 w-12 bg-gold-500" aria-hidden="true" />
 
       {/* Matches pdlawchambers.com's continuous logo scroll. Pauses on
           hover, off-screen, and under prefers-reduced-motion, so it never

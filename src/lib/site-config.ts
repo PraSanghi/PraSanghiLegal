@@ -15,16 +15,35 @@ export const siteName = 'PraSanghi'
 
 export const siteTagline = 'The Legal Ladder'
 
+// The firm's tagline, per the founder's review notes: "keep it in mind everywhere".
+export const siteSlogan = 'One Destination for Every Legal Solution'
+
 export const siteDescription =
   'PraSanghi is a Pan-India, full-service legal LLP combining Supreme Court and High Court litigation with regulatory, compliance, and advisory practice.'
 
-// Direct-contact channels (Call/WhatsApp) — intentionally left unset until
-// the founder confirms a public number, per project_requirements.md §10.
-// Consuming components (e.g. practice-area-modal.tsx) must render a
-// pending state rather than a broken tel:/wa.me link when these are null.
-export const contactPhoneDisplay: string | null = null // e.g. '+91 98765 43210'
-export const contactPhoneDialable: string | null = null // digits only, for tel:
-export const contactWhatsappNumber: string | null = null // digits only with country code, for wa.me
+// Source: PraSanghi Firm Profile (2026), Contact & Correspondence.
+export const firmContact = {
+  legalName: 'PraSanghi – The Legal Ladder LLP',
+  address: 'B-208, The One, Near High Court, RNT Marg, Indore, Madhya Pradesh – 452001',
+  addressHi: 'बी-208, द वन, उच्च न्यायालय के समीप, आर.एन.टी. मार्ग, इंदौर, मध्य प्रदेश – 452001',
+  phones: [
+    { display: '+91 96170 50000', dial: '+919617050000' },
+    { display: '+91 97139 77121', dial: '+919713977121' },
+    { display: '+91 89650 66666', dial: '+918965066666' },
+  ],
+  email: 'contact@prasanghilegal.com',
+  emails: [
+    { address: 'contact@prasanghilegal.com', purpose: 'Regular contact and appointments', purposeHi: 'सामान्य संपर्क एवं भेंट-समय' },
+    { address: 'support@prasanghilegal.com', purpose: 'Grievances and issues', purposeHi: 'शिकायत एवं समस्याएँ' },
+    { address: 'director@prasanghilegal.com', purpose: 'Emergency or confidential use only', purposeHi: 'केवल आपात अथवा गोपनीय विषयों हेतु' },
+  ],
+  associateCities: ['Delhi', 'Mumbai', 'Lucknow', 'Jabalpur', 'Gwalior', 'Ahmedabad', 'Jaipur', 'Bilaspur'],
+} as const
+
+// Direct-contact channels (Call/WhatsApp) used by practice-area-modal.tsx.
+export const contactPhoneDisplay: string | null = firmContact.phones[0].display
+export const contactPhoneDialable: string | null = firmContact.phones[0].dial
+export const contactWhatsappNumber: string | null = firmContact.phones[0].dial.replace('+', '')
 
 // Next.js does not deep-merge a route's `openGraph`/`twitter` objects with
 // the root layout's — a child that sets one replaces it entirely, dropping

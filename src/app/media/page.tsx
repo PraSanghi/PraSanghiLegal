@@ -24,7 +24,7 @@ export default function MediaPage() {
       />
       <section className="mx-auto max-w-3xl px-6 py-12">
         <div>
-          <h2 className="text-heading-md font-bold text-blue-900">
+          <h2 className="text-heading-md font-bold text-ink-900">
             <Bi en="Press Mentions" hi="प्रेस उल्लेख" />
           </h2>
           <p className="mt-3 text-body-md text-muted-foreground italic">
@@ -36,7 +36,7 @@ export default function MediaPage() {
         </div>
 
         <div className="mt-10 border-t border-border pt-8">
-          <h2 className="text-heading-md font-bold text-blue-900">The Samvaad Podcast</h2>
+          <h2 className="text-heading-md font-bold text-ink-900">The Samvaad Podcast</h2>
           <p className="mt-3 text-body-md text-muted-foreground">
             <span className="lang-en">
               PraSanghi is affiliated with The Samvaad Podcast, a media property referenced in

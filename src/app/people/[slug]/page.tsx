@@ -63,14 +63,14 @@ export default async function PersonProfilePage({
         ) : null}
         {person.practiceTags.length > 0 ? (
           <div className="mt-8">
-            <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+            <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
               <Bi en="Practice Areas" hi="प्रैक्टिस क्षेत्र" />
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {person.practiceTags.map((tag, i) => (
                 <span
                   key={tag}
-                  className="border border-border px-3 py-1 text-body-sm text-blue-900"
+                  className="border border-border px-3 py-1 text-body-sm text-ink-900"
                 >
                   <Bi en={tag} hi={person.practiceTagsHi[i] ?? tag} />
                 </span>

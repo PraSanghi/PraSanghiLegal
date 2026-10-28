@@ -45,7 +45,7 @@ export default function ContactPage() {
                 className="object-cover"
               />
             </div>
-            <h2 className="mt-8 text-heading-md font-bold text-blue-900">
+            <h2 className="mt-8 text-heading-md font-bold text-ink-900">
               <Bi en="Office" hi="कार्यालय" />
             </h2>
             <address className="mt-3 text-body-md not-italic text-muted-foreground">
@@ -53,7 +53,7 @@ export default function ContactPage() {
               <br />
               <Bi en="Office hours pending confirmation." hi="कार्यालय समय शीघ्र प्रकाशित किया जाएगा।" />
             </address>
-            <h2 className="mt-8 text-heading-md font-bold text-blue-900">
+            <h2 className="mt-8 text-heading-md font-bold text-ink-900">
               <Bi en="Email" hi="ईमेल" />
             </h2>
             <p className="mt-3 text-body-md text-muted-foreground">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ibmPlexSans, ibmPlexSansDevanagari } from "@/lib/fonts";
+import { ibmPlexSans, ibmPlexSansDevanagari, libreCaslon, notoSerifDevanagari } from "@/lib/fonts";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { BciDisclaimerModal } from "@/components/compliance/bci-disclaimer-modal";
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-IN"
-      className={`${ibmPlexSans.variable} ${ibmPlexSansDevanagari.variable} h-full antialiased`}
+      className={`${ibmPlexSans.variable} ${ibmPlexSansDevanagari.variable} ${libreCaslon.variable} ${notoSerifDevanagari.variable} h-full antialiased`}
       // The inline script below intentionally sets lang/data-lang on this
       // element before hydration for a returning Hindi-preferring visitor,
       // which will always differ from the server-rendered "en-IN" — a real,

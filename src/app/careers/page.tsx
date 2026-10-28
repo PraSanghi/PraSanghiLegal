@@ -64,7 +64,7 @@ export default function CareersPage() {
         </div>
 
         <div className="mt-12 border-t border-border pt-8">
-          <h2 className="text-heading-md font-bold text-blue-900">
+          <h2 className="text-heading-md font-bold text-ink-900">
             <Bi en="Open Positions" hi="रिक्त पद" />
           </h2>
           <p className="mt-3 text-body-md text-muted-foreground italic">
@@ -83,10 +83,10 @@ export default function CareersPage() {
 
       <section className="border-t border-border bg-off-white px-6 py-16">
         <div className="mx-auto max-w-2xl">
-          <p className="text-label-eyebrow uppercase tracking-wide text-teal-600">
+          <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
             <Bi en="Quick Apply" hi="त्वरित आवेदन" />
           </p>
-          <h2 className="mt-2 text-heading-lg font-bold text-blue-900">
+          <h2 className="mt-2 text-heading-lg font-bold text-ink-900">
             <Bi en="Send a Speculative Application" hi="स्वैच्छिक आवेदन भेजें" />
           </h2>
           <p className="mt-4 text-body-md text-muted-foreground">
@@ -102,10 +102,10 @@ export default function CareersPage() {
       </section>
 
       <section className="mx-auto max-w-3xl px-6 py-16">
-        <h2 className="text-heading-lg font-bold text-blue-900">
+        <h2 className="text-heading-lg font-bold text-ink-900">
           <Bi en="Frequently Asked Questions" hi="अक्सर पूछे जाने वाले प्रश्न" />
         </h2>
-        <span className="mt-3 block h-0.5 w-12 bg-teal-500" aria-hidden="true" />
+        <span className="mt-3 block h-0.5 w-12 bg-gold-500" aria-hidden="true" />
         <FaqAccordion items={careersFaqs} />
       </section>
     </>

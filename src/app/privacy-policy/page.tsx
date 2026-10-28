@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-12">
       <Breadcrumb segments={[{ label: 'Privacy Policy', labelHi: 'गोपनीयता नीति' }]} />
-      <h1 className="mt-4 text-display-lg font-bold text-blue-900">
+      <h1 className="mt-4 text-display-lg font-bold text-ink-900">
         <Bi en="Privacy Policy" hi="गोपनीयता नीति" />
       </h1>
       <p className="mt-3 text-body-sm text-muted-foreground">
@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
 
       <div className="mt-10 flex flex-col gap-8 text-body-md text-muted-foreground">
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="1. Introduction" hi="1. परिचय" />
           </h2>
           <p className="mt-3">
@@ -34,7 +34,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="2. Information We Collect" hi="2. एकत्रित की जाने वाली जानकारी" />
           </h2>
           <p className="mt-3">
@@ -72,7 +72,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="3. Cookies" hi="3. कुकीज़" />
           </h2>
           <p className="mt-3">
@@ -89,7 +89,7 @@ export default function PrivacyPolicyPage() {
           </p>
           <ul className="mt-3 list-disc space-y-2 pl-6">
             <li>
-              <span className="font-semibold text-blue-900">
+              <span className="font-semibold text-ink-900">
                 <Bi en="Essential" hi="अनिवार्य" />
               </span>{' '}
               <span className="lang-en">
@@ -104,7 +104,7 @@ export default function PrivacyPolicyPage() {
               </span>
             </li>
             <li>
-              <span className="font-semibold text-blue-900">
+              <span className="font-semibold text-ink-900">
                 <Bi en="Analytics" hi="विश्लेषण (एनालिटिक्स)" />
               </span>{' '}
               <span className="lang-en">
@@ -123,7 +123,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="4. How We Use Information" hi="4. जानकारी का उपयोग" />
           </h2>
           <p className="mt-3">
@@ -135,7 +135,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="5. Data Retention" hi="5. डेटा प्रतिधारण" />
           </h2>
           <p className="mt-3">
@@ -147,14 +147,14 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="6. Your Rights" hi="6. आपके अधिकार" />
           </h2>
           <p className="mt-3">
             <span className="lang-en">
               You may ask us to access, correct, or delete personal information you have
               submitted through this website by contacting us via the{' '}
-              <a href="/contact" className="underline hover:text-blue-900">
+              <a href="/contact" className="underline hover:text-ink-900">
                 Contact Us
               </a>{' '}
               page.
@@ -162,7 +162,7 @@ export default function PrivacyPolicyPage() {
             <span className="lang-hi">
               आप इस वेबसाइट के माध्यम से प्रस्तुत अपनी व्यक्तिगत जानकारी तक पहुँच, उसमें सुधार,
               अथवा उसे हटाने हेतु{' '}
-              <a href="/contact" className="underline hover:text-blue-900">
+              <a href="/contact" className="underline hover:text-ink-900">
                 संपर्क करें
               </a>{' '}
               पृष्ठ के माध्यम से हमसे अनुरोध कर सकते हैं।
@@ -171,7 +171,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <div>
-          <h2 className="text-heading-sm font-semibold text-blue-900">
+          <h2 className="text-heading-sm font-semibold text-ink-900">
             <Bi en="7. Changes to This Policy" hi="7. इस नीति में परिवर्तन" />
           </h2>
           <p className="mt-3">

@@ -18,8 +18,8 @@ export function ValuesTriad({ items }: ValuesTriadProps) {
     <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
       {items.map((item) => (
         <div key={item.label} className="flex flex-col items-start gap-3">
-          <item.icon weight="light" className="size-8 text-teal-600" aria-hidden="true" />
-          <p className="text-heading-sm font-semibold text-blue-900">
+          <item.icon weight="light" className="size-8 text-gold-700" aria-hidden="true" />
+          <p className="text-heading-sm font-semibold text-ink-900">
             <Bi en={item.label} hi={item.labelHi ?? item.label} />
           </p>
           {item.body ? (

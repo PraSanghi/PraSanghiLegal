@@ -35,13 +35,13 @@ export function LanguageToggle() {
       type="button"
       onClick={toggle}
       aria-label={lang === 'en' ? 'हिंदी में देखें' : 'View this site in English'}
-      className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-body-sm font-semibold transition-colors duration-150 ease-out hover:border-teal-500"
+      className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-body-sm font-semibold transition-colors duration-150 ease-out hover:border-gold-500"
     >
-      <span className={lang === 'en' ? 'text-blue-900' : 'text-muted-foreground'}>EN</span>
+      <span className={lang === 'en' ? 'text-ink-900' : 'text-muted-foreground'}>EN</span>
       <span className="text-border" aria-hidden="true">
         |
       </span>
-      <span className={lang === 'hi' ? 'text-blue-900' : 'text-muted-foreground'}>हिं</span>
+      <span className={lang === 'hi' ? 'text-ink-900' : 'text-muted-foreground'}>हिं</span>
     </button>
   )
 }

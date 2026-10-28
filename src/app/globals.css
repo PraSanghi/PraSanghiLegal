@@ -7,44 +7,55 @@
 :root {
   --radius: 0.25rem;
 
-  /* PraSanghi palette — see design/color-system.md */
-  --blue-900: oklch(0.248 0.076 265.364);
-  --blue-700: oklch(0.363 0.112 262.32);
-  --blue-500: oklch(0.473 0.124 258.674);
-  --teal-600: oklch(0.536 0.089 205.032);
-  --teal-400: oklch(0.744 0.101 201.757);
-  --white: oklch(1 0 89.876);
-  --off-white: oklch(0.978 0.005 258.324);
-  --neutral-700: oklch(0.429 0.022 258.372);
-  --neutral-300: oklch(0.893 0.011 256.699);
-  --neutral-100: oklch(0.957 0.006 255.475);
+  /* PraSanghi palette — drawn from the final logo (Firm Profile, Oct 2026):
+     the gold PS-scales-ladder monogram, the charcoal "PraSanghi" wordmark,
+     and the orange dot on its "i". Ink + ivory echo the advocate's black
+     and white; gold carries the brand; ember (the dot) is a rare accent
+     only — never body text, never a large fill.
+     Text-safe pairs: gold-700 on white 6.2:1, gold-300 on ink-900 9.7:1. */
+  --ink-950: #0f1115;
+  --ink-900: #15171c;
+  --ink-800: #23252b;
+  --ink-700: #363739;
+  --gold-700: #7c5c22;
+  --gold-600: #8a6a2e;
+  --gold-500: #bc9a53;
+  --gold-300: #d9bc78;
+  --gold-100: #f1e6c9;
+  --gold-50: #faf5e8;
+  --ember: #fb6002;
+  --white: #ffffff;
+  --off-white: #faf7f0;
+  --neutral-700: #5e5a52;
+  --neutral-300: #e5ded0;
+  --neutral-100: #f3efe6;
   --success: oklch(0.521 0.101 155.227);
   --error: oklch(0.519 0.162 28.918);
   --warning: oklch(0.563 0.112 76.697);
-  --dark-text-primary: oklch(0.972 0.006 255.475);
-  --dark-text-muted: oklch(0.782 0.026 257.656);
-  --dark-border: oklch(0.336 0.063 269.602);
+  --dark-text-primary: #f6f1e6;
+  --dark-text-muted: #b9b2a3;
+  --dark-border: #2e3038;
 
   /* shadcn semantic roles mapped onto the palette above */
   --background: var(--white);
-  --foreground: var(--blue-900);
+  --foreground: var(--ink-900);
   --card: var(--white);
-  --card-foreground: var(--blue-900);
+  --card-foreground: var(--ink-900);
   --popover: var(--white);
-  --popover-foreground: var(--blue-900);
-  --primary: var(--blue-700);
-  --primary-foreground: var(--white);
+  --popover-foreground: var(--ink-900);
+  --primary: var(--ink-900);
+  --primary-foreground: var(--off-white);
   --secondary: var(--off-white);
-  --secondary-foreground: var(--blue-900);
+  --secondary-foreground: var(--ink-900);
   --muted: var(--neutral-100);
   --muted-foreground: var(--neutral-700);
-  --accent: var(--teal-600);
+  --accent: var(--gold-700);
   --accent-foreground: var(--white);
   --destructive: var(--error);
   --destructive-foreground: var(--white);
   --border: var(--neutral-300);
   --input: var(--neutral-300);
-  --ring: var(--blue-500);
+  --ring: var(--gold-500);
 }
 
 @theme inline {
@@ -69,11 +80,17 @@
   --color-ring: var(--ring);
 
   /* Direct palette access — dark sections and bespoke usage (design-system.md §4) */
-  --color-blue-900: var(--blue-900);
-  --color-blue-700: var(--blue-700);
-  --color-blue-500: var(--blue-500);
-  --color-teal-600: var(--teal-600);
-  --color-teal-400: var(--teal-400);
+  --color-ink-950: var(--ink-950);
+  --color-ink-900: var(--ink-900);
+  --color-ink-800: var(--ink-800);
+  --color-ink-700: var(--ink-700);
+  --color-gold-700: var(--gold-700);
+  --color-gold-600: var(--gold-600);
+  --color-gold-500: var(--gold-500);
+  --color-gold-300: var(--gold-300);
+  --color-gold-100: var(--gold-100);
+  --color-gold-50: var(--gold-50);
+  --color-ember: var(--ember);
   --color-white: var(--white);
   --color-off-white: var(--off-white);
   --color-neutral-700: var(--neutral-700);
@@ -87,7 +104,7 @@
   --color-dark-border: var(--dark-border);
 
   --font-sans: var(--font-plex-sans);
-  --font-heading: var(--font-plex-sans);
+  --font-heading: var(--font-display);
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -150,6 +167,12 @@
   html {
     @apply font-sans;
   }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.005em;
+  }
 }
 
 /* Keeps the drag/swipe affordance of a horizontal scroll-snap carousel
@@ -174,6 +197,7 @@
 }
 html[data-lang='hi'] {
   --font-sans: var(--font-plex-sans-devanagari);
+  --font-heading: var(--font-display-devanagari);
 
   .lang-en {
     display: none;
