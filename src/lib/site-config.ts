@@ -19,7 +19,7 @@ export const siteTagline = 'The Legal Ladder'
 export const siteSlogan = 'One Destination for Every Legal Solution'
 
 export const siteDescription =
-  'PraSanghi is a Pan-India, full-service legal LLP combining Supreme Court and High Court litigation with regulatory, compliance, and advisory practice.'
+  'One Destination for Every Legal Solution. PraSanghi – The Legal Ladder LLP is a full-service, pan-India Advocates LLP at Indore: Supreme Court, High Court and trial-court litigation, hybrid arbitration, corporate advisory and regulatory compliance.'
 
 // Source: PraSanghi Firm Profile (2026), Contact & Correspondence.
 export const firmContact = {

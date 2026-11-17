@@ -6,6 +6,7 @@ import { PageBanner } from '@/components/common/page-banner'
 import { Bi } from '@/components/i18n/bi'
 import { insights } from '@/lib/insights-data'
 import { pageMetadata } from '@/lib/site-config'
+import { siteImages } from '@/lib/site-images'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Legal Insights',
@@ -22,7 +23,7 @@ export default function InsightsPage() {
         eyebrowHi="विधिक विश्लेषण"
         title="Legal Insights"
         titleHi="विधिक विश्लेषण"
-        image="https://picsum.photos/seed/prasanghi-insights-banner/1600/700"
+        image={siteImages.insights}
       />
       <section className="mx-auto max-w-7xl px-6 py-12">
         <p className="max-w-2xl text-body-lg text-muted-foreground">

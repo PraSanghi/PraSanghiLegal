@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      // Renamed after the client review ("Bhavesh" → "Bhavesh Tiwari").
+      { source: "/people/bhavesh", destination: "/people/bhavesh-tiwari", permanent: true },
+    ];
+  },
   images: {
     remotePatterns: [
       {

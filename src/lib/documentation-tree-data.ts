@@ -16,6 +16,14 @@ import {
   Plant,
   Compass,
   Bank,
+  ArrowBendUpLeft,
+  Scroll,
+  Gift,
+  Key,
+  ShieldCheck,
+  IdentificationCard,
+  Certificate,
+  Ruler,
 } from '@phosphor-icons/react/dist/ssr'
 
 export const documentationTree = [
@@ -35,6 +43,7 @@ export const documentationTree = [
         titleHi: 'सार्वजनिक (समाचार-पत्र) सूचना प्रारूपण',
         icon: Newspaper,
       },
+      { title: 'Replies to Legal Notices', titleHi: 'विधिक सूचनाओं के उत्तर', icon: ArrowBendUpLeft },
     ],
   },
   {
@@ -45,6 +54,8 @@ export const documentationTree = [
       { title: 'Prenuptial Agreements', titleHi: 'विवाह-पूर्व अनुबंध', icon: Users },
       { title: 'MOU Drafting', titleHi: 'समझौता ज्ञापन (एमओयू) प्रारूपण', icon: FileText },
       { title: 'Import & Export Contracts', titleHi: 'आयात-निर्यात संविदाएँ', icon: Globe },
+      { title: 'Rent, Lease & Leave-and-Licence', titleHi: 'किराया, पट्टा एवं अनुज्ञप्ति अनुबंध', icon: Key },
+      { title: 'Wills & Powers of Attorney', titleHi: 'वसीयत एवं मुख्तारनामा', icon: Scroll },
     ],
   },
   {
@@ -63,6 +74,8 @@ export const documentationTree = [
         titleHi: 'व्यवसाय मूल्यांकन एवं मानचित्रण रिपोर्ट',
         icon: ChartLine,
       },
+      { title: 'Indemnity Bonds & Undertakings', titleHi: 'क्षतिपूर्ति बंधपत्र एवं वचनपत्र', icon: ShieldCheck },
+      { title: 'Title Verification Reports', titleHi: 'स्वत्व सत्यापन रिपोर्ट', icon: IdentificationCard },
     ],
   },
   {
@@ -75,6 +88,9 @@ export const documentationTree = [
         titleHi: 'विक्रय-पत्र प्रारूपण एवं पंजीकरण',
         icon: House,
       },
+      { title: 'Gift, Relinquishment & Partition Deeds', titleHi: 'दान, त्याग एवं विभाजन विलेख', icon: Gift },
+      { title: 'Mutation & Demarcation', titleHi: 'नामांतरण एवं सीमांकन', icon: Ruler },
+      { title: 'RERA Registration & Complaints', titleHi: 'रेरा पंजीकरण एवं परिवाद', icon: Certificate },
       {
         title: 'NA Conversion of Agricultural Land',
         titleHi: 'कृषि भूमि का अकृषिक रूपांतरण',

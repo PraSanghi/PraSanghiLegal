@@ -18,7 +18,7 @@ import { homeFaqs } from "@/lib/faq-data";
 
 export default function HomePage() {
   const founder = peopleBySlug["rajwardhan-gawde"];
-  const featuredInsights = insights.slice(0, 3);
+  const featuredInsights = insights.slice(0, 6);
 
   return (
     <>
@@ -55,17 +55,17 @@ export default function HomePage() {
                 icon: Buildings,
                 label: "One Firm, Every Forum",
                 labelHi: "एक फर्म, हर फोरम",
-                body: "Litigation and regulatory work sit under one roof — not split across two firms that don't talk to each other.",
+                body: "From the consumer commission and the trial court to the High Courts, the Apex Legal Forum and the arbitral tribunal — one firm, one coordinated strategy.",
                 bodyHi:
-                  "वाद-विवाद एवं नियामक कार्य एक ही छत के नीचे — न कि दो ऐसी अलग फर्मों में विभाजित जो आपस में समन्वय नहीं रखतीं।",
+                  "उपभोक्ता आयोग एवं विचारण न्यायालय से उच्च न्यायालयों, सर्वोच्च विधिक मंच एवं माध्यस्थम् अधिकरण तक — एक फर्म, एक समन्वित रणनीति।",
               },
               {
                 icon: UserFocus,
                 label: "A Named Advocate, Always",
                 labelHi: "सदैव एक नामित अधिवक्ता",
-                body: "The advocate who takes your brief argues your matter — never handed off to unfamiliar staff along the way.",
+                body: "Government Advocate–level counsel and a named advocate who stays with your matter from first advice to final implementation.",
                 bodyHi:
-                  "जो अधिवक्ता आपका ब्रीफ स्वीकार करता है, वही आपके मामले की पैरवी करता है — बीच में कभी अपरिचित स्टाफ को नहीं सौंपा जाता।",
+                  "शासकीय अधिवक्ता स्तर का परामर्श, तथा एक नामित अधिवक्ता जो प्रथम परामर्श से अंतिम क्रियान्वयन तक आपके मामले के साथ रहता है।",
               },
               {
                 icon: Scales,

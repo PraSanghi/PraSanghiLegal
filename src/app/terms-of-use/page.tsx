@@ -17,7 +17,7 @@ export default function TermsOfUsePage() {
         <Bi en="Terms of Use" hi="उपयोग की शर्तें" />
       </h1>
       <p className="mt-3 text-body-sm text-muted-foreground">
-        <Bi en="Last updated: 15 September 2026" hi="अंतिम अद्यतन: 15 सितंबर 2026" />
+        <Bi en="Last updated: 17 November 2026" hi="अंतिम अद्यतन: 17 नवंबर 2026" />
       </p>
 
       <div className="mt-10 flex flex-col gap-8 text-body-md text-muted-foreground">
@@ -107,15 +107,47 @@ export default function TermsOfUsePage() {
           </h2>
           <p className="mt-3">
             <Bi
-              en="These Terms of Use are governed by the laws of India, and any disputes arising out of or relating to them shall be subject to the exclusive jurisdiction of the courts having jurisdiction over PraSanghi's registered office."
-              hi="ये उपयोग की शर्तें भारत के कानूनों द्वारा शासित हैं, तथा इनसे उत्पन्न अथवा इनसे संबंधित किसी भी विवाद पर प्रासंघी के पंजीकृत कार्यालय के क्षेत्राधिकार वाले न्यायालयों का अनन्य क्षेत्राधिकार होगा।"
+              en="These Terms of Use are governed by the laws of India. Subject to the Dispute Resolution clause below, the courts at Indore, Madhya Pradesh alone shall have jurisdiction in respect of any matter arising out of or relating to them."
+              hi="ये उपयोग की शर्तें भारत की विधियों द्वारा शासित हैं। नीचे दिए गए विवाद समाधान खंड के अधीन रहते हुए, इनसे उत्पन्न अथवा इनसे संबंधित किसी भी विषय पर केवल इंदौर, मध्य प्रदेश स्थित न्यायालयों को ही क्षेत्राधिकार होगा।"
             />
           </p>
         </div>
 
         <div>
           <h2 className="text-heading-sm font-semibold text-ink-900">
-            <Bi en="8. Changes to These Terms" hi="8. इन शर्तों में परिवर्तन" />
+            <Bi en="8. Dispute Resolution (Hybrid Med-Arb)" hi="8. विवाद समाधान (हाइब्रिड मेड-आर्ब)" />
+          </h2>
+          <ol className="mt-3 flex list-[lower-roman] flex-col gap-3 pl-6 text-justify hyphens-auto">
+            <li>
+              <Bi
+                en="Any dispute, controversy or claim arising out of or relating to these Terms of Use or the use of this website, including their formation, breach, termination or invalidity, shall be resolved exclusively through the Hybrid Med-Arb process administered by the Adjudix Dispute Resolution Institute (www.adjudixADR.com), in accordance with the latest edition of the Adjudix Code of ADR Procedure."
+                hi="इन उपयोग की शर्तों अथवा इस वेबसाइट के उपयोग से उत्पन्न अथवा उनसे संबंधित कोई भी विवाद, मतभेद अथवा दावा, जिसमें उनका निर्माण, उल्लंघन, समाप्ति अथवा अविधिमान्यता सम्मिलित है, एडजुडिक्स डिस्प्यूट रिज़ॉल्यूशन इंस्टिट्यूट (www.adjudixADR.com) द्वारा प्रशासित हाइब्रिड मेड-आर्ब प्रक्रिया के माध्यम से, एडजुडिक्स कोड ऑफ़ एडीआर प्रोसीजर के नवीनतम संस्करण के अनुसार, अनन्य रूप से निपटाया जाएगा।"
+              />
+            </li>
+            <li>
+              <Bi
+                en="Bar to court jurisdiction: recourse to courts on the merits of such a dispute is excluded. A party may apply under Section 8 of the Arbitration and Conciliation Act, 1996, and the court shall refer the parties to arbitration under this clause."
+                hi="न्यायालय क्षेत्राधिकार का वर्जन: ऐसे विवाद के गुणावगुण पर न्यायालय का आश्रय अपवर्जित है। कोई भी पक्षकार माध्यस्थम् एवं सुलह अधिनियम, 1996 की धारा 8 के अंतर्गत आवेदन कर सकता है, तथा न्यायालय पक्षकारों को इस खंड के अंतर्गत माध्यस्थम् हेतु निर्दिष्ट करेगा।"
+              />
+            </li>
+            <li>
+              <Bi
+                en="Same neutral: the neutral appointed as Mediator shall, if the mediation does not result in a settlement, continue as the sole Arbitrator and render a binding award under Chapter XI of the Code."
+                hi="एक ही तटस्थ: मध्यस्थ (मीडिएटर) के रूप में नियुक्त तटस्थ व्यक्ति, मध्यस्थता से समझौता न होने की स्थिति में, एकमात्र मध्यस्थ (आर्बिट्रेटर) के रूप में कार्य करते हुए संहिता के अध्याय XI के अंतर्गत बाध्यकारी अधिनिर्णय पारित करेगा।"
+              />
+            </li>
+            <li>
+              <Bi
+                en="The seat of the procedure shall be Indore, Madhya Pradesh; the language shall be English; and the venue may be online or offline by mutual agreement or, failing agreement, at the neutral’s discretion."
+                hi="प्रक्रिया का स्थान (सीट) इंदौर, मध्य प्रदेश होगा; भाषा अंग्रेज़ी होगी; तथा आयोजन-स्थल पारस्परिक सहमति से ऑनलाइन अथवा ऑफ़लाइन होगा, अथवा सहमति के अभाव में तटस्थ के विवेकानुसार।"
+              />
+            </li>
+          </ol>
+        </div>
+
+        <div>
+          <h2 className="text-heading-sm font-semibold text-ink-900">
+            <Bi en="9. Changes to These Terms" hi="9. इन शर्तों में परिवर्तन" />
           </h2>
           <p className="mt-3">
             <Bi
@@ -127,7 +159,7 @@ export default function TermsOfUsePage() {
 
         <div>
           <h2 className="text-heading-sm font-semibold text-ink-900">
-            <Bi en="9. Contact" hi="9. संपर्क" />
+            <Bi en="10. Contact" hi="10. संपर्क" />
           </h2>
           <p className="mt-3">
             <span className="lang-en">
@@ -147,12 +179,6 @@ export default function TermsOfUsePage() {
           </p>
         </div>
 
-        <p className="border-t border-border pt-6 text-body-sm italic">
-          <Bi
-            en="This page reflects PraSanghi's current terms and is subject to periodic review by the firm's own counsel; it will be updated as needed."
-            hi="यह पृष्ठ प्रासंघी की वर्तमान शर्तों को दर्शाता है तथा फर्म के अपने विधि परामर्शदाता द्वारा समय-समय पर समीक्षा के अधीन है; इसे आवश्यकतानुसार अद्यतन किया जाएगा।"
-          />
-        </p>
       </div>
     </section>
   )

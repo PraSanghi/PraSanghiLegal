@@ -1,4 +1,4 @@
-import { Scales } from '@phosphor-icons/react/dist/ssr'
+import { DotsThreeCircle, Scales } from '@phosphor-icons/react/dist/ssr'
 import { RevealOnScroll } from '@/components/common/reveal-on-scroll'
 import { Bi } from '@/components/i18n/bi'
 import { documentationTree } from '@/lib/documentation-tree-data'
@@ -59,6 +59,16 @@ export function DocumentationTree() {
                   </div>
                 </RevealOnScroll>
               ))}
+              <RevealOnScroll delayMs={ci * 75 + category.items.length * 30}>
+                <div className="flex h-20 items-center gap-3 border border-dashed border-gold-500/60 bg-gold-50/50 px-4">
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-gold-50 text-gold-700">
+                    <DotsThreeCircle weight="light" className="size-5" aria-hidden="true" />
+                  </span>
+                  <p className="line-clamp-2 text-body-md font-medium italic text-ink-900">
+                    <Bi en="Others — not otherwise listed above" hi="अन्य — जो ऊपर सूचीबद्ध नहीं हैं" />
+                  </p>
+                </div>
+              </RevealOnScroll>
             </div>
           </div>
         ))}

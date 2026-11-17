@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { CheckCircle } from '@phosphor-icons/react/dist/ssr'
+import { ArrowRight, CheckCircle, Medal, Scales } from '@phosphor-icons/react/dist/ssr'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { AttorneyCard } from '@/components/cards/attorney-card'
 import { PracticeAreaCard } from '@/components/cards/practice-area-card'
@@ -10,7 +10,12 @@ import { CtaBand } from '@/components/common/cta-band'
 import { RevealOnScroll } from '@/components/common/reveal-on-scroll'
 import { Bi } from '@/components/i18n/bi'
 import { Button } from '@/components/ui/button'
-import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
+import {
+  appellateLine,
+  othersLine,
+  practiceAreaDetails,
+  practiceAreaSlugs,
+} from '@/lib/practice-areas-data'
 import { practiceAreaCarouselImages } from '@/lib/practice-area-carousel-images'
 import { peopleBySlug } from '@/lib/people-data'
 import { pageMetadata } from '@/lib/site-config'
@@ -70,9 +75,26 @@ export default async function PracticeAreaDetailPage({
             <h1 className="mt-2 text-display-lg font-bold text-ink-900">
               <Bi en={area.title} hi={area.titleHi} />
             </h1>
-            <p className="mt-4 text-body-lg text-muted-foreground">
+            <p className="mt-4 text-body-lg text-muted-foreground text-justify hyphens-auto">
               <Bi en={area.summary} hi={area.summaryHi} />
             </p>
+            {area.forums && area.forums.length > 0 ? (
+              <div className="mt-6 border-l-2 border-gold-500 pl-4">
+                <p className="text-label-eyebrow uppercase tracking-[0.2em] text-gold-700">
+                  <Bi en="Forums we appear before" hi="जिन मंचों के समक्ष हम उपस्थित होते हैं" />
+                </p>
+                <ul className="mt-2 flex flex-wrap gap-2">
+                  {area.forums.map((forum, i) => (
+                    <li
+                      key={forum}
+                      className="border border-border bg-card px-2.5 py-1 text-body-sm text-ink-900"
+                    >
+                      <Bi en={forum} hi={area.forumsHi?.[i] ?? forum} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             <div className="mt-6 flex flex-wrap gap-4">
               <Button asChild>
                 <Link href="/contact">
@@ -85,6 +107,24 @@ export default async function PracticeAreaDetailPage({
                 </Link>
               </Button>
             </div>
+            <dl className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-border bg-border sm:grid-cols-3">
+              {(
+                [
+                  ['what', 'What', 'क्या'],
+                  ['when', 'When', 'कब'],
+                  ['how', 'How', 'कैसे'],
+                ] as const
+              ).map(([key, en, hi]) => (
+                <div key={key} className="bg-card p-4">
+                  <dt className="text-label-eyebrow uppercase tracking-[0.2em] text-gold-700">
+                    <Bi en={en} hi={hi} />
+                  </dt>
+                  <dd className="mt-1 text-body-sm text-ink-900">
+                    <Bi en={area.quickFacts[key]} hi={area.quickFactsHi[key]} />
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </RevealOnScroll>
           <RevealOnScroll delayMs={75} className="relative aspect-4/5 w-full overflow-hidden bg-muted">
             <Image
@@ -103,11 +143,22 @@ export default async function PracticeAreaDetailPage({
         <div className="mx-auto max-w-4xl">
           <RevealOnScroll className="flex flex-col gap-4">
             {area.overview.map((paragraph, i) => (
-              <p key={i} className="text-body-md text-ink-900">
+              <p key={i} className="text-body-md text-ink-900 text-justify hyphens-auto">
                 <Bi en={paragraph} hi={area.overviewHi[i] ?? paragraph} />
               </p>
             ))}
           </RevealOnScroll>
+
+          {area.highlight ? (
+            <RevealOnScroll>
+              <div className="mt-10 flex items-start gap-4 border border-gold-500/50 bg-ink-900 p-6 text-dark-text-primary">
+                <Medal weight="duotone" className="mt-0.5 size-8 shrink-0 text-gold-300" aria-hidden="true" />
+                <p className="text-body-lg font-medium text-justify hyphens-auto">
+                  <Bi en={area.highlight.en} hi={area.highlight.hi} />
+                </p>
+              </div>
+            </RevealOnScroll>
+          ) : null}
 
           <RevealOnScroll>
             <h2 className="mt-12 text-heading-md font-bold text-ink-900">
@@ -124,8 +175,40 @@ export default async function PracticeAreaDetailPage({
                   <Bi en={service} hi={area.specificServicesHi[i] ?? service} />
                 </li>
               ))}
+              <li className="flex items-start gap-3 text-body-md text-ink-900 italic">
+                <CheckCircle
+                  weight="fill"
+                  className="mt-0.5 size-5 shrink-0 text-gold-700"
+                  aria-hidden="true"
+                />
+                <Bi en={othersLine.en} hi={othersLine.hi} />
+              </li>
             </ul>
+            {area.appellate ? (
+              <p className="mt-6 flex items-start gap-3 border-t border-border pt-6 text-body-md text-ink-900 text-justify hyphens-auto">
+                <Scales weight="duotone" className="mt-0.5 size-5 shrink-0 text-gold-700" aria-hidden="true" />
+                <Bi en={appellateLine.en} hi={appellateLine.hi} />
+              </p>
+            ) : null}
           </RevealOnScroll>
+
+          {area.crossLink ? (
+            <RevealOnScroll>
+              <Link
+                href={`/practice-areas/${area.crossLink.slug}`}
+                className="group mt-10 flex items-center justify-between gap-4 border-2 border-gold-500 bg-gold-50 p-6 text-ink-900 transition-colors hover:bg-gold-100"
+              >
+                <span className="text-body-lg font-semibold">
+                  <Bi en={area.crossLink.en} hi={area.crossLink.hi} />
+                </span>
+                <ArrowRight
+                  weight="bold"
+                  className="size-6 shrink-0 text-gold-700 transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </Link>
+            </RevealOnScroll>
+          ) : null}
 
           {area.commonSituations && area.commonSituations.length > 0 ? (
             <RevealOnScroll>
@@ -158,6 +241,8 @@ export default async function PracticeAreaDetailPage({
                     name={person.name}
                     role={person.role}
                     roleHi={person.roleHi}
+                    designation={person.designation}
+                    designationHi={person.designationHi}
                     photo={person.photo}
                     href={`/people/${person.slug}`}
                     practiceTags={person.practiceTags}

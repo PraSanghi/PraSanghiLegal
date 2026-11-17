@@ -9,6 +9,7 @@ import { Bi } from '@/components/i18n/bi'
 import { PracticeAreaGrid } from '@/components/common/practice-area-grid'
 import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
 import { practiceAreaCarouselImages } from '@/lib/practice-area-carousel-images'
+import { siteImages } from '@/lib/site-images'
 
 interface HeroCta {
   label: string
@@ -51,23 +52,23 @@ const HERO_GRID_ITEMS = practiceAreaSlugs.map((slug) => ({
 const HERO_STATES: HeroState[] = [
   {
     key: 'practice',
-    eyebrow: 'Litigation & Regulatory Counsel',
-    eyebrowHi: 'वाद-विवाद एवं नियामक परामर्श',
-    headline: 'One legal partner for the courtroom and the compliance desk.',
-    headlineHi: 'न्यायालय एवं अनुपालन — दोनों के लिए एक ही विधिक साझेदार।',
-    body: 'PraSanghi represents clients before the Supreme Court, High Courts, and subordinate forums, alongside a substantive regulatory and advisory practice — built as one firm, not two.',
+    eyebrow: 'Advocates & Legal Consultants',
+    eyebrowHi: 'अधिवक्ता एवं विधिक परामर्शदाता',
+    headline: 'One Destination for Every Legal Solution.',
+    headlineHi: 'प्रत्येक विधिक समाधान हेतु एक ही गंतव्य।',
+    body: 'A full-service, pan-India Advocates LLP that brings the courtroom and the compliance desk under one roof — from the Supreme Court of India, the High Courts and the trial courts to consumer commissions, tribunals, hybrid arbitration and corporate advisory.',
     bodyHi:
-      'प्रासंघी उच्चतम न्यायालय, उच्च न्यायालयों एवं अधीनस्थ फोरमों के समक्ष पक्षकारों का प्रतिनिधित्व करता है, साथ ही एक सशक्त नियामक व सलाहकार प्रैक्टिस भी संचालित करता है — एक ही फर्म के रूप में, दो अलग फर्मों के रूप में नहीं।',
+      'एक पूर्ण-सेवा, अखिल भारतीय अधिवक्ता एलएलपी, जो न्यायालय एवं अनुपालन — दोनों को एक ही छत के नीचे लाता है: भारत के उच्चतम न्यायालय, उच्च न्यायालयों एवं विचारण न्यायालयों से लेकर उपभोक्ता आयोगों, अधिकरणों, हाइब्रिड माध्यस्थम् एवं कॉर्पोरेट परामर्श तक।',
     ctas: [
       { label: 'Explore Practice Areas', labelHi: 'प्रैक्टिस क्षेत्र देखें', href: '/practice-areas' },
       {
-        label: 'Regulatory & Advisory',
-        labelHi: 'नियामक एवं सलाहकार सेवाएँ',
-        href: '/practice-areas/regulatory-advisory',
+        label: 'Schedule a Consultation',
+        labelHi: 'परामर्श निर्धारित करें',
+        href: '/contact',
         variant: 'outline',
       },
     ],
-    image: 'https://picsum.photos/seed/prasanghi-practice/1200/1500',
+    image: siteImages.heroPractice,
     theme: 'light',
   },
   {
@@ -79,7 +80,7 @@ const HERO_STATES: HeroState[] = [
     body: 'Browse every practice area we cover, from litigation to compliance.',
     bodyHi: 'वाद-विवाद से लेकर अनुपालन तक, हमारे सभी प्रैक्टिस क्षेत्र देखें।',
     ctas: [],
-    image: 'https://picsum.photos/seed/prasanghi-insights/1200/1500',
+    image: siteImages.heroInsights,
     theme: 'dark',
     showServicesCarousel: true,
   },
@@ -87,26 +88,26 @@ const HERO_STATES: HeroState[] = [
     key: 'people',
     eyebrow: 'Our Advocates',
     eyebrowHi: 'हमारे अधिवक्ता',
-    headline: 'A team built to be reached, not just retained.',
-    headlineHi: 'एक ऐसी टीम जिस तक पहुँचा जा सके, केवल नियुक्त न किया जाए।',
-    body: 'Every matter at PraSanghi is led by a named advocate you can speak with directly — not routed through layers of unfamiliar staff.',
+    headline: 'Counsel to the State. Counsel to you.',
+    headlineHi: 'शासन के अधिवक्ता। आपके अधिवक्ता।',
+    body: 'Led by a Government Advocate of the High Court of Madhya Pradesh and a former Standing Counsel for the Union of India, every matter is handled by a named advocate who stays with it from start to finish.',
     bodyHi:
-      'प्रासंघी में प्रत्येक मामले का नेतृत्व एक नामित अधिवक्ता करता है जिससे आप सीधे बात कर सकते हैं — न कि अपरिचित स्टाफ की कई परतों के माध्यम से।',
+      'मध्य प्रदेश उच्च न्यायालय के शासकीय अधिवक्ता एवं भारत संघ के भूतपूर्व स्थायी अधिवक्ता के नेतृत्व में, प्रत्येक मामला एक नामित अधिवक्ता द्वारा संभाला जाता है जो प्रारंभ से अंत तक उसके साथ रहता है।',
     ctas: [{ label: 'Meet Our Advocates', labelHi: 'हमारे अधिवक्ताओं से मिलें', href: '/people' }],
-    image: 'https://picsum.photos/seed/prasanghi-people/1200/1500',
+    image: siteImages.heroPeople,
     theme: 'light',
   },
   {
     key: 'vision',
-    eyebrow: 'Our Vision',
-    eyebrowHi: 'हमारा दृष्टिकोण',
-    headline: 'People, Justice, Progress.',
-    headlineHi: 'व्यक्ति, न्याय, प्रगति।',
-    body: 'The Legal Ladder is a direction, not just a name — every matter we take on is measured against whether it moves a client meaningfully forward.',
+    eyebrow: 'Our Method',
+    eyebrowHi: 'हमारी कार्यपद्धति',
+    headline: 'Understand. Strategize. Execute. Follow Through.',
+    headlineHi: 'समझना। रणनीति बनाना। क्रियान्वित करना। अंत तक साथ निभाना।',
+    body: 'The Legal Ladder is our method: every matter is carried step by step, from first advice through to final resolution — and its implementation.',
     bodyHi:
-      '"द लीगल लैडर" एक दिशा है, केवल एक नाम नहीं — हम जो भी मामला लेते हैं, उसे इस कसौटी पर परखा जाता है कि क्या वह ग्राहक को सार्थक रूप से आगे ले जाता है।',
+      '"द लीगल लैडर" हमारी कार्यपद्धति है: प्रत्येक मामला चरणबद्ध रूप से — प्रथम परामर्श से अंतिम समाधान तक, और उसके क्रियान्वयन तक — आगे बढ़ाया जाता है।',
     ctas: [{ label: 'About PraSanghi', labelHi: 'प्रासंघी के बारे में', href: '/about' }],
-    image: 'https://picsum.photos/seed/prasanghi-vision/1200/1500',
+    image: siteImages.heroVision,
     theme: 'dark',
   },
 ]
@@ -262,7 +263,7 @@ export function PositioningHero() {
                       <Bi en={state.headline} hi={state.headlineHi} />
                     </h1>
                     <p
-                      className={`max-w-lg text-pretty text-body-lg ${
+                      className={`max-w-lg text-justify hyphens-auto text-body-lg ${
                         isDark ? 'text-dark-text-muted' : 'text-muted-foreground'
                       }`}
                     >

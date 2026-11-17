@@ -9,6 +9,7 @@ import { ValuesTriad } from '@/components/common/values-triad'
 import { Bi } from '@/components/i18n/bi'
 import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
 import { pageMetadata } from '@/lib/site-config'
+import { siteImages } from '@/lib/site-images'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Practice Areas',
@@ -26,13 +27,13 @@ export default function PracticeAreasPage() {
         eyebrowHi="हम क्या करते हैं"
         title="Practice Areas"
         titleHi="प्रैक्टिस क्षेत्र"
-        image="https://picsum.photos/seed/prasanghi-practice-banner/1600/700"
+        image={siteImages.practiceAreas}
       />
       <section className="mx-auto max-w-7xl px-6 py-12">
-        <p className="max-w-2xl text-body-lg text-muted-foreground">
+        <p className="max-w-3xl text-body-lg text-muted-foreground text-justify hyphens-auto">
           <Bi
-            en="Litigation and regulatory work are treated with the same depth and the same design at PraSanghi — one full-service firm, not two."
-            hi="प्रासंघी में वाद-विवाद एवं नियामक कार्य को समान गहनता एवं समान महत्व दिया जाता है — एक पूर्ण-सेवा फर्म के रूप में, दो अलग फर्मों के रूप में नहीं।"
+            en="One Destination for Every Legal Solution: litigation from the trial court to the Apex Legal Forum, corporate and commercial advisory, regulatory compliance and institutional dispute resolution — every practice area under one roof, each led by named advocates."
+            hi="प्रत्येक विधिक समाधान हेतु एक ही गंतव्य: विचारण न्यायालय से सर्वोच्च विधिक मंच तक वाद, कॉर्पोरेट एवं वाणिज्यिक परामर्श, नियामक अनुपालन एवं संस्थागत विवाद समाधान — प्रत्येक प्रैक्टिस क्षेत्र एक ही छत के नीचे, नामित अधिवक्ताओं के नेतृत्व में।"
           />
         </p>
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

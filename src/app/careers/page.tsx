@@ -9,6 +9,7 @@ import { FaqAccordion } from '@/components/common/faq-accordion'
 import { Bi } from '@/components/i18n/bi'
 import { careersFaqs } from '@/lib/careers-faq-data'
 import { pageMetadata } from '@/lib/site-config'
+import { siteImages } from '@/lib/site-images'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Careers',
@@ -25,7 +26,7 @@ export default function CareersPage() {
         eyebrowHi="कैरियर"
         title="Join PraSanghi"
         titleHi="प्रासंघी से जुड़ें"
-        image="https://picsum.photos/seed/prasanghi-careers/1600/700"
+        image={siteImages.careers}
       />
       <section className="mx-auto max-w-4xl px-6 py-12">
         <p className="max-w-2xl text-body-lg text-muted-foreground">
@@ -65,16 +66,16 @@ export default function CareersPage() {
 
         <div className="mt-12 border-t border-border pt-8">
           <h2 className="text-heading-md font-bold text-ink-900">
-            <Bi en="Open Positions" hi="रिक्त पद" />
+            <Bi en="Opportunities" hi="अवसर" />
           </h2>
-          <p className="mt-3 text-body-md text-muted-foreground italic">
+          <p className="mt-3 text-body-md text-muted-foreground text-justify hyphens-auto">
             <Bi
-              en="Specific open roles are pending founder confirmation. In the meantime, speculative applications are welcome below, or by emailing directly."
-              hi="विशिष्ट रिक्त पद संस्थापक की पुष्टि की प्रतीक्षा में हैं। इस बीच, नीचे दिए गए फॉर्म से अथवा सीधे ईमेल द्वारा आवेदन का स्वागत है।"
+              en="PraSanghi recruits throughout the year for Associates, Senior Associates and Interns across litigation, corporate, regulatory and dispute-resolution work — at Indore, Sardarpur and through our associate network. Apply below, or write to us directly."
+              hi="प्रासंघी वर्ष भर वाद-विवाद, कॉर्पोरेट, नियामक एवं विवाद-समाधान कार्य हेतु सहयोगी अधिवक्ताओं, वरिष्ठ सहयोगी अधिवक्ताओं एवं प्रशिक्षुओं की नियुक्ति करता है — इंदौर, सरदारपुर एवं हमारे सहयोगी नेटवर्क में। नीचे आवेदन करें, अथवा हमें सीधे लिखें।"
             />
           </p>
           <Button asChild size="lg" variant="outline" className="mt-6">
-            <a href="mailto:careers@prasanghi.example">
+            <a href="mailto:contact@prasanghilegal.com?subject=Careers%20application">
               <Bi en="Email Us Directly" hi="हमें सीधे ईमेल करें" />
             </a>
           </Button>

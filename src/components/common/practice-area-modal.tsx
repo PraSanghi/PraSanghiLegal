@@ -93,6 +93,13 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
               ))}
             </dl>
 
+            <p className="mt-4 border-l-2 border-gold-500 bg-gold-50 px-3 py-2 text-body-sm text-ink-900">
+              <Bi
+                en="We take your matter up with the concerned authority on your behalf — or meet you at your doorstep. Write, call or WhatsApp us to begin."
+                hi="हम आपकी ओर से संबंधित प्राधिकारी के समक्ष आपका मामला उठाते हैं — अथवा आपके द्वार पर आपसे भेंट करते हैं। आरंभ करने हेतु हमें लिखें, कॉल करें अथवा व्हाट्सएप करें।"
+              />
+            </p>
+
             <Link
               href={`/practice-areas/${item.slug}`}
               className="mt-4 inline-flex w-fit items-center gap-1.5 text-body-sm font-semibold text-gold-700 hover:text-gold-600"
@@ -123,15 +130,7 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
                     <Bi en="Chat on WhatsApp" hi="व्हाट्सएप पर चैट करें" />
                   </a>
                 </Button>
-              ) : (
-                <div
-                  className="flex items-center gap-2 border border-dashed border-border px-4 py-2.5 text-body-sm text-muted-foreground"
-                  aria-disabled="true"
-                >
-                  <WhatsappLogo weight="light" className="size-5 shrink-0" aria-hidden="true" />
-                  <Bi en="WhatsApp number pending confirmation" hi="व्हाट्सएप नंबर की पुष्टि लंबित है" />
-                </div>
-              )}
+              ) : null}
 
               {contactPhoneDialable ? (
                 <Button asChild variant="outline" className="justify-start">
@@ -143,15 +142,7 @@ export function PracticeAreaModal({ item, onOpenChange }: PracticeAreaModalProps
                     />
                   </a>
                 </Button>
-              ) : (
-                <div
-                  className="flex items-center gap-2 border border-dashed border-border px-4 py-2.5 text-body-sm text-muted-foreground"
-                  aria-disabled="true"
-                >
-                  <Phone weight="light" className="size-5 shrink-0" aria-hidden="true" />
-                  <Bi en="Phone number pending confirmation" hi="फ़ोन नंबर की पुष्टि लंबित है" />
-                </div>
-              )}
+              ) : null}
             </div>
 
             <p className="mt-6 text-body-sm font-semibold text-ink-900">
