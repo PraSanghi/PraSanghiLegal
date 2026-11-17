@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { Bi } from '@/components/i18n/bi'
 import { pageMetadata } from '@/lib/site-config'
@@ -18,11 +19,25 @@ export const metadata: Metadata = pageMetadata({
 // (referral partner? sister entity? founding member?). Replace with real,
 // founder-confirmed copy per project_requirements.md §5 — do not treat
 // these as final.
-const ASSOCIATED_ORGANISATIONS = [
+interface AssociatedOrganisation {
+  name: string
+  note?: string
+  noteHi?: string
+  description: string
+  descriptionHi: string
+  href?: string
+  linkLabel?: string
+  linkLabelHi?: string
+}
+
+const ASSOCIATED_ORGANISATIONS: AssociatedOrganisation[] = [
   {
     name: 'PraSanghi Social Welfare Society',
     description: 'A social welfare society affiliated with PraSanghi.',
     descriptionHi: 'प्रासंघी से सहबद्ध एक समाज कल्याण समिति।',
+    href: '/social-initiatives',
+    linkLabel: 'See its social initiatives',
+    linkLabelHi: 'इसकी सामाजिक पहल देखें',
   },
   {
     name: 'Tiwari Law Chambers',
@@ -40,12 +55,6 @@ const ASSOCIATED_ORGANISATIONS = [
     name: 'Nishtha & Associates',
     description: 'An affiliated associate practice.',
     descriptionHi: 'एक सहबद्ध एसोसिएट प्रैक्टिस।',
-  },
-  {
-    name: 'Adjudix Dispute Resolution Institute',
-    note: 'ADRI',
-    description: 'A dispute resolution institute PraSanghi is affiliated with.',
-    descriptionHi: 'एक विवाद समाधान संस्थान जिससे प्रासंघी सहबद्ध है।',
   },
   {
     name: 'Naya Kadam Samajotthan Samiti',
@@ -78,8 +87,8 @@ export default function AffiliatedOrganisationsPage() {
       </div>
       <p className="mt-8 text-body-md text-muted-foreground">
         <Bi
-          en="PraSanghi is associated with the following organisations. A fuller description of each relationship is pending founder confirmation."
-          hi="प्रासंघी निम्नलिखित संगठनों से संबद्ध है। प्रत्येक संबंध का विस्तृत विवरण संस्थापक की पुष्टि की प्रतीक्षा में है।"
+          en="PraSanghi is associated with the following organisations."
+          hi="प्रासंघी निम्नलिखित संगठनों से संबद्ध है।"
         />
       </p>
       <ul className="mt-8 flex flex-col divide-y divide-border border-t border-border">
@@ -96,6 +105,14 @@ export default function AffiliatedOrganisationsPage() {
             <p className="mt-1 text-body-sm text-muted-foreground">
               <Bi en={org.description} hi={org.descriptionHi} />
             </p>
+            {org.href && org.linkLabel ? (
+              <Link
+                href={org.href}
+                className="mt-2 inline-block text-body-sm font-medium text-gold-700 underline-offset-4 hover:underline"
+              >
+                <Bi en={org.linkLabel} hi={org.linkLabelHi ?? org.linkLabel} /> →
+              </Link>
+            ) : null}
           </li>
         ))}
       </ul>

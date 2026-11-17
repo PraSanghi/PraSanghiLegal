@@ -25,6 +25,7 @@ import { LanguageToggle } from '@/components/layout/language-toggle'
 import { ThemeToggle } from '@/components/layout/theme-toggle'
 import { Bi } from '@/components/i18n/bi'
 import { primaryNav } from '@/lib/navigation'
+import { cn } from '@/lib/utils'
 import { practiceAreaDetails, practiceAreaSlugs } from '@/lib/practice-areas-data'
 
 export function SiteHeader() {
@@ -40,7 +41,7 @@ export function SiteHeader() {
         <NavigationMenu className="hidden max-w-none flex-1 justify-center xl:flex" viewport={false}>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-transparent text-sm font-semibold text-ink-900">
+              <NavigationMenuTrigger className="bg-transparent px-1.5 text-sm font-semibold text-ink-900">
                 <Bi en="Practice Areas" hi="प्रैक्टिस क्षेत्र" />
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -81,7 +82,8 @@ export function SiteHeader() {
               .filter((item) => item.href !== '/contact')
               .map((item) => (
                 <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  {/* px-1.5 (not the default px-2.5) so seven links + CTA fit the 1280px container at xl */}
+                  <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), 'px-1.5')}>
                     <Link href={item.href} className="text-sm font-semibold text-ink-900">
                       <Bi en={item.title} hi={item.titleHi} />
                     </Link>

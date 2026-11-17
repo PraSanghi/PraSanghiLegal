@@ -10,5 +10,6 @@ export const primaryNav: PrimaryNavItem[] = [
   { title: 'Legal Insights', titleHi: 'विधिक विश्लेषण', href: '/insights' },
   { title: 'Careers', titleHi: 'कैरियर', href: '/careers' },
   { title: 'Media Coverage', titleHi: 'मीडिया कवरेज', href: '/media' },
+  { title: 'Social Initiatives', titleHi: 'सामाजिक पहल', href: '/social-initiatives' },
   { title: 'Contact Us', titleHi: 'संपर्क करें', href: '/contact' },
 ]
