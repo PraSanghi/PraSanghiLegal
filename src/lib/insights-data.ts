@@ -18,12 +18,12 @@ export interface InsightRecord {
   practiceAreaTagHi?: string
   /** Practice-area slug the article links back to. */
   practiceAreaSlug?: string
-  image: string
+  /** Optional photo; without one the card and page show the branded practice-area cover. */
+  image?: string
   body: InsightBlock[]
   bodyHi: InsightBlock[]
 }
 
-const u = (id: string) => `https://images.unsplash.com/photo-${id}?q=80&w=1600&auto=format&fit=crop`
 
 const REG = { practiceAreaTag: 'Regulatory & Statutory Compliance', practiceAreaTagHi: 'नियामक एवं सांविधिक अनुपालन', practiceAreaSlug: 'regulatory-advisory' }
 
@@ -41,7 +41,6 @@ export const insights: InsightRecord[] = [
     practiceAreaTag: 'Property & Real Estate Advisory',
     practiceAreaTagHi: 'संपत्ति एवं रियल एस्टेट परामर्श',
     practiceAreaSlug: 'property-real-estate',
-    image: u('1565043589221-1a6fd9ae45c7'),
     body: [
       'The Real Estate (Regulation and Development) Act, 2016 requires promoters to register real estate projects with the state Real Estate Regulatory Authority (RERA) before advertising, marketing or selling units, subject to the thresholds and exemptions under the Act and the state rules. Real estate agents who facilitate sales must register too.',
       { heading: 'What a promoter needs to register a project' },
@@ -84,7 +83,6 @@ export const insights: InsightRecord[] = [
     excerpt: 'Lending money as a business without a money-lender’s registration can leave loans unrecoverable. What the law requires.',
     excerptHi: 'बिना साहूकार पंजीकरण के व्यवसाय के रूप में धन उधार देने पर ऋण अवसूलनीय हो सकते हैं। विधि क्या अपेक्षा करती है।',
     ...REG,
-    image: u('1579621970563-ebec7560ff3e'),
     body: [
       'Most states regulate private money-lending through their own money-lenders legislation — in Madhya Pradesh, the Madhya Pradesh Sahukar Adhiniyam, 1934. A person or firm carrying on the business of lending money, other than banks and other exempted institutions, is generally required to hold a registration certificate or licence from the competent authority.',
       'The consequence of lending without one can be serious: depending on the state law, a suit to recover a loan advanced in the course of an unregistered money-lending business may not be maintainable, and lending without a licence can attract penalties. Rules on maximum interest, maintenance of accounts and issue of receipts also apply.',
@@ -127,7 +125,6 @@ export const insights: InsightRecord[] = [
     practiceAreaTag: 'Debt Recovery & Section 138 NI Act',
     practiceAreaTagHi: 'ऋण वसूली एवं धारा 138',
     practiceAreaSlug: 'debt-recovery-management',
-    image: u('1450101499163-c8848c66ca85'),
     body: [
       'Section 138 of the Negotiable Instruments Act, 1881 makes the dishonour of a cheque issued towards a legally enforceable debt a criminal offence, once a statutory procedure has been followed. The procedure is strict, and a missed deadline can defeat an otherwise strong claim.',
       { heading: 'The steps, in order' },
@@ -168,7 +165,6 @@ export const insights: InsightRecord[] = [
     practiceAreaTag: 'Arbitration, Mediation & Hybrid Med-Arb',
     practiceAreaTagHi: 'माध्यस्थम्, मध्यस्थता एवं हाइब्रिड मेड-आर्ब',
     practiceAreaSlug: 'arbitration-dispute-resolution',
-    image: u('1521791136064-7986c2920216'),
     body: [
       'In a Hybrid Med-Arb process, the parties first try to settle their dispute through mediation. If mediation does not produce a settlement, the same proceeding moves on to arbitration and ends in a binding award — without the parties having to start afresh.',
       { heading: 'How it runs' },
@@ -211,7 +207,6 @@ export const insights: InsightRecord[] = [
     practiceAreaTag: 'Consumer Protection & Consumer Forum Matters',
     practiceAreaTagHi: 'उपभोक्ता संरक्षण एवं उपभोक्ता आयोग',
     practiceAreaSlug: 'consumer-protection',
-    image: u('1607083206869-4c7672e72a8a'),
     body: [
       'Under the Consumer Protection Act, 2019, a complaint is filed before the District, State or National Commission depending on the value of the goods or services paid for, as notified by the Central Government — currently up to ₹50 lakh before the District Commission, above ₹50 lakh and up to ₹2 crore before the State Commission, and above ₹2 crore before the National Commission.',
       'A complaint must ordinarily be filed within two years from the date the cause of action arises; delay can be condoned only for sufficient cause.',
@@ -252,7 +247,6 @@ export const insights: InsightRecord[] = [
     practiceAreaTag: 'Cyber Law, Data Privacy & Defamation',
     practiceAreaTagHi: 'साइबर विधि, डेटा गोपनीयता एवं मानहानि',
     practiceAreaSlug: 'cyber-defamation',
-    image: u('1563986768609-322da13575f3'),
     body: [
       'The Digital Personal Data Protection Act, 2023 applies to the processing of digital personal data in India — which, for most businesses, includes customer, website-user and employee data. Obligations fall on the “data fiduciary” that decides why and how the data is processed.',
       { heading: 'A practical checklist' },
@@ -297,7 +291,6 @@ export const insights: InsightRecord[] = [
     practiceAreaTag: 'Intellectual Property Rights',
     practiceAreaTagHi: 'बौद्धिक संपदा अधिकार',
     practiceAreaSlug: 'intellectual-property-rights',
-    image: u('1503387762-592deb58ef4e'),
     body: [
       'A registered trademark gives its owner the exclusive right to use the mark for the registered goods or services and a statutory remedy for infringement. Registration is valid for ten years and can be renewed indefinitely.',
       { heading: 'The stages' },
@@ -336,7 +329,6 @@ export const insights: InsightRecord[] = [
     excerpt: 'What a Fire Safety NOC covers, when a business needs one, and the four stages to obtain it.',
     excerptHi: 'अग्नि सुरक्षा एनओसी में क्या शामिल है, व्यवसाय को इसकी आवश्यकता कब होती है, तथा इसे प्राप्त करने के चार चरण।',
     ...REG,
-    image: u('1504307651254-35680f356dfd'),
     body: [
       'A Fire Safety No Objection Certificate (NOC) is a clearance issued by the local fire department confirming that a building or premises meets applicable fire-safety norms. It is a prerequisite for a wide range of other approvals — trade licences, building-completion certificates and occupancy certificates among them — which makes it one of the first compliance steps a business should plan for, not one of the last.',
       'Who needs one: any commercial, industrial or high-occupancy premises — offices, factories, warehouses, hotels, restaurants and multi-storey residential buildings — typically requires a Fire Safety NOC before occupation, with the exact threshold (building height, floor area, occupancy type) set by the state fire service rules where the premises is located.',
@@ -375,7 +367,6 @@ export const insights: InsightRecord[] = [
     excerpt: 'What UDYAM registration is, who needs it, the benefits it unlocks and how it is obtained.',
     excerptHi: 'उद्यम पंजीकरण क्या है, इसकी आवश्यकता किसे है, इससे मिलने वाले लाभ, तथा इसे कैसे प्राप्त किया जाता है।',
     ...REG,
-    image: u('1556742049-0cfed4f6a45d'),
     body: [
       'UDYAM registration is the current framework under which micro, small and medium enterprises (MSMEs) in India are officially recognised by the Ministry of Micro, Small and Medium Enterprises. It replaced the earlier Udyog Aadhaar system, and registration is done online through the UDYAM portal using the applicant’s Aadhaar number and PAN.',
       'Classification as micro, small or medium is based on two criteria: investment in plant and machinery or equipment, and annual turnover. Both thresholds are periodically revised, so a business should confirm current limits at the time of applying.',
@@ -414,7 +405,6 @@ export const insights: InsightRecord[] = [
     excerpt: 'The registration most commercial premises need first — and the other licences that usually follow it.',
     excerptHi: 'अधिकांश वाणिज्यिक परिसरों को सबसे पहले आवश्यक पंजीकरण — और उसके पश्चात सामान्यतः आवश्यक अन्य अनुज्ञप्तियाँ।',
     ...REG,
-    image: u('1472851294608-062f824d29cc'),
     body: [
       'Shops and Establishment (Gumasta) registration is typically the first statutory registration a commercial premises needs — offices, retail shops, restaurants and most other commercial establishments fall within its scope, with the specific rules set by the state in which the premises operates.',
       'Registration is usually required within a short window of commencing business and covers working hours, holidays, leave entitlements and conditions of employment. A business operating in more than one state must register separately in each.',

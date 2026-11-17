@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { CtaBand } from '@/components/common/cta-band'
 import { Bi } from '@/components/i18n/bi'
-import { InitiativeImageFallback } from '@/components/cards/initiative-card'
+import { WelfareSocietyCover } from '@/components/common/branded-cover'
 import { INITIATIVE_THEME_HI, initiatives, initiativesBySlug } from '@/lib/initiatives-data'
 import { pageMetadata } from '@/lib/site-config'
 
@@ -55,7 +55,7 @@ export default async function InitiativeDetailPage({
             className="object-cover"
           />
         ) : (
-          <InitiativeImageFallback />
+          <WelfareSocietyCover />
         )}
       </div>
       <article className="mx-auto max-w-3xl px-6 py-12">

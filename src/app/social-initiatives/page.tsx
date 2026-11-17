@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { RevealOnScroll } from '@/components/common/reveal-on-scroll'
 import { InitiativeCard } from '@/components/cards/initiative-card'
@@ -18,9 +19,18 @@ export default function SocialInitiativesPage() {
     <section className="mx-auto max-w-7xl px-6 py-12">
       <Breadcrumb segments={[{ label: 'Social Initiatives', labelHi: 'सामाजिक पहल' }]} />
       <div className="mt-4">
-        <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
-          <Bi en="PraSanghi Social Welfare Society" hi="प्रासंघी सोशल वेलफेयर सोसायटी" />
-        </p>
+        <div className="flex items-center gap-3">
+          <Image
+            src="/brand/prasanghi-welfare-society.png"
+            alt=""
+            width={125}
+            height={130}
+            className="h-10 w-auto rounded-full"
+          />
+          <p className="text-label-eyebrow uppercase tracking-wide text-gold-700">
+            <Bi en="PraSanghi Social Welfare Society" hi="प्रासंघी सोशल वेलफेयर सोसायटी" />
+          </p>
+        </div>
         <h1 className="mt-3 text-display-lg font-bold text-ink-900">
           <Bi en="Social Initiatives" hi="सामाजिक पहल" />
         </h1>

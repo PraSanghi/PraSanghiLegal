@@ -2,25 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { Bi } from '@/components/i18n/bi'
+import { WelfareSocietyCover } from '@/components/common/branded-cover'
 import { INITIATIVE_THEME_HI, type InitiativeRecord } from '@/lib/initiatives-data'
-
-/** Branded stand-in shown until the client supplies the real photo. */
-export function InitiativeImageFallback({ className }: { className?: string }) {
-  return (
-    <div
-      aria-hidden
-      className={cn('flex h-full w-full items-center justify-center bg-gold-100/60', className)}
-    >
-      <Image
-        src="/brand/prasanghi-mark.png"
-        alt=""
-        width={96}
-        height={96}
-        className="h-20 w-auto opacity-40"
-      />
-    </div>
-  )
-}
 
 export function InitiativeCard({
   item,
@@ -47,7 +30,7 @@ export function InitiativeCard({
             className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
           />
         ) : (
-          <InitiativeImageFallback />
+          <WelfareSocietyCover />
         )}
       </div>
       <div className="flex flex-1 flex-col gap-3 p-6">

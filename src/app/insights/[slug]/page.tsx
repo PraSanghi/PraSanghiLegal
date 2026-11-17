@@ -5,6 +5,7 @@ import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
 import { notFound } from 'next/navigation'
 import { Breadcrumb } from '@/components/common/breadcrumb'
 import { CtaBand } from '@/components/common/cta-band'
+import { InsightCover } from '@/components/common/branded-cover'
 import { Bi } from '@/components/i18n/bi'
 import { CONTENT_TYPE_HI } from '@/components/cards/insight-card'
 import { insights, insightsBySlug } from '@/lib/insights-data'
@@ -54,14 +55,18 @@ export default async function InsightDetailPage({
         ]}
       />
       <div className="relative mx-auto mt-4 aspect-[21/9] w-full max-w-5xl overflow-hidden bg-muted px-0">
-        <Image
-          src={item.image}
-          alt=""
-          fill
-          priority
-          sizes="(min-width: 1024px) 1024px, 100vw"
-          className="object-cover"
-        />
+        {item.image ? (
+          <Image
+            src={item.image}
+            alt=""
+            fill
+            priority
+            sizes="(min-width: 1024px) 1024px, 100vw"
+            className="object-cover"
+          />
+        ) : (
+          <InsightCover label={item.practiceAreaTag} labelHi={item.practiceAreaTagHi} size="hero" />
+        )}
       </div>
       <article className="mx-auto max-w-3xl px-6 py-12">
         <div className="flex items-center gap-3 text-label-eyebrow uppercase tracking-wide text-gold-700">

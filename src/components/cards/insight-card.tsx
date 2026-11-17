@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { Bi } from '@/components/i18n/bi'
+import { InsightCover } from '@/components/common/branded-cover'
 
 export type InsightContentType = 'Legal Update' | 'Article' | 'Podcast'
 
@@ -53,8 +54,8 @@ export function InsightCard({
         className
       )}
     >
-      {image ? (
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+        {image ? (
           <Image
             src={image}
             alt=""
@@ -62,8 +63,10 @@ export function InsightCard({
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
           />
-        </div>
-      ) : null}
+        ) : (
+          <InsightCover label={practiceAreaTag} labelHi={practiceAreaTagHi} />
+        )}
+      </div>
       <div className="flex flex-1 flex-col gap-3 p-6">
         <div className="flex items-center justify-between text-label-eyebrow tracking-wide text-gold-700">
           <span className="uppercase">
@@ -81,7 +84,8 @@ export function InsightCard({
             <Bi en={excerpt} hi={excerptHi ?? excerpt} />
           </p>
         ) : null}
-        {practiceAreaTag ? (
+        {/* The cover already names the practice area; repeat it only under a photo. */}
+        {practiceAreaTag && image ? (
           <span className="mt-auto text-body-sm font-medium text-gold-700">
             <Bi en={practiceAreaTag} hi={practiceAreaTagHi ?? practiceAreaTag} />
           </span>
