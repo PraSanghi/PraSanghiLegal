@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ibmPlexSans, ibmPlexSansDevanagari, libreCaslon, notoSerifDevanagari } from "@/lib/fonts";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { SplashLoader } from "@/components/common/splash-loader";
 import { BciDisclaimerModal } from "@/components/compliance/bci-disclaimer-modal";
 import { CookieConsentBanner } from "@/components/compliance/cookie-consent-banner";
 import { ConsentedAnalytics } from "@/components/compliance/consented-analytics";
@@ -9,6 +10,11 @@ import { Toaster } from "@/components/ui/sonner";
 import { siteDescription, siteName, siteTagline, siteUrl } from "@/lib/site-config";
 import { organizationJsonLd } from "@/lib/structured-data";
 import "./globals.css";
+
+// `true` plays the splash loader once per browser session (production).
+// Set to `false` while testing to replay it on every full page load
+// (F5 / Ctrl+Shift+R) — and back to `true` before pushing.
+const SPLASH_ONCE_PER_SESSION = true;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -56,7 +62,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         {/* Applies a returning visitor's EN/HI and colour-theme choices
             (site-header.tsx LanguageToggle / ThemeToggle) before first paint, so there's no flash of the
-            other language — the same technique a dark-mode toggle uses. */}
+            other language — the same technique a dark-mode toggle uses. Also marks the
+            splash loader as seen for the rest of the session (splash-loader.tsx). */}
         <script
           // Browser extensions (ad blockers, color pickers, etc.) commonly
           // inject their own <script> tag as the first child of <head>
@@ -68,7 +75,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html:
-              "try{var l=localStorage.getItem('prasanghi-lang');if(l==='hi'){document.documentElement.setAttribute('data-lang','hi');document.documentElement.setAttribute('lang','hi');}if(localStorage.getItem('prasanghi-theme')==='classic'){document.documentElement.setAttribute('data-theme','classic');}}catch(e){}",
+              "try{var l=localStorage.getItem('prasanghi-lang');if(l==='hi'){document.documentElement.setAttribute('data-lang','hi');document.documentElement.setAttribute('lang','hi');}if(localStorage.getItem('prasanghi-theme')==='classic'){document.documentElement.setAttribute('data-theme','classic');}}catch(e){}" + (SPLASH_ONCE_PER_SESSION ? "try{if(sessionStorage.getItem('prasanghi-splash')){document.documentElement.setAttribute('data-splash-seen','');}else{sessionStorage.setItem('prasanghi-splash','1');}}catch(e){}" : ""),
           }}
         />
       </head>
@@ -78,6 +85,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
         />
+        <SplashLoader />
         <BciDisclaimerModal />
         <SiteHeader />
         <main className="flex-1">{children}</main>
