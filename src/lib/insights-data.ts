@@ -18,20 +18,24 @@ export interface InsightRecord {
   practiceAreaTagHi?: string
   /** Practice-area slug the article links back to. */
   practiceAreaSlug?: string
-  /** Optional photo; without one the card and page show the branded practice-area cover. */
+  /** Topic photo; without one the card and page fall back to the branded practice-area cover. */
   image?: string
   body: InsightBlock[]
   bodyHi: InsightBlock[]
 }
 
 
+const photo = (id: string, extra = '') =>
+  `https://images.unsplash.com/photo-${id}?q=80&w=1600&auto=format&fit=crop${extra}`
+
 const REG = { practiceAreaTag: 'Regulatory & Statutory Compliance', practiceAreaTagHi: 'नियामक एवं सांविधिक अनुपालन', practiceAreaSlug: 'regulatory-advisory' }
 
 // General-information articles on established, public legal processes — not
-// case-specific advice. Newest first. Photos were checked by eye for fit.
+// case-specific advice. Newest first. Each photo was viewed and checked against its topic before use.
 export const insights: InsightRecord[] = [
   {
     slug: 'rera-registration-and-homebuyer-remedies',
+    image: photo('1632400386307-2b2f275b35da'), // residential towers under construction behind a site hoarding, India
     contentType: 'Article',
     date: '2026-11-10',
     headline: 'RERA: Registration for Promoters and Remedies for Homebuyers',
@@ -76,6 +80,7 @@ export const insights: InsightRecord[] = [
   },
   {
     slug: 'money-lender-sahukar-licence',
+    image: photo('1565371767810-ef913a6c8315'), // Indian ₹500 notes
     contentType: 'Article',
     date: '2026-11-03',
     headline: 'Money-Lender (Sahukar) Licence: Who Needs One and How to Obtain It',
@@ -116,6 +121,7 @@ export const insights: InsightRecord[] = [
   },
   {
     slug: 'cheque-bounce-section-138',
+    image: photo('1763872867598-b1b5f769d7e3', '&rect=600,0,2856,1450'), // pen on a cheque; cropped above the $ / DOLLARS line
     contentType: 'Article',
     date: '2026-10-27',
     headline: 'Cheque Bounce under Section 138: The Timeline That Decides Your Case',
@@ -156,6 +162,7 @@ export const insights: InsightRecord[] = [
   },
   {
     slug: 'hybrid-med-arb-explained',
+    image: photo('1780733065500-4284d227f58c'), // handshake across a desk over signed papers
     contentType: 'Article',
     date: '2026-10-20',
     headline: 'Hybrid Med-Arb: Settlement First, a Binding Award if Needed',
@@ -198,6 +205,7 @@ export const insights: InsightRecord[] = [
   },
   {
     slug: 'consumer-complaint-which-commission',
+    image: photo('1634733988138-bf2c3a2a13fa'), // card terminal printing a purchase receipt
     contentType: 'Article',
     date: '2026-10-13',
     headline: 'Consumer Complaints: Which Commission, and What Comes After the Order',
@@ -238,6 +246,7 @@ export const insights: InsightRecord[] = [
   },
   {
     slug: 'dpdp-act-business-checklist',
+    image: photo('1633265486064-086b219458ec'), // padlock on a keyboard beside payment cards
     contentType: 'Article',
     date: '2026-10-06',
     headline: 'The DPDP Act, 2023: A Compliance Checklist for Businesses',
@@ -282,6 +291,7 @@ export const insights: InsightRecord[] = [
   },
   {
     slug: 'trademark-registration-process',
+    image: photo('1716471330463-f475b00f0506'), // logo sketches and colour swatches (no real brand shown)
     contentType: 'Article',
     date: '2026-09-22',
     headline: 'Registering a Trademark in India: From Search to Certificate',
@@ -322,6 +332,7 @@ export const insights: InsightRecord[] = [
   },
   {
     slug: 'fire-safety-noc-process',
+    image: photo('1625958936686-a9343dc35b5b'), // wall-mounted fire extinguisher with its sign
     contentType: 'Article',
     date: '2026-09-01',
     headline: 'Understanding the Fire Safety NOC Process',
@@ -360,6 +371,7 @@ export const insights: InsightRecord[] = [
   },
   {
     slug: 'udyam-registration-explained',
+    image: photo('1753185234794-e3b41b94a352'), // small-workshop carpenter at a saw
     contentType: 'Article',
     date: '2026-08-20',
     headline: 'UDYAM Registration, Explained',
@@ -398,6 +410,7 @@ export const insights: InsightRecord[] = [
   },
   {
     slug: 'shops-establishment-registration-explained',
+    image: photo('1755449209767-88beee24d927'), // Indian market street of signboarded shops
     contentType: 'Article',
     date: '2026-08-05',
     headline: 'Shops and Establishment Registration: The First Filing for Any Commercial Premises',

@@ -263,7 +263,14 @@ html[data-lang='hi'] {
    once seen (html[data-splash-seen], set in layout.tsx). */
 .splash {
   position: fixed;
-  inset: 0;
+  /* Sized to the full window (100vw includes the scrollbar), not `inset: 0`.
+     The BCI disclaimer dialog opens mid-splash and its scroll lock hides the
+     scrollbar; with `inset: 0` the box then widened and the logo jumped
+     ~8px to the right. 100vw keeps the centre fixed either way. */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
   z-index: 200;
   display: grid;
   place-items: center;
