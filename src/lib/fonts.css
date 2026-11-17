@@ -1,0 +1,13 @@
+/* Font variables, set on <html> by layout.tsx (see fonts.ts). */
+.font-var-plex-sans {
+  --font-plex-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+}
+.font-var-plex-sans-devanagari {
+  --font-plex-sans-devanagari: 'IBM Plex Sans Devanagari', 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+}
+.font-var-display {
+  --font-display: 'Libre Caslon Text', Georgia, 'Times New Roman', serif;
+}
+.font-var-display-devanagari {
+  --font-display-devanagari: 'Noto Serif Devanagari', 'Libre Caslon Text', Georgia, serif;
+}
