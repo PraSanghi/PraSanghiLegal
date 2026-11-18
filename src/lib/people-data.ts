@@ -16,9 +16,10 @@ export interface PersonRecord {
   bio: string[]
   bioHi: string[]
   /**
-   * Real headshot path. Until the client sends professional headshots every
-   * advocate is shown as an initials monogram (client decision, Oct 2026) —
-   * the casual stock portraits previously used were rejected in review.
+   * Real headshot path under /public/team (4:5, 800×1000, background replaced
+   * with a neutral studio backdrop). Advocates without a client-supplied photo
+   * are shown as an initials monogram (client decision, Oct 2026) — the casual
+   * stock portraits previously used were rejected in review.
    */
   photo?: string
 }
@@ -41,6 +42,7 @@ export const people: PersonRecord[] = [
   {
     slug: 'rajwardhan-gawde',
     name: 'Rajwardhan Gawde',
+    photo: '/team/rajwardhan-gawde.webp',
     role: 'Founder & Senior Lead Counsel',
     roleHi: 'संस्थापक एवं वरिष्ठ प्रमुख अधिवक्ता',
     isFounder: true,
@@ -86,6 +88,7 @@ export const people: PersonRecord[] = [
   {
     slug: 'bhavesh-tiwari',
     name: 'Bhavesh Tiwari',
+    photo: '/team/bhavesh-tiwari.webp',
     role: 'Senior Associate',
     roleHi: 'वरिष्ठ सहयोगी अधिवक्ता',
     practiceTags: [
@@ -126,6 +129,7 @@ export const people: PersonRecord[] = [
   {
     slug: 'pankaj-giri-goswami',
     name: 'Pankaj Giri Goswami',
+    photo: '/team/pankaj-giri-goswami.webp',
     role: 'Senior Associate',
     roleHi: 'वरिष्ठ सहयोगी अधिवक्ता',
     practiceTags: ['Litigation', 'Regulatory & Advisory', 'Supreme Court & High Court Practice'],
