@@ -16,10 +16,9 @@ export interface PersonRecord {
   bio: string[]
   bioHi: string[]
   /**
-   * Real headshot path under /public/team (4:5, 800×1000, background replaced
-   * with a neutral studio backdrop). Advocates without a client-supplied photo
-   * are shown as an initials monogram (client decision, Oct 2026) — the casual
-   * stock portraits previously used were rejected in review.
+   * Real headshot path under /public/team: client-supplied photo, AI-upscaled,
+   * background replaced with the cream ground and the gold PS mark at 60%
+   * (4:5, 800×1000). Without one the advocate is shown as an initials monogram.
    */
   photo?: string
 }
@@ -160,6 +159,7 @@ export const people: PersonRecord[] = [
   {
     slug: 'manoj-garg',
     name: 'Manoj Garg',
+    photo: '/team/manoj-garg.webp',
     role: 'Senior Associate',
     roleHi: 'वरिष्ठ सहयोगी अधिवक्ता',
     designation: 'Branch Head, Sardarpur, Dhar (Dist.)',
@@ -180,6 +180,7 @@ export const people: PersonRecord[] = [
   {
     slug: 'kavita-sharma',
     name: 'Kavita Sharma',
+    photo: '/team/kavita-sharma.webp',
     role: 'Associate',
     roleHi: 'सहयोगी अधिवक्ता',
     designation: 'State Government Matters',
@@ -200,6 +201,7 @@ export const people: PersonRecord[] = [
   {
     slug: 'abhishek-mantri',
     name: 'Abhishek Mantri',
+    photo: '/team/abhishek-mantri.webp',
     role: 'Associate',
     roleHi: 'सहयोगी अधिवक्ता',
     practiceTags: ['Corporate Law', 'Regulatory & Advisory', 'Debt Recovery & Management'],
@@ -218,6 +220,7 @@ export const people: PersonRecord[] = [
   {
     slug: 'aditya-bharti',
     name: 'Aditya Bharti',
+    photo: '/team/aditya-bharti.webp',
     role: 'Associate',
     roleHi: 'सहयोगी अधिवक्ता',
     practiceTags: ['Litigation', 'Cyber Law & Data Privacy', 'Family & Matrimonial'],
