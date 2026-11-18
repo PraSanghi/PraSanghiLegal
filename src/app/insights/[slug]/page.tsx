@@ -39,12 +39,20 @@ export default async function InsightDetailPage({
   const item = insightsBySlug[slug]
   if (!item) notFound()
 
-  const formattedDate = new Date(item.date).toLocaleDateString('en-IN', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric',
-    timeZone: 'UTC',
-  })
+  const fmt = (d: string) =>
+    new Date(d).toLocaleDateString('en-IN', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      timeZone: 'UTC',
+    })
+  const formattedDate = fmt(item.date)
+  const lawAsOf = fmt(item.lawAsOf)
+  const words = item.body
+    .flatMap((b) => (typeof b === 'string' ? [b] : 'steps' in b ? b.steps : 'bullets' in b ? b.bullets : 'heading' in b ? [b.heading] : [b.note]))
+    .join(' ')
+    .split(/\s+/).length
+  const minutes = Math.max(1, Math.round(words / 200))
 
   return (
     <>
@@ -76,6 +84,9 @@ export default async function InsightDetailPage({
           <time dateTime={item.date} className="text-muted-foreground normal-case tracking-normal">
             {formattedDate}
           </time>
+          <span className="text-muted-foreground normal-case tracking-normal">
+            <Bi en={`${minutes} min read`} hi={`${minutes} मिनट`} />
+          </span>
         </div>
         <h1 className="mt-3 text-display-lg font-bold text-ink-900">
           <Bi en={item.headline} hi={item.headlineHi} />
@@ -85,6 +96,9 @@ export default async function InsightDetailPage({
             <Bi en={item.practiceAreaTag} hi={item.practiceAreaTagHi ?? item.practiceAreaTag} />
           </p>
         ) : null}
+        <p className="mt-2 text-body-sm text-muted-foreground">
+          <Bi en={`Law stated as at ${lawAsOf}`} hi={`विधि ${lawAsOf} की स्थिति अनुसार`} />
+        </p>
         <div className="mt-8 flex flex-col gap-5 border-t border-border pt-8">
           {item.body.map((block, i) => {
             const hiBlock = item.bodyHi[i]
@@ -105,6 +119,28 @@ export default async function InsightDetailPage({
                 </h2>
               )
             }
+            if ('note' in block) {
+              return (
+                <p key={i} className="border border-gold-300 bg-gold-50 px-5 py-4 text-body-md font-medium text-ink-900">
+                  <Bi en={block.note} hi={hiBlock && typeof hiBlock !== 'string' && 'note' in hiBlock ? hiBlock.note : block.note} />
+                </p>
+              )
+            }
+            if ('bullets' in block) {
+              const hiBullets = hiBlock && typeof hiBlock !== 'string' && 'bullets' in hiBlock ? hiBlock.bullets : block.bullets
+              return (
+                <ul key={i} className="flex flex-col gap-3">
+                  {block.bullets.map((point, j) => (
+                    <li key={j} className="flex items-start gap-4 text-body-lg text-ink-900 text-justify hyphens-auto">
+                      <span className="mt-[0.6em] size-2 shrink-0 rotate-45 bg-gold-500" aria-hidden="true" />
+                      <span>
+                        <Bi en={point} hi={hiBullets[j] ?? point} />
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )
+            }
             const hiSteps = hiBlock && typeof hiBlock !== 'string' && 'steps' in hiBlock ? hiBlock.steps : block.steps
             return (
               <ol key={i} className="flex flex-col gap-3">
@@ -123,6 +159,29 @@ export default async function InsightDetailPage({
             )
           })}
         </div>
+        {item.sources.length ? (
+          <section className="mt-12 border-t border-border pt-8">
+            <h2 className="text-heading-sm font-bold text-ink-900">
+              <Bi en="Key legal sources" hi="प्रमुख विधिक स्रोत" />
+            </h2>
+            <ul className="mt-4 flex list-disc flex-col gap-2 pl-5 text-body-md text-ink-900">
+              {item.sources.map((s, i) => (
+                <li key={i}>
+                  <Bi en={s} hi={item.sourcesHi[i] ?? s} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+        <p className="mt-8 text-body-sm text-muted-foreground text-justify">
+          <Bi
+            en={`This article is general information on the law as at ${lawAsOf}. It is not legal advice and does not create an advocate–client relationship. Laws, rules and notified limits change, and their application depends on the facts and on the state concerned; obtain advice on your specific situation before acting. `}
+            hi={`यह लेख ${lawAsOf} की स्थिति अनुसार विधि पर सामान्य जानकारी है। यह विधिक परामर्श नहीं है तथा इससे अधिवक्ता–मुवक्किल संबंध स्थापित नहीं होता। विधियाँ, नियम एवं अधिसूचित सीमाएँ परिवर्तित होती रहती हैं, तथा उनका अनुप्रयोग तथ्यों एवं संबंधित राज्य पर निर्भर करता है; कोई कदम उठाने से पूर्व अपनी विशिष्ट स्थिति पर परामर्श लें। `}
+          />
+          <Link href="/disclaimer" className="underline underline-offset-2 hover:text-ink-900">
+            <Bi en="Read our full disclaimer." hi="पूर्ण अस्वीकरण पढ़ें।" />
+          </Link>
+        </p>
         {item.practiceAreaSlug ? (
           <Link
             href={`/practice-areas/${item.practiceAreaSlug}`}
